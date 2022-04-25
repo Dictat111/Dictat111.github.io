@@ -6,19 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-    <meta name="description" content="通过配置hexo的主题,可以使得网站的界面更具有艺术性.下面介绍hexo主题配置的一些知识: 选择主题在主配置文件中_config.yml,将theme: cactus冒号后的部分改成你想要使用的主题(这里用的是cactus 意为仙人掌),主题可以从网上下载,放在themes文件夹里,里面有原有的主题landscape.     注:cactus 意为仙人掌 选择主题在themes文件夹对应的主题">
+    <meta name="description" content="通过配置hexo的主题,可以使得网站的界面更具有艺术性.下面介绍hexo主题配置的一些知识: 下载主题在主目录下使用git命令 1git clone https:&#x2F;&#x2F;github.com&#x2F;probberechts&#x2F;hexo-theme-cactus.git themes&#x2F;cactus 选择主题在主配置文件中_config.yml,将theme: cactus冒号后的部分改成你想要使用的主题(这里用">
 <meta property="og:type" content="article">
 <meta property="og:title" content="网站建立其·五:hexo主题配置">
 <meta property="og:url" content="http://example.com/2022/04/24/%E7%BD%91%E7%AB%99%E5%BB%BA%E7%AB%8B%E5%85%B6%E4%BA%94/index.html">
 <meta property="og:site_name" content="Dictat 小站">
-<meta property="og:description" content="通过配置hexo的主题,可以使得网站的界面更具有艺术性.下面介绍hexo主题配置的一些知识: 选择主题在主配置文件中_config.yml,将theme: cactus冒号后的部分改成你想要使用的主题(这里用的是cactus 意为仙人掌),主题可以从网上下载,放在themes文件夹里,里面有原有的主题landscape.     注:cactus 意为仙人掌 选择主题在themes文件夹对应的主题">
+<meta property="og:description" content="通过配置hexo的主题,可以使得网站的界面更具有艺术性.下面介绍hexo主题配置的一些知识: 下载主题在主目录下使用git命令 1git clone https:&#x2F;&#x2F;github.com&#x2F;probberechts&#x2F;hexo-theme-cactus.git themes&#x2F;cactus 选择主题在主配置文件中_config.yml,将theme: cactus冒号后的部分改成你想要使用的主题(这里用">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/2022/04/24/%E7%BD%91%E7%AB%99%E5%BB%BA%E7%AB%8B%E5%85%B6%E4%BA%94/1650770977163.png">
 <meta property="og:image" content="http://example.com/2022/04/24/%E7%BD%91%E7%AB%99%E5%BB%BA%E7%AB%8B%E5%85%B6%E4%BA%94/1650771025794.png">
 <meta property="og:image" content="http://example.com/2022/04/24/%E7%BD%91%E7%AB%99%E5%BB%BA%E7%AB%8B%E5%85%B6%E4%BA%94/1650773499488.png">
 <meta property="og:image" content="http://example.com/2022/04/24/%E7%BD%91%E7%AB%99%E5%BB%BA%E7%AB%8B%E5%85%B6%E4%BA%94/1650773644718.png">
 <meta property="article:published_time" content="2022-04-24T03:37:27.000Z">
-<meta property="article:modified_time" content="2022-04-24T04:14:16.953Z">
+<meta property="article:modified_time" content="2022-04-24T10:42:01.822Z">
 <meta property="article:author" content="Dictat">
 <meta property="article:tag" content="网站建立">
 <meta name="twitter:card" content="summary">
@@ -56,7 +56,8 @@
 	
 <meta name="generator" content="Hexo 5.4.2"></head>
 
-<body class="max-width mx-auto px3 ltr">    
+<body class="max-width mx-auto px3 ltr">
+    
       <div id="header-post">
   <a id="menu-icon" href="#" aria-label="القائمة"><i class="fas fa-bars fa-lg"></i></a>
   <a id="menu-icon-tablet" href="#" aria-label="القائمة"><i class="fas fa-bars fa-lg"></i></a>
@@ -78,6 +79,8 @@
     <br/>
     <span id="actions">
       <ul>
+        
+        <li><a class="icon" aria-label="上一篇" href="/2022/04/25/%E7%BD%91%E7%AB%99%E5%BB%BA%E7%AB%8B%E5%85%B6%E5%85%AD/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
         
         <li><a class="icon" aria-label="下一篇" href="/2022/04/24/%E7%BD%91%E7%AB%99%E5%BB%BA%E7%AB%8B%E5%85%B6%E5%9B%9B/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
@@ -108,7 +111,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E4%B8%BB%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">选择主题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E4%B8%BB%E9%A2%98-1"><span class="toc-number">2.</span> <span class="toc-text">选择主题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%AD%E8%A8%80%E8%AE%BE%E5%AE%9A"><span class="toc-number">2.1.</span> <span class="toc-text">语言设定</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%BC%E8%88%AA%E6%A0%87%E7%AD%BE%E7%AE%A1%E7%90%86"><span class="toc-number">3.</span> <span class="toc-text">导航标签管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B0%E5%BB%BA%E9%A1%B5%E9%9D%A2"><span class="toc-number">3.1.</span> <span class="toc-text">新建页面</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9B%B4%E6%94%B9%E2%80%99%E5%85%B3%E4%BA%8E%E2%80%99%E8%BF%9E%E6%8E%A5"><span class="toc-number">3.1.1.</span> <span class="toc-text">更改’关于’连接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B0%E5%BB%BA%E2%80%99tags%E2%80%99%E9%93%BE%E6%8E%A5"><span class="toc-number">3.1.2.</span> <span class="toc-text">新建’tags’链接</span></a></li></ol></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E4%B8%BB%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">下载主题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E4%B8%BB%E9%A2%98"><span class="toc-number">2.</span> <span class="toc-text">选择主题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E4%B8%BB%E9%A2%98"><span class="toc-number">3.</span> <span class="toc-text">配置主题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%AD%E8%A8%80%E8%AE%BE%E5%AE%9A"><span class="toc-number">3.1.</span> <span class="toc-text">语言设定</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%BC%E8%88%AA%E6%A0%87%E7%AD%BE%E7%AE%A1%E7%90%86"><span class="toc-number">4.</span> <span class="toc-text">导航标签管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B0%E5%BB%BA%E9%A1%B5%E9%9D%A2"><span class="toc-number">4.1.</span> <span class="toc-text">新建页面</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9B%B4%E6%94%B9%E2%80%99%E5%85%B3%E4%BA%8E%E2%80%99%E8%BF%9E%E6%8E%A5"><span class="toc-number">4.1.1.</span> <span class="toc-text">更改’关于’连接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B0%E5%BB%BA%E2%80%99tags%E2%80%99%E9%93%BE%E6%8E%A5"><span class="toc-number">4.1.2.</span> <span class="toc-text">新建’tags’链接</span></a></li></ol></li></ol></li></ol>
     </div>
   </span>
 </div>
@@ -153,9 +156,11 @@
 
   <div class="content" itemprop="articleBody">
     <p>通过配置hexo的主题,可以使得网站的界面更具有艺术性.下面介绍hexo主题配置的一些知识:</p>
+<h2 id="下载主题"><a href="#下载主题" class="headerlink" title="下载主题"></a>下载主题</h2><p>在主目录下使用git命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/probberechts/hexo-theme-cactus.git themes/cactus</span><br></pre></td></tr></table></figure>
 <h2 id="选择主题"><a href="#选择主题" class="headerlink" title="选择主题"></a>选择主题</h2><p>在主配置文件中<code>_config.yml</code>,将<code>theme: cactus</code>冒号后的部分改成你想要使用的主题(这里用的是<code>cactus</code> 意为仙人掌),主题可以从网上下载,放在<code>themes</code>文件夹里,里面有原有的主题<code>landscape</code>.    </p>
 <p>注:<code>cactus</code> 意为仙人掌</p>
-<h2 id="选择主题-1"><a href="#选择主题-1" class="headerlink" title="选择主题"></a>选择主题</h2><p>在<code>themes</code>文件夹对应的主题文件夹下,譬如<code>cactus</code>下也有配置文件<code>_config.yml</code>,我们将其称之为<code>主题配置</code>文件,这与<code>主配置</code>文件需要进行区分.</p>
+<h2 id="配置主题"><a href="#配置主题" class="headerlink" title="配置主题"></a>配置主题</h2><p>在<code>themes</code>文件夹对应的主题文件夹下,譬如<code>cactus</code>下也有配置文件<code>_config.yml</code>,我们将其称之为<code>主题配置</code>文件,这与<code>主配置</code>文件需要进行区分.</p>
 <h3 id="语言设定"><a href="#语言设定" class="headerlink" title="语言设定"></a>语言设定</h3><p>我们将语言设置为中文,找到主配置文件中的<code>language: zh-CN</code>.(即,改成zh-CN).</p>
 <p>在<code>\cactus\languages</code>中的对应的文件<code>zh-CN.yml</code>中,我们可以设置对应的配置,如:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">nav:</span><br><span class="line">  home: 首页</span><br><span class="line">  about: 关于</span><br><span class="line">  articles: 归档</span><br><span class="line">  projects: 项目</span><br><span class="line">  tag: 标签</span><br><span class="line">  category: 分类</span><br><span class="line">  search: 搜索</span><br></pre></td></tr></table></figure>
@@ -209,7 +214,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E4%B8%BB%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">选择主题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E4%B8%BB%E9%A2%98-1"><span class="toc-number">2.</span> <span class="toc-text">选择主题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%AD%E8%A8%80%E8%AE%BE%E5%AE%9A"><span class="toc-number">2.1.</span> <span class="toc-text">语言设定</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%BC%E8%88%AA%E6%A0%87%E7%AD%BE%E7%AE%A1%E7%90%86"><span class="toc-number">3.</span> <span class="toc-text">导航标签管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B0%E5%BB%BA%E9%A1%B5%E9%9D%A2"><span class="toc-number">3.1.</span> <span class="toc-text">新建页面</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9B%B4%E6%94%B9%E2%80%99%E5%85%B3%E4%BA%8E%E2%80%99%E8%BF%9E%E6%8E%A5"><span class="toc-number">3.1.1.</span> <span class="toc-text">更改’关于’连接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B0%E5%BB%BA%E2%80%99tags%E2%80%99%E9%93%BE%E6%8E%A5"><span class="toc-number">3.1.2.</span> <span class="toc-text">新建’tags’链接</span></a></li></ol></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E4%B8%BB%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">下载主题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E4%B8%BB%E9%A2%98"><span class="toc-number">2.</span> <span class="toc-text">选择主题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E4%B8%BB%E9%A2%98"><span class="toc-number">3.</span> <span class="toc-text">配置主题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%AD%E8%A8%80%E8%AE%BE%E5%AE%9A"><span class="toc-number">3.1.</span> <span class="toc-text">语言设定</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%BC%E8%88%AA%E6%A0%87%E7%AD%BE%E7%AE%A1%E7%90%86"><span class="toc-number">4.</span> <span class="toc-text">导航标签管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B0%E5%BB%BA%E9%A1%B5%E9%9D%A2"><span class="toc-number">4.1.</span> <span class="toc-text">新建页面</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9B%B4%E6%94%B9%E2%80%99%E5%85%B3%E4%BA%8E%E2%80%99%E8%BF%9E%E6%8E%A5"><span class="toc-number">4.1.1.</span> <span class="toc-text">更改’关于’连接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B0%E5%BB%BA%E2%80%99tags%E2%80%99%E9%93%BE%E6%8E%A5"><span class="toc-number">4.1.2.</span> <span class="toc-text">新建’tags’链接</span></a></li></ol></li></ol></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
@@ -321,22 +326,6 @@
 <!-- Disqus Comments -->
 
 <!-- utterances Comments -->
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
 </body>
 </html>
