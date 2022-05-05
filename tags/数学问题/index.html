@@ -48,8 +48,7 @@
 	
 <meta name="generator" content="Hexo 5.4.2"></head>
 
-<body class="max-width mx-auto px3 ltr">
-    
+<body class="max-width mx-auto px3 ltr">    
     <div class="content index py4">
         
           <header id="header">
@@ -66,7 +65,7 @@
   <div id="nav">
     <ul>
       <li class="icon">
-        <a href="#" aria-label="Menu"><i class="fas fa-bars fa-2x"></i></a>
+        <a href="#" aria-label="القائمة"><i class="fas fa-bars fa-2x"></i></a>
       </li>
       <!--
      --><li><a href="/">首页</a></li><!--
@@ -186,6 +185,22 @@
 <!-- Disqus Comments -->
 
 <!-- utterances Comments -->
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
 </body>
 </html>

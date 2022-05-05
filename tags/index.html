@@ -50,8 +50,7 @@
 	
 <meta name="generator" content="Hexo 5.4.2"></head>
 
-<body class="max-width mx-auto px3 ltr">
-    
+<body class="max-width mx-auto px3 ltr">    
     <div class="content index py4">
         
           <header id="header">
@@ -68,7 +67,7 @@
   <div id="nav">
     <ul>
       <li class="icon">
-        <a href="#" aria-label="Menu"><i class="fas fa-bars fa-2x"></i></a>
+        <a href="#" aria-label="القائمة"><i class="fas fa-bars fa-2x"></i></a>
       </li>
       <!--
      --><li><a href="/">首页</a></li><!--
@@ -120,7 +119,7 @@
                 
             </div>
             <div class="tag-cloud-tags">
-              <a href="/tags/latex/" style="font-size: 21px;">latex</a> <a href="/tags/%E6%8B%93%E6%89%91%E5%AD%A6/" style="font-size: 21px;">拓扑学</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 12px;">数学</a> <a href="/tags/%E6%95%B0%E5%AD%A6%E9%97%AE%E9%A2%98/" style="font-size: 12px;">数学问题</a> <a href="/tags/%E7%BD%91%E7%AB%99%E5%BB%BA%E7%AB%8B/" style="font-size: 30px;">网站建立</a>
+              <a href="/tags/latex/" style="font-size: 24px;">latex</a> <a href="/tags/%E6%8B%93%E6%89%91%E5%AD%A6/" style="font-size: 18px;">拓扑学</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 12px;">数学</a> <a href="/tags/%E6%95%B0%E5%AD%A6%E9%97%AE%E9%A2%98/" style="font-size: 12px;">数学问题</a> <a href="/tags/%E7%BD%91%E7%AB%99%E5%BB%BA%E7%AB%8B/" style="font-size: 30px;">网站建立</a>
             </div>
           </div>
         
@@ -202,6 +201,22 @@
     </script>
 
 <!-- utterances Comments -->
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
 </body>
 </html>
