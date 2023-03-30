@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>上下极限和极限关系</title>
+      <link href="/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/"/>
+      <url>/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/</url>
+      
+        <content type="html"><![CDATA[<p>本篇文章参考了 Ross 的Elementary Analysis 一书,旨在复习数列的上下极限相关的内容.</p><h2 id="上下极限和极限的关系"><a href="#上下极限和极限的关系" class="headerlink" title="上下极限和极限的关系"></a>上下极限和极限的关系</h2><p>所谓数列的上极限和下极限的定义如下:<br><img src="/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/697904f8-f5c2-4b9f-a224-53d6e30b4bdb.png" alt="500"></p><p>我们并没有限制数列${s_n}$ 是有限的,也就是说,如果数列是上方无界的,他的上极限就是$+\infty$:</p><p><img src="/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/a679e331-8b87-4b12-80c2-8fb7325ff0de.png" alt=""></p><p>$a_N = \sup { s_n:n&gt;N }$ 这个数列是递减的.可以看出 $\lim \sup s_n \le \sup{s_n : n \in \mathbb{N} }$.</p><p>下极限小于等于上极限,证明如下:</p><script type="math/tex; mode=display">\begin{align}& s_{n+1} \le \sup \{s_n : n > N \} ()\\& \inf \{s_n : n > N \} \le \sup \{s_n : n > N \}\\&\inf \{s_n : n > N+1 \} \le \lim\sup \{s_n : n > N \}\\&\lim\inf \{s_n : n > N+1 \} \le \lim\sup \{s_n : n > N \}\end{align}</script><p>上下极限和极限有下面关系(<strong>Theorem 10.7</strong>):</p><p><img src="/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/1ced2a7a-bafc-4993-b77f-84d276f11922.png" alt=""></p><p>即极限确定(一个实数,或是$-\infty$和$+\infty$),则上下极限和极限相同;反之,上下极限相同,则数列的极限确定.</p><p>(1)的证明如下:<br>首先,极限为$\infty$:<br><img src="/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/82aa2934-167b-4f02-a9be-7f19ffcc6e77.png" alt=""><br>其次,极限为实数:<br><img src="/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/28cc250b-01c8-46d9-9aa3-d038d3c051bb.png" alt=""><br>又因为,下极限小于等于上极限,所以得证.</p><p>(2)的证明如下:</p><p><img src="/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/fb9a9705-df2a-4fcb-9cd0-f0507b1db253.png" alt=""></p><h2 id="数列上下极限和子列极限的关系"><a href="#数列上下极限和子列极限的关系" class="headerlink" title="数列上下极限和子列极限的关系"></a>数列上下极限和子列极限的关系</h2><h3 id="单调子列逼近上下极限"><a href="#单调子列逼近上下极限" class="headerlink" title="单调子列逼近上下极限:"></a>单调子列逼近上下极限:</h3><p>首先有定理说明了,一定存在一个单调递增的子列,它的极限是上极限,类似可以说明下极限的情况.</p><p><img src="/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/d96cbf4a-1746-4a89-8ca7-434fb17b02ab.png" alt=""></p><p>首先如果数列无上界,则存在一个趋向正无穷的子列:<br><img src="/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/abf8721d-0f03-414b-8e59-ccb29adf2915.png" alt=""><br>这是因为:<br><img src="/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/a68cfc4f-12d8-4fb8-8e2d-9c82b1fe4d31.png" alt=""><br>可见这样构造的子列是<strong>单调递增</strong>的,且极限为$+\infty$,此时上极限也为$+\infty$(为什么?).同样的,如果无下界的话,就会有单调的子列极限为$-\infty$.</p><p>我们还有说明的是,如果数列有上界,则也有单调的子列极限为上极限.(同样可以得到有下界时对于下极限的情况.)</p><p>因为有上界,所以上极限是有限实数,设为$t$,</p><p><img src="/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/f14671f1-1065-41aa-aa85-c66117cb0e36.png" alt=""></p><h3 id="上下极限和子列极限的关系"><a href="#上下极限和子列极限的关系" class="headerlink" title="上下极限和子列极限的关系"></a>上下极限和子列极限的关系</h3><p>下面的定理说明了,<em>上下极限和子列极限的关系</em>,即子列极限构成的集合$S$非空;$S$的上确界等于上极限,下确界等于下极限;极限存在<strong>当且仅当</strong>$S$中的元素只有一个:<br><img src="/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/dc035c1c-6a30-4700-89e5-320b0038a56b.png" alt=""><br>证明如下: \<br>(i) 根据上诉的<strong>Theorem 11.7</strong>,知道至少有子列的极限是上下极限,所以$S$ 不为空.\<br>(ii)需要用到<strong>Theorem 10.7</strong><br><img src="/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/c24d4db0-f8e6-414d-b8f4-41c70f3cefeb.png" alt=""><br>(iii) 由定理<strong>Theorem 10.7</strong>可以得到.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数学分析 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数学分析,数列 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>latex的footnote的引用问题</title>
       <link href="/2022/05/05/latex%E7%9A%84footnote%E7%9A%84%E5%BC%95%E7%94%A8%E9%97%AE%E9%A2%98/"/>
       <url>/2022/05/05/latex%E7%9A%84footnote%E7%9A%84%E5%BC%95%E7%94%A8%E9%97%AE%E9%A2%98/</url>

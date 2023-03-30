@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="本篇文章参考了 Ross 的Elementary Analysis 一书,旨在复习数列的上下极限相关的内容. 上下极限和极限的关系所谓数列的上极限和下极限的定义如下: 我们并没有限制数列${s_n}$ 是有限的,也就是说,如果数列是上方无界的,他的上极限就是$+\infty$:  $a_N &#x3D; \sup { s_n:n&gt;N }$ 这个数列是递减的.可以看出 $\lim \sup s_n \l">
+<meta property="og:type" content="article">
+<meta property="og:title" content="上下极限和极限关系">
+<meta property="og:url" content="http://example.com/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/index.html">
+<meta property="og:site_name" content="Dictat 小站">
+<meta property="og:description" content="本篇文章参考了 Ross 的Elementary Analysis 一书,旨在复习数列的上下极限相关的内容. 上下极限和极限的关系所谓数列的上极限和下极限的定义如下: 我们并没有限制数列${s_n}$ 是有限的,也就是说,如果数列是上方无界的,他的上极限就是$+\infty$:  $a_N &#x3D; \sup { s_n:n&gt;N }$ 这个数列是递减的.可以看出 $\lim \sup s_n \l">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/697904f8-f5c2-4b9f-a224-53d6e30b4bdb.png">
+<meta property="og:image" content="http://example.com/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/a679e331-8b87-4b12-80c2-8fb7325ff0de.png">
+<meta property="og:image" content="http://example.com/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/1ced2a7a-bafc-4993-b77f-84d276f11922.png">
+<meta property="og:image" content="http://example.com/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/82aa2934-167b-4f02-a9be-7f19ffcc6e77.png">
+<meta property="og:image" content="http://example.com/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/28cc250b-01c8-46d9-9aa3-d038d3c051bb.png">
+<meta property="og:image" content="http://example.com/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/fb9a9705-df2a-4fcb-9cd0-f0507b1db253.png">
+<meta property="og:image" content="http://example.com/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/d96cbf4a-1746-4a89-8ca7-434fb17b02ab.png">
+<meta property="og:image" content="http://example.com/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/abf8721d-0f03-414b-8e59-ccb29adf2915.png">
+<meta property="og:image" content="http://example.com/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/a68cfc4f-12d8-4fb8-8e2d-9c82b1fe4d31.png">
+<meta property="og:image" content="http://example.com/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/f14671f1-1065-41aa-aa85-c66117cb0e36.png">
+<meta property="og:image" content="http://example.com/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/dc035c1c-6a30-4700-89e5-320b0038a56b.png">
+<meta property="og:image" content="http://example.com/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/c24d4db0-f8e6-414d-b8f4-41c70f3cefeb.png">
+<meta property="article:published_time" content="2022-05-14T03:00:19.000Z">
+<meta property="article:modified_time" content="2022-05-14T03:04:09.590Z">
+<meta property="article:author" content="Dictat">
+<meta property="article:tag" content="数学分析,数列">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/697904f8-f5c2-4b9f-a224-53d6e30b4bdb.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>上下极限和极限关系</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body class="max-width mx-auto px3 ltr">    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/tags/">标签</a></li><!--
+     --><!--
+       --><li><a href="/categories/">分类</a></li><!--
+     --><!--
+       --><li><a href="/search/">搜索</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2022/05/05/latex%E7%9A%84footnote%E7%9A%84%E5%BC%95%E7%94%A8%E9%97%AE%E9%A2%98/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/&text=上下极限和极限关系"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/&title=上下极限和极限关系"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/&is_video=false&description=上下极限和极限关系"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=上下极限和极限关系&body=Check out this article: http://example.com/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/&title=上下极限和极限关系"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/&title=上下极限和极限关系"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/&title=上下极限和极限关系"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/&title=上下极限和极限关系"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/&name=上下极限和极限关系&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/&t=上下极限和极限关系"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">1.</span> <span class="toc-text">上下极限和极限的关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E5%88%97%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E5%AD%90%E5%88%97%E6%9E%81%E9%99%90%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">2.</span> <span class="toc-text">数列上下极限和子列极限的关系</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E8%B0%83%E5%AD%90%E5%88%97%E9%80%BC%E8%BF%91%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90"><span class="toc-number">2.1.</span> <span class="toc-text">单调子列逼近上下极限:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E5%AD%90%E5%88%97%E6%9E%81%E9%99%90%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">2.2.</span> <span class="toc-text">上下极限和子列极限的关系</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        上下极限和极限关系
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Dictat</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2022-05-14T03:00:19.000Z" itemprop="datePublished">2022-05-14</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/">数学分析</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90-%E6%95%B0%E5%88%97/" rel="tag">数学分析,数列</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>本篇文章参考了 Ross 的Elementary Analysis 一书,旨在复习数列的上下极限相关的内容.</p>
+<h2 id="上下极限和极限的关系"><a href="#上下极限和极限的关系" class="headerlink" title="上下极限和极限的关系"></a>上下极限和极限的关系</h2><p>所谓数列的上极限和下极限的定义如下:<br><img src="/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/697904f8-f5c2-4b9f-a224-53d6e30b4bdb.png" alt="500"></p>
+<p>我们并没有限制数列${s_n}$ 是有限的,也就是说,如果数列是上方无界的,他的上极限就是$+\infty$:</p>
+<p><img src="/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/a679e331-8b87-4b12-80c2-8fb7325ff0de.png" alt=""></p>
+<p>$a_N = \sup { s_n:n&gt;N }$ 这个数列是递减的.可以看出 $\lim \sup s_n \le \sup{s_n : n \in \mathbb{N} }$.</p>
+<p>下极限小于等于上极限,证明如下:</p>
+<script type="math/tex; mode=display">
+\begin{align}
+& s_{n+1} \le \sup \{s_n : n > N \} ()\\
+& \inf \{s_n : n > N \} \le \sup \{s_n : n > N \}\\
+&\inf \{s_n : n > N+1 \} \le \lim\sup \{s_n : n > N \}\\
+&\lim\inf \{s_n : n > N+1 \} \le \lim\sup \{s_n : n > N \}
+\end{align}</script><p>上下极限和极限有下面关系(<strong>Theorem 10.7</strong>):</p>
+<p><img src="/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/1ced2a7a-bafc-4993-b77f-84d276f11922.png" alt=""></p>
+<p>即极限确定(一个实数,或是$-\infty$和$+\infty$),则上下极限和极限相同;反之,上下极限相同,则数列的极限确定.</p>
+<p>(1)的证明如下:<br>首先,极限为$\infty$:<br><img src="/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/82aa2934-167b-4f02-a9be-7f19ffcc6e77.png" alt=""><br>其次,极限为实数:<br><img src="/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/28cc250b-01c8-46d9-9aa3-d038d3c051bb.png" alt=""><br>又因为,下极限小于等于上极限,所以得证.</p>
+<p>(2)的证明如下:</p>
+<p><img src="/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/fb9a9705-df2a-4fcb-9cd0-f0507b1db253.png" alt=""></p>
+<h2 id="数列上下极限和子列极限的关系"><a href="#数列上下极限和子列极限的关系" class="headerlink" title="数列上下极限和子列极限的关系"></a>数列上下极限和子列极限的关系</h2><h3 id="单调子列逼近上下极限"><a href="#单调子列逼近上下极限" class="headerlink" title="单调子列逼近上下极限:"></a>单调子列逼近上下极限:</h3><p>首先有定理说明了,一定存在一个单调递增的子列,它的极限是上极限,类似可以说明下极限的情况.</p>
+<p><img src="/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/d96cbf4a-1746-4a89-8ca7-434fb17b02ab.png" alt=""></p>
+<p>首先如果数列无上界,则存在一个趋向正无穷的子列:<br><img src="/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/abf8721d-0f03-414b-8e59-ccb29adf2915.png" alt=""><br>这是因为:<br><img src="/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/a68cfc4f-12d8-4fb8-8e2d-9c82b1fe4d31.png" alt=""><br>可见这样构造的子列是<strong>单调递增</strong>的,且极限为$+\infty$,此时上极限也为$+\infty$(为什么?).同样的,如果无下界的话,就会有单调的子列极限为$-\infty$.</p>
+<p>我们还有说明的是,如果数列有上界,则也有单调的子列极限为上极限.(同样可以得到有下界时对于下极限的情况.)</p>
+<p>因为有上界,所以上极限是有限实数,设为$t$,</p>
+<p><img src="/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/f14671f1-1065-41aa-aa85-c66117cb0e36.png" alt=""></p>
+<h3 id="上下极限和子列极限的关系"><a href="#上下极限和子列极限的关系" class="headerlink" title="上下极限和子列极限的关系"></a>上下极限和子列极限的关系</h3><p>下面的定理说明了,<em>上下极限和子列极限的关系</em>,即子列极限构成的集合$S$非空;$S$的上确界等于上极限,下确界等于下极限;极限存在<strong>当且仅当</strong>$S$中的元素只有一个:<br><img src="/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/dc035c1c-6a30-4700-89e5-320b0038a56b.png" alt=""><br>证明如下: \<br>(i) 根据上诉的<strong>Theorem 11.7</strong>,知道至少有子列的极限是上下极限,所以$S$ 不为空.\<br>(ii)需要用到<strong>Theorem 10.7</strong><br><img src="/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/c24d4db0-f8e6-414d-b8f4-41c70f3cefeb.png" alt=""><br>(iii) 由定理<strong>Theorem 10.7</strong>可以得到.</p>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>加载评论需要在浏览器启用 JavaScript 脚本支持。</noscript>
+        </div>
+    </div>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/tags/">标签</a></li>
+         
+          <li><a href="/categories/">分类</a></li>
+         
+          <li><a href="/search/">搜索</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">1.</span> <span class="toc-text">上下极限和极限的关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E5%88%97%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E5%AD%90%E5%88%97%E6%9E%81%E9%99%90%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">2.</span> <span class="toc-text">数列上下极限和子列极限的关系</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E8%B0%83%E5%AD%90%E5%88%97%E9%80%BC%E8%BF%91%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90"><span class="toc-number">2.1.</span> <span class="toc-text">单调子列逼近上下极限:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E5%AD%90%E5%88%97%E6%9E%81%E9%99%90%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">2.2.</span> <span class="toc-text">上下极限和子列极限的关系</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/&text=上下极限和极限关系"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/&title=上下极限和极限关系"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/&is_video=false&description=上下极限和极限关系"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=上下极限和极限关系&body=Check out this article: http://example.com/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/&title=上下极限和极限关系"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/&title=上下极限和极限关系"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/&title=上下极限和极限关系"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/&title=上下极限和极限关系"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/&name=上下极限和极限关系&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/&t=上下极限和极限关系"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2022-2023
+    Dictat
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/tags/">标签</a></li><!--
+     --><!--
+       --><li><a href="/categories/">分类</a></li><!--
+     --><!--
+       --><li><a href="/search/">搜索</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'cactus-1';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+<!-- utterances Comments -->
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>
