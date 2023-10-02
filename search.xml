@@ -4,6 +4,27 @@
   
     
     <entry>
+      <title>hexo命令的回顾</title>
+      <link href="/2023/10/02/hexo%E5%91%BD%E4%BB%A4%E7%9A%84%E5%9B%9E%E9%A1%BE/"/>
+      <url>/2023/10/02/hexo%E5%91%BD%E4%BB%A4%E7%9A%84%E5%9B%9E%E9%A1%BE/</url>
+      
+        <content type="html"><![CDATA[<p>“故地重游,月圆更寂寞~ ~”<br>由于已经有一年多没有使用hexo了, 我对个这工具的大多数命令已经十分的生疏,有必要复习一下相关的知识了.</p><h2 id="生成静态文件和部署"><a href="#生成静态文件和部署" class="headerlink" title="生成静态文件和部署"></a>生成静态文件和部署</h2><p><code>hexo generate</code>生成<br><code>hexo deploy</code>部署</p><h2 id="本地测试"><a href="#本地测试" class="headerlink" title="本地测试"></a>本地测试</h2><p><code>hexo server</code> 在本地生成一个服务器</p><h2 id="新建文章？"><a href="#新建文章？" class="headerlink" title="新建文章？"></a>新建文章？</h2><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new &lt;<span class="built_in">title</span>&gt;</span><br></pre></td></tr></table></figure><p>比如用<br><code>hexo new &quot;hexo命令的回顾&quot;</code></p><h3 id="关于标签的使用"><a href="#关于标签的使用" class="headerlink" title="关于标签的使用"></a>关于标签的使用</h3><p>在使用多个标签的时候,需要用使用方括号,格式如下:<br><code>tags: [数学,拓扑学,数学问题]</code></p><h2 id="插入图片？"><a href="#插入图片？" class="headerlink" title="插入图片？"></a>插入图片？</h2><p><img src="/2023/10/02/hexo%E5%91%BD%E4%BB%A4%E7%9A%84%E5%9B%9E%E9%A1%BE/logo.png" alt="logo"></p><p>由于之前的设定,我在<code>typora</code>之中插入图片的同时,会自动在当前目录下生成一个文件夹并且将图片复制到其中.</p><p><img src="/2023/10/02/hexo%E5%91%BD%E4%BB%A4%E7%9A%84%E5%9B%9E%E9%A1%BE/1696230712926.png" alt="1696230712926"></p><h2 id="上传网络？"><a href="#上传网络？" class="headerlink" title="上传网络？"></a>上传网络？</h2>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 网站建立 </tag>
+            
+            <tag> hexo </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>上下极限和极限关系</title>
       <link href="/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/"/>
       <url>/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/</url>
