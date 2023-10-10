@@ -4,6 +4,46 @@
   
     
     <entry>
+      <title>用python求解解析几何</title>
+      <link href="/2023/10/10/%E7%94%A8python%E6%B1%82%E8%A7%A3%E8%A7%A3%E6%9E%90%E5%87%A0%E4%BD%95/"/>
+      <url>/2023/10/10/%E7%94%A8python%E6%B1%82%E8%A7%A3%E8%A7%A3%E6%9E%90%E5%87%A0%E4%BD%95/</url>
+      
+        <content type="html"><![CDATA[<p>写了几个程序来求解高中的解析几何,才开始用的是一个<code>sympy</code>的几何库来做的,但是只能做椭圆的问题,后来就直接用<code>solve</code>来暴力的求解了.<br>这些程序的主要目的是联立直线和圆锥曲线的方程,这是求解解析几何问题的基本方法,即所谓的设而不求:联立方程之后利用韦达定理来得到两个焦点坐标的关系.</p><h3 id="求解直线和抛物线的交点"><a href="#求解直线和抛物线的交点" class="headerlink" title="求解直线和抛物线的交点:"></a>求解直线和抛物线的交点:</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">solveParabola</span>(<span class="params">p,point</span>):</span><br><span class="line">    x0 = point[<span class="number">0</span>]</span><br><span class="line">    y0 = point[<span class="number">1</span>]</span><br><span class="line">    ((x1,y1),(x2,y2)) = nonlinsolve([y**<span class="number">2</span>-<span class="number">2</span>*p*x, y-k*(x-x0)-y0 ], (x,y))</span><br><span class="line">    <span class="keyword">return</span> x1,y1,x2,y2</span><br></pre></td></tr></table></figure><h3 id="求解直线和椭圆的交点"><a href="#求解直线和椭圆的交点" class="headerlink" title="求解直线和椭圆的交点:"></a>求解直线和椭圆的交点:</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#请在安装了sympy以后在jupyter(IPython notebook)下运算该程序,这主要是为了更美观的显示数学公式</span></span><br><span class="line"><span class="keyword">from</span> sympy <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">solveEllipse</span>(<span class="params">a,b,point</span>):</span><br><span class="line">    <span class="keyword">from</span> sympy.abc <span class="keyword">import</span> x, y,k,m</span><br><span class="line">    <span class="keyword">from</span> sympy <span class="keyword">import</span> nonlinsolve</span><br><span class="line">    <span class="keyword">from</span> sympy <span class="keyword">import</span> simplify</span><br><span class="line">    x0 = point[<span class="number">0</span>]</span><br><span class="line">    y0 = point[<span class="number">1</span>]</span><br><span class="line">    ((x1,y1),(x2,y2)) = nonlinsolve([x**<span class="number">2</span>/a**<span class="number">2</span>+y**<span class="number">2</span>/b**<span class="number">2</span>-<span class="number">1</span>, y-k*(x-x0)-y0 ], (x,y))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;x1+x2 = &#x27;</span>)</span><br><span class="line">    display(simplify(x1+x2))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;x1*x2 = &#x27;</span>)</span><br><span class="line">    display(simplify(x1*x2))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;y1+y2 = &#x27;</span>)</span><br><span class="line">    display(simplify(y1+y2))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;y1*y2 = &#x27;</span>)</span><br><span class="line">    display(simplify(y1*y2))</span><br><span class="line">    <span class="keyword">return</span> x1,y1,x2,y2;</span><br><span class="line">x1,y1,x2,y2 = solveEllipse(<span class="number">4</span>,<span class="number">3</span>,(<span class="number">1</span>,<span class="number">0</span>));</span><br></pre></td></tr></table></figure><h3 id="求解直线和双曲线的交点"><a href="#求解直线和双曲线的交点" class="headerlink" title="求解直线和双曲线的交点:"></a>求解直线和双曲线的交点:</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">solveHyperbola</span>(<span class="params">a,b,point</span>):</span><br><span class="line">    <span class="keyword">from</span> sympy.abc <span class="keyword">import</span> x, y,k,m</span><br><span class="line">    <span class="keyword">from</span> sympy <span class="keyword">import</span> nonlinsolve</span><br><span class="line">    <span class="keyword">from</span> sympy <span class="keyword">import</span> simplify</span><br><span class="line">    x0 = point[<span class="number">0</span>]</span><br><span class="line">    y0 = point[<span class="number">1</span>]</span><br><span class="line">    ((x1,y1),(x2,y2)) = nonlinsolve([x**<span class="number">2</span>/a**<span class="number">2</span>+y**<span class="number">2</span>/b**<span class="number">2</span>-<span class="number">1</span>, y-k*(x-x0)-y0 ], (x,y))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;x1+x2 = &#x27;</span>)</span><br><span class="line">    display(simplify(x1+x2))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;x1*x2 = &#x27;</span>)</span><br><span class="line">    display(simplify(x1*x2))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;y1+y2 = &#x27;</span>)</span><br><span class="line">    display(simplify(y1+y2))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;y1*y2 = &#x27;</span>)</span><br><span class="line">    display(simplify(y1*y2))</span><br><span class="line">    <span class="keyword">return</span> x1,y1,x2,y2;</span><br></pre></td></tr></table></figure><p>由于双曲线和抛物线的开口有方向性,则在实际过程中,可能需要根据题目的主要内容来修改函数中的参数.</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 高中数学 </tag>
+            
+            <tag> 解析几何 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>英语单词学习</title>
+      <link href="/2023/10/10/Hexo_%E8%8B%B1%E8%AF%AD%E5%8D%95%E8%AF%8D%E5%AD%A6%E4%B9%A0/"/>
+      <url>/2023/10/10/Hexo_%E8%8B%B1%E8%AF%AD%E5%8D%95%E8%AF%8D%E5%AD%A6%E4%B9%A0/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>Django is a high-level Python web framework that encourages rapid development and clean, <strong>pragmatic</strong> design. Built by experienced developers, it takes care of much of the <strong>hassle</strong> of web development, so you can focus on writing your app without needing to reinvent the wheel. It’s free and open source.</p></blockquote><p>pragmatic  adj. 务实的；实事求是的；注重实效的</p><p>hassle n. 困难，麻烦；激战</p><blockquote><p><strong>Reassuringly secure.</strong></p><p>Django takes security seriously and helps developers avoid many common security mistakes.</p></blockquote><p>reassure vt. 消除恐惧或疑虑；恢复信心</p><p>Reassuringly secure 难道翻译成,令人安心?</p><blockquote><p><strong>Ridiculously fast</strong>.</p><p>Django was designed to help developers take applications from concept to completion as quickly as possible.</p></blockquote><p>Ridiculously fast 这或许应该翻译成”快得离谱”</p><blockquote><p><strong>Incredibly versatile.</strong></p><p>Companies, organizations and governments have used Django to build all sorts of things — from content management systems to social networks to scientific computing platforms.</p></blockquote><p>Incredibly versatile 才艺超群?</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> English </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>在Markdown中使用html</title>
       <link href="/2023/10/10/%E7%BD%91%E7%AB%99%E6%96%87%E7%AB%A0-%E5%9C%A8MarkDown%E4%B8%AD%E4%BD%BF%E7%94%A8html/"/>
       <url>/2023/10/10/%E7%BD%91%E7%AB%99%E6%96%87%E7%AB%A0-%E5%9C%A8MarkDown%E4%B8%AD%E4%BD%BF%E7%94%A8html/</url>

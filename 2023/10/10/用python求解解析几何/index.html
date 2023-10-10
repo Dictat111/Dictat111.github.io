@@ -20,23 +20,21 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="现在我们已经在本地搭建了hexo站点,并且可以在本地访问访问,接下来要做的就是把这个网站传到云端,这里我们借助github给我们提供的免费站点. 一般来说,对于这个问题网上有详细的教程(搜索:hexo+github博客搭建):  建立github网站项目,成功之后会生成一个初始的静态网站,这方面的知识完全可以参考 官方教程:GitHub Pages 快速入门  得到了类似这样的一个页面：">
+  <meta name="description" content="写了几个程序来求解高中的解析几何,才开始用的是一个sympy的几何库来做的,但是只能做椭圆的问题,后来就直接用solve来暴力的求解了.这些程序的主要目的是联立直线和圆锥曲线的方程,这是求解解析几何问题的基本方法,即所谓的设而不求:联立方程之后利用韦达定理来得到两个焦点坐标的关系. 求解直线和抛物线的交点:12345def solveParabola(p,point):    x0 &#x3D; point">
 <meta property="og:type" content="article">
-<meta property="og:title" content="网站建立其·三:绑定本地hexo到github站点">
-<meta property="og:url" content="http://example.com/2022/04/24/%E7%BD%91%E7%AB%99%E5%BB%BA%E7%AB%8B%E5%85%B6%E4%B8%89/index.html">
+<meta property="og:title" content="用python求解解析几何">
+<meta property="og:url" content="http://example.com/2023/10/10/%E7%94%A8python%E6%B1%82%E8%A7%A3%E8%A7%A3%E6%9E%90%E5%87%A0%E4%BD%95/index.html">
 <meta property="og:site_name" content="Dictat 小站">
-<meta property="og:description" content="现在我们已经在本地搭建了hexo站点,并且可以在本地访问访问,接下来要做的就是把这个网站传到云端,这里我们借助github给我们提供的免费站点. 一般来说,对于这个问题网上有详细的教程(搜索:hexo+github博客搭建):  建立github网站项目,成功之后会生成一个初始的静态网站,这方面的知识完全可以参考 官方教程:GitHub Pages 快速入门  得到了类似这样的一个页面：">
+<meta property="og:description" content="写了几个程序来求解高中的解析几何,才开始用的是一个sympy的几何库来做的,但是只能做椭圆的问题,后来就直接用solve来暴力的求解了.这些程序的主要目的是联立直线和圆锥曲线的方程,这是求解解析几何问题的基本方法,即所谓的设而不求:联立方程之后利用韦达定理来得到两个焦点坐标的关系. 求解直线和抛物线的交点:12345def solveParabola(p,point):    x0 &#x3D; point">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2022/04/24/%E7%BD%91%E7%AB%99%E5%BB%BA%E7%AB%8B%E5%85%B6%E4%B8%89/1.png">
-<meta property="og:image" content="http://example.com/2022/04/24/%E7%BD%91%E7%AB%99%E5%BB%BA%E7%AB%8B%E5%85%B6%E4%B8%89/1650766184876.png">
-<meta property="article:published_time" content="2022-04-24T01:30:27.000Z">
-<meta property="article:modified_time" content="2022-04-26T03:24:57.738Z">
+<meta property="article:published_time" content="2023-10-10T14:20:21.000Z">
+<meta property="article:modified_time" content="2023-10-10T14:30:13.422Z">
 <meta property="article:author" content="Dictat">
-<meta property="article:tag" content="网站建立">
+<meta property="article:tag" content="高中数学">
+<meta property="article:tag" content="解析几何">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2022/04/24/%E7%BD%91%E7%AB%99%E5%BB%BA%E7%AB%8B%E5%85%B6%E4%B8%89/1.png">
 
-<link rel="canonical" href="http://example.com/2022/04/24/%E7%BD%91%E7%AB%99%E5%BB%BA%E7%AB%8B%E5%85%B6%E4%B8%89/">
+<link rel="canonical" href="http://example.com/2023/10/10/%E7%94%A8python%E6%B1%82%E8%A7%A3%E8%A7%A3%E6%9E%90%E5%87%A0%E4%BD%95/">
 
 
 <script id="page-configurations">
@@ -49,7 +47,7 @@
   };
 </script>
 
-  <title>网站建立其·三:绑定本地hexo到github站点 | Dictat 小站</title>
+  <title>用python求解解析几何 | Dictat 小站</title>
   
 
 
@@ -187,7 +185,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/24/%E7%BD%91%E7%AB%99%E5%BB%BA%E7%AB%8B%E5%85%B6%E4%B8%89/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/10/10/%E7%94%A8python%E6%B1%82%E8%A7%A3%E8%A7%A3%E6%9E%90%E5%87%A0%E4%BD%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -200,7 +198,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          网站建立其·三:绑定本地hexo到github站点
+          用python求解解析几何
         </h1>
 
         <div class="post-meta">
@@ -209,24 +207,9 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2022-04-24 09:30:27" itemprop="dateCreated datePublished" datetime="2022-04-24T09:30:27+08:00">2022-04-24</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-04-26 11:24:57" itemprop="dateModified" datetime="2022-04-26T11:24:57+08:00">2022-04-26</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/hexo%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B/" itemprop="url" rel="index"><span itemprop="name">hexo博客建立</span></a>
-                </span>
+              <time title="创建时间：2023-10-10 22:20:21 / 修改时间：22:30:13" itemprop="dateCreated datePublished" datetime="2023-10-10T22:20:21+08:00">2023-10-10</time>
             </span>
 
           
@@ -238,8 +221,8 @@
       </span>
       <span class="post-meta-item-text">Disqus：</span>
     
-    <a title="disqus" href="/2022/04/24/%E7%BD%91%E7%AB%99%E5%BB%BA%E7%AB%8B%E5%85%B6%E4%B8%89/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/04/24/网站建立其三/" itemprop="commentCount"></span>
+    <a title="disqus" href="/2023/10/10/%E7%94%A8python%E6%B1%82%E8%A7%A3%E8%A7%A3%E6%9E%90%E5%87%A0%E4%BD%95/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2023/10/10/用python求解解析几何/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -254,23 +237,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>现在我们已经在本地搭建了hexo站点,并且可以在本地访问访问,接下来要做的就是把这个网站传到云端,这里我们借助github给我们提供的免费站点.</p>
-<p>一般来说,对于这个问题网上有详细的教程(搜索:hexo+github博客搭建):</p>
-<ol>
-<li>建立github网站项目,成功之后会生成一个初始的静态网站,这方面的知识完全可以参考 <a target="_blank" rel="noopener" href="https://docs.github.com/cn/pages/quickstart">官方教程:GitHub Pages 快速入门</a></li>
-</ol>
-<p>得到了类似这样的一个页面：    </p>
-<p><img src="/2022/04/24/%E7%BD%91%E7%AB%99%E5%BB%BA%E7%AB%8B%E5%85%B6%E4%B8%89/1.png" alt="1650637781304"></p>
-<ol>
-<li>需要安装 git 生成连接github网站秘钥,用于下面的部署操作.</li>
-</ol>
-<p>在这里我来说一个遇到的大坑,</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#Deployment</span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https://github.com/wapchief/wapchief.github.io.git</span><br><span class="line">  branch: master</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>在传输到云端上(称之为<strong>部署</strong>)之前,我们需要修改hexo项目文件夹下的主配置文件<code>_config.yml</code>,添加上面一段文字.</p>
-<p>才开始的时候我不知道<code>branch: master</code> 是什么意思,导致网站一直没有显示出来,</p>
-<p><img src="/2022/04/24/%E7%BD%91%E7%AB%99%E5%BB%BA%E7%AB%8B%E5%85%B6%E4%B8%89/1650766184876.png" alt="1650766184876"></p>
-<p>如图所示,图中有两个branch,我们部署的是master分支,而原来生成网页时候在<code>setting-pages</code>里用的的是main分支,需要改变一下.</p>
-<p>此外,由于github访问速度的原因,部署需要一些时间才能生效.</p>
+        <p>写了几个程序来求解高中的解析几何,才开始用的是一个<code>sympy</code>的几何库来做的,但是只能做椭圆的问题,后来就直接用<code>solve</code>来暴力的求解了.<br>这些程序的主要目的是联立直线和圆锥曲线的方程,这是求解解析几何问题的基本方法,即所谓的设而不求:联立方程之后利用韦达定理来得到两个焦点坐标的关系.</p>
+<h3 id="求解直线和抛物线的交点"><a href="#求解直线和抛物线的交点" class="headerlink" title="求解直线和抛物线的交点:"></a>求解直线和抛物线的交点:</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">solveParabola</span>(<span class="params">p,point</span>):</span><br><span class="line">    x0 = point[<span class="number">0</span>]</span><br><span class="line">    y0 = point[<span class="number">1</span>]</span><br><span class="line">    ((x1,y1),(x2,y2)) = nonlinsolve([y**<span class="number">2</span>-<span class="number">2</span>*p*x, y-k*(x-x0)-y0 ], (x,y))</span><br><span class="line">    <span class="keyword">return</span> x1,y1,x2,y2</span><br></pre></td></tr></table></figure>
+<h3 id="求解直线和椭圆的交点"><a href="#求解直线和椭圆的交点" class="headerlink" title="求解直线和椭圆的交点:"></a>求解直线和椭圆的交点:</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#请在安装了sympy以后在jupyter(IPython notebook)下运算该程序,这主要是为了更美观的显示数学公式</span></span><br><span class="line"><span class="keyword">from</span> sympy <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">solveEllipse</span>(<span class="params">a,b,point</span>):</span><br><span class="line">    <span class="keyword">from</span> sympy.abc <span class="keyword">import</span> x, y,k,m</span><br><span class="line">    <span class="keyword">from</span> sympy <span class="keyword">import</span> nonlinsolve</span><br><span class="line">    <span class="keyword">from</span> sympy <span class="keyword">import</span> simplify</span><br><span class="line">    x0 = point[<span class="number">0</span>]</span><br><span class="line">    y0 = point[<span class="number">1</span>]</span><br><span class="line">    ((x1,y1),(x2,y2)) = nonlinsolve([x**<span class="number">2</span>/a**<span class="number">2</span>+y**<span class="number">2</span>/b**<span class="number">2</span>-<span class="number">1</span>, y-k*(x-x0)-y0 ], (x,y))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;x1+x2 = &#x27;</span>)</span><br><span class="line">    display(simplify(x1+x2))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;x1*x2 = &#x27;</span>)</span><br><span class="line">    display(simplify(x1*x2))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;y1+y2 = &#x27;</span>)</span><br><span class="line">    display(simplify(y1+y2))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;y1*y2 = &#x27;</span>)</span><br><span class="line">    display(simplify(y1*y2))</span><br><span class="line">    <span class="keyword">return</span> x1,y1,x2,y2;</span><br><span class="line">x1,y1,x2,y2 = solveEllipse(<span class="number">4</span>,<span class="number">3</span>,(<span class="number">1</span>,<span class="number">0</span>));</span><br></pre></td></tr></table></figure>
+<h3 id="求解直线和双曲线的交点"><a href="#求解直线和双曲线的交点" class="headerlink" title="求解直线和双曲线的交点:"></a>求解直线和双曲线的交点:</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">solveHyperbola</span>(<span class="params">a,b,point</span>):</span><br><span class="line">    <span class="keyword">from</span> sympy.abc <span class="keyword">import</span> x, y,k,m</span><br><span class="line">    <span class="keyword">from</span> sympy <span class="keyword">import</span> nonlinsolve</span><br><span class="line">    <span class="keyword">from</span> sympy <span class="keyword">import</span> simplify</span><br><span class="line">    x0 = point[<span class="number">0</span>]</span><br><span class="line">    y0 = point[<span class="number">1</span>]</span><br><span class="line">    ((x1,y1),(x2,y2)) = nonlinsolve([x**<span class="number">2</span>/a**<span class="number">2</span>+y**<span class="number">2</span>/b**<span class="number">2</span>-<span class="number">1</span>, y-k*(x-x0)-y0 ], (x,y))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;x1+x2 = &#x27;</span>)</span><br><span class="line">    display(simplify(x1+x2))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;x1*x2 = &#x27;</span>)</span><br><span class="line">    display(simplify(x1*x2))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;y1+y2 = &#x27;</span>)</span><br><span class="line">    display(simplify(y1+y2))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;y1*y2 = &#x27;</span>)</span><br><span class="line">    display(simplify(y1*y2))</span><br><span class="line">    <span class="keyword">return</span> x1,y1,x2,y2;</span><br></pre></td></tr></table></figure>
+<p>由于双曲线和抛物线的开口有方向性,则在实际过程中,可能需要根据题目的主要内容来修改函数中的参数.</p>
 
     </div>
 
@@ -280,7 +251,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E7%BD%91%E7%AB%99%E5%BB%BA%E7%AB%8B/" rel="tag"># 网站建立</a>
+              <a href="/tags/%E9%AB%98%E4%B8%AD%E6%95%B0%E5%AD%A6/" rel="tag"># 高中数学</a>
+              <a href="/tags/%E8%A7%A3%E6%9E%90%E5%87%A0%E4%BD%95/" rel="tag"># 解析几何</a>
           </div>
 
         
@@ -289,13 +261,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2022/04/23/%E7%BD%91%E7%AB%99%E5%BB%BA%E7%AB%8B%E5%85%B6%E4%BA%8C/" rel="prev" title="网站建立其·二:hexo博客搭建">
-      <i class="fa fa-chevron-left"></i> 网站建立其·二:hexo博客搭建
+    <a href="/2023/10/10/Hexo_%E8%8B%B1%E8%AF%AD%E5%8D%95%E8%AF%8D%E5%AD%A6%E4%B9%A0/" rel="prev" title="英语单词学习">
+      <i class="fa fa-chevron-left"></i> 英语单词学习
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2022/04/24/%E7%BD%91%E7%AB%99%E5%BB%BA%E7%AB%8B%E5%85%B6%E5%9B%9B/" rel="next" title="网站建立其·四:hexo使用markdown语法粘贴图片">
-      网站建立其·四:hexo使用markdown语法粘贴图片 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -361,6 +330,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B1%82%E8%A7%A3%E7%9B%B4%E7%BA%BF%E5%92%8C%E6%8A%9B%E7%89%A9%E7%BA%BF%E7%9A%84%E4%BA%A4%E7%82%B9"><span class="nav-number">1.</span> <span class="nav-text">求解直线和抛物线的交点:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B1%82%E8%A7%A3%E7%9B%B4%E7%BA%BF%E5%92%8C%E6%A4%AD%E5%9C%86%E7%9A%84%E4%BA%A4%E7%82%B9"><span class="nav-number">2.</span> <span class="nav-text">求解直线和椭圆的交点:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B1%82%E8%A7%A3%E7%9B%B4%E7%BA%BF%E5%92%8C%E5%8F%8C%E6%9B%B2%E7%BA%BF%E7%9A%84%E4%BA%A4%E7%82%B9"><span class="nav-number">3.</span> <span class="nav-text">求解直线和双曲线的交点:</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -495,9 +465,9 @@
 </script>
 <script>
   var disqus_config = function() {
-    this.page.url = "http://example.com/2022/04/24/%E7%BD%91%E7%AB%99%E5%BB%BA%E7%AB%8B%E5%85%B6%E4%B8%89/";
-    this.page.identifier = "2022/04/24/网站建立其三/";
-    this.page.title = "网站建立其·三:绑定本地hexo到github站点";
+    this.page.url = "http://example.com/2023/10/10/%E7%94%A8python%E6%B1%82%E8%A7%A3%E8%A7%A3%E6%9E%90%E5%87%A0%E4%BD%95/";
+    this.page.identifier = "2023/10/10/用python求解解析几何/";
+    this.page.title = "用python求解解析几何";
     };
   NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
     if (window.DISQUS) {

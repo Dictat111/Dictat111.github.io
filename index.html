@@ -180,6 +180,176 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/10/10/%E7%94%A8python%E6%B1%82%E8%A7%A3%E8%A7%A3%E6%9E%90%E5%87%A0%E4%BD%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Dictat">
+      <meta itemprop="description" content="一个兴趣使然的人">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dictat 小站">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/10/10/%E7%94%A8python%E6%B1%82%E8%A7%A3%E8%A7%A3%E6%9E%90%E5%87%A0%E4%BD%95/" class="post-title-link" itemprop="url">用python求解解析几何</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-10-10 22:20:21 / 修改时间：22:30:13" itemprop="dateCreated datePublished" datetime="2023-10-10T22:20:21+08:00">2023-10-10</time>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2023/10/10/%E7%94%A8python%E6%B1%82%E8%A7%A3%E8%A7%A3%E6%9E%90%E5%87%A0%E4%BD%95/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2023/10/10/用python求解解析几何/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>写了几个程序来求解高中的解析几何,才开始用的是一个<code>sympy</code>的几何库来做的,但是只能做椭圆的问题,后来就直接用<code>solve</code>来暴力的求解了.<br>这些程序的主要目的是联立直线和圆锥曲线的方程,这是求解解析几何问题的基本方法,即所谓的设而不求:联立方程之后利用韦达定理来得到两个焦点坐标的关系.</p>
+<h3 id="求解直线和抛物线的交点"><a href="#求解直线和抛物线的交点" class="headerlink" title="求解直线和抛物线的交点:"></a>求解直线和抛物线的交点:</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">solveParabola</span>(<span class="params">p,point</span>):</span><br><span class="line">    x0 = point[<span class="number">0</span>]</span><br><span class="line">    y0 = point[<span class="number">1</span>]</span><br><span class="line">    ((x1,y1),(x2,y2)) = nonlinsolve([y**<span class="number">2</span>-<span class="number">2</span>*p*x, y-k*(x-x0)-y0 ], (x,y))</span><br><span class="line">    <span class="keyword">return</span> x1,y1,x2,y2</span><br></pre></td></tr></table></figure>
+<h3 id="求解直线和椭圆的交点"><a href="#求解直线和椭圆的交点" class="headerlink" title="求解直线和椭圆的交点:"></a>求解直线和椭圆的交点:</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#请在安装了sympy以后在jupyter(IPython notebook)下运算该程序,这主要是为了更美观的显示数学公式</span></span><br><span class="line"><span class="keyword">from</span> sympy <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">solveEllipse</span>(<span class="params">a,b,point</span>):</span><br><span class="line">    <span class="keyword">from</span> sympy.abc <span class="keyword">import</span> x, y,k,m</span><br><span class="line">    <span class="keyword">from</span> sympy <span class="keyword">import</span> nonlinsolve</span><br><span class="line">    <span class="keyword">from</span> sympy <span class="keyword">import</span> simplify</span><br><span class="line">    x0 = point[<span class="number">0</span>]</span><br><span class="line">    y0 = point[<span class="number">1</span>]</span><br><span class="line">    ((x1,y1),(x2,y2)) = nonlinsolve([x**<span class="number">2</span>/a**<span class="number">2</span>+y**<span class="number">2</span>/b**<span class="number">2</span>-<span class="number">1</span>, y-k*(x-x0)-y0 ], (x,y))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;x1+x2 = &#x27;</span>)</span><br><span class="line">    display(simplify(x1+x2))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;x1*x2 = &#x27;</span>)</span><br><span class="line">    display(simplify(x1*x2))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;y1+y2 = &#x27;</span>)</span><br><span class="line">    display(simplify(y1+y2))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;y1*y2 = &#x27;</span>)</span><br><span class="line">    display(simplify(y1*y2))</span><br><span class="line">    <span class="keyword">return</span> x1,y1,x2,y2;</span><br><span class="line">x1,y1,x2,y2 = solveEllipse(<span class="number">4</span>,<span class="number">3</span>,(<span class="number">1</span>,<span class="number">0</span>));</span><br></pre></td></tr></table></figure>
+<h3 id="求解直线和双曲线的交点"><a href="#求解直线和双曲线的交点" class="headerlink" title="求解直线和双曲线的交点:"></a>求解直线和双曲线的交点:</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">solveHyperbola</span>(<span class="params">a,b,point</span>):</span><br><span class="line">    <span class="keyword">from</span> sympy.abc <span class="keyword">import</span> x, y,k,m</span><br><span class="line">    <span class="keyword">from</span> sympy <span class="keyword">import</span> nonlinsolve</span><br><span class="line">    <span class="keyword">from</span> sympy <span class="keyword">import</span> simplify</span><br><span class="line">    x0 = point[<span class="number">0</span>]</span><br><span class="line">    y0 = point[<span class="number">1</span>]</span><br><span class="line">    ((x1,y1),(x2,y2)) = nonlinsolve([x**<span class="number">2</span>/a**<span class="number">2</span>+y**<span class="number">2</span>/b**<span class="number">2</span>-<span class="number">1</span>, y-k*(x-x0)-y0 ], (x,y))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;x1+x2 = &#x27;</span>)</span><br><span class="line">    display(simplify(x1+x2))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;x1*x2 = &#x27;</span>)</span><br><span class="line">    display(simplify(x1*x2))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;y1+y2 = &#x27;</span>)</span><br><span class="line">    display(simplify(y1+y2))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;y1*y2 = &#x27;</span>)</span><br><span class="line">    display(simplify(y1*y2))</span><br><span class="line">    <span class="keyword">return</span> x1,y1,x2,y2;</span><br></pre></td></tr></table></figure>
+<p>由于双曲线和抛物线的开口有方向性,则在实际过程中,可能需要根据题目的主要内容来修改函数中的参数.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/10/10/Hexo_%E8%8B%B1%E8%AF%AD%E5%8D%95%E8%AF%8D%E5%AD%A6%E4%B9%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Dictat">
+      <meta itemprop="description" content="一个兴趣使然的人">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dictat 小站">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/10/10/Hexo_%E8%8B%B1%E8%AF%AD%E5%8D%95%E8%AF%8D%E5%AD%A6%E4%B9%A0/" class="post-title-link" itemprop="url">英语单词学习</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-10-10 20:45:35 / 修改时间：22:19:40" itemprop="dateCreated datePublished" datetime="2023-10-10T20:45:35+08:00">2023-10-10</time>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2023/10/10/Hexo_%E8%8B%B1%E8%AF%AD%E5%8D%95%E8%AF%8D%E5%AD%A6%E4%B9%A0/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2023/10/10/Hexo_英语单词学习/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>Django is a high-level Python web framework that encourages rapid development and clean, <strong>pragmatic</strong> design. Built by experienced developers, it takes care of much of the <strong>hassle</strong> of web development, so you can focus on writing your app without needing to reinvent the wheel. It’s free and open source.</p>
+</blockquote>
+<p>pragmatic  adj. 务实的；实事求是的；注重实效的</p>
+<p>hassle n. 困难，麻烦；激战</p>
+<blockquote>
+<p><strong>Reassuringly secure.</strong></p>
+<p>Django takes security seriously and helps developers avoid many common security mistakes.</p>
+</blockquote>
+<p>reassure vt. 消除恐惧或疑虑；恢复信心</p>
+<p>Reassuringly secure 难道翻译成,令人安心?</p>
+<blockquote>
+<p><strong>Ridiculously fast</strong>.</p>
+<p>Django was designed to help developers take applications from concept to completion as quickly as possible.</p>
+</blockquote>
+<p>Ridiculously fast 这或许应该翻译成”快得离谱”</p>
+<blockquote>
+<p><strong>Incredibly versatile.</strong></p>
+<p>Companies, organizations and governments have used Django to build all sorts of things — from content management systems to social networks to scientific computing platforms.</p>
+</blockquote>
+<p>Incredibly versatile 才艺超群?</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2023/10/10/%E7%BD%91%E7%AB%99%E6%96%87%E7%AB%A0-%E5%9C%A8MarkDown%E4%B8%AD%E4%BD%BF%E7%94%A8html/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -898,240 +1068,6 @@ This text is in Times and green</p>
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/25/%E7%BD%91%E7%AB%99%E5%BB%BA%E7%AB%8B%E5%85%B6%E5%85%AD/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Dictat">
-      <meta itemprop="description" content="一个兴趣使然的人">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dictat 小站">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/04/25/%E7%BD%91%E7%AB%99%E5%BB%BA%E7%AB%8B%E5%85%B6%E5%85%AD/" class="post-title-link" itemprop="url">网站建立其·六:hexo中插入pdf文件和视频的链接</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-04-25 10:58:27" itemprop="dateCreated datePublished" datetime="2022-04-25T10:58:27+08:00">2022-04-25</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-04-26 11:24:55" itemprop="dateModified" datetime="2022-04-26T11:24:55+08:00">2022-04-26</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/hexo%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B/" itemprop="url" rel="index"><span itemprop="name">hexo博客建立</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2022/04/25/%E7%BD%91%E7%AB%99%E5%BB%BA%E7%AB%8B%E5%85%B6%E5%85%AD/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/04/25/网站建立其六/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="插入pdf文件"><a href="#插入pdf文件" class="headerlink" title="插入pdf文件"></a>插入pdf文件</h2><p>为此我们需要使用一个叫做<code>hexo-pdf</code> 的插件,使用下面代码进行安装:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save hexo-pdf</span><br></pre></td></tr></table></figure>
-<p>在markdown文件中使用下面的语法来引用pdf文件:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% pdf ./bash_freshman.pdf %&#125;</span><br></pre></td></tr></table></figure>
-<p>目前测试发现PDF只能放在<code>_post</code>文件夹里用<code>./bash_freshman.pdf</code>来引用,不能放在 <code>_post</code>文件夹下的文件夹里用<code>./文件夹名/bash_freshman.pdf</code>来引用.我觉得这可能是<code>别的插件</code>的原因导致的,这个问题主要就是路径引用的问题,暂时就这样使用了.</p>
-<p>引用网络上的pdf文件,当然不会出现路径问题,语法是:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% pdf https://drive.google.com/file/d/1wK9YbTKEseKdn79fBg7oIyChMehUP1jP/preview %&#125;</span><br></pre></td></tr></table></figure>
-<div class="pdfobject-container" data-target="https://drive.google.com/file/d/1wK9YbTKEseKdn79fBg7oIyChMehUP1jP/preview" data-height="500px"></div>
-<p>这里使用的是谷歌云盘,发现<code>链接末尾</code>得用<code>/preview</code>才行,而用<code>view</code>不行.</p>
-<h2 id="插入视频"><a href="#插入视频" class="headerlink" title="插入视频"></a>插入视频</h2><h3 id="插入网络视屏"><a href="#插入网络视屏" class="headerlink" title="插入网络视屏"></a>插入网络视屏</h3><p>使用插件:hexo-tag-video</p>
-<p>插件地址:<a target="_blank" rel="noopener" href="https://github.com/geekplux/hexo-tag-video">hexo-tag-video下载</a></p>
-<p>使用语法:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% video &#x27;videoCode&#x27; %&#125;</span><br></pre></td></tr></table></figure>
-<p><code>videoCode</code>是一串代码,在b站可以用下面的方式得到(在分享里)<br><img src="/2022/04/25/%E7%BD%91%E7%AB%99%E5%BB%BA%E7%AB%8B%E5%85%B6%E5%85%AD/1650852624894.png" alt="1650852624894"></p>
-<p>在这里我插入了一个B站的视屏:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% video &lt;iframe width=&quot;160&quot; height=&quot;315&quot; src=&quot;https://www.bilibili.com/video/BV1mU4y1j72n?spm_id_from=..search-card.all.click&quot; frameborder=&quot;0&quot; gesture=&quot;media&quot; allow=&quot;encrypted-media&quot; allowfullscreen&gt;&lt;/iframe&gt; %&#125;</span><br></pre></td></tr></table></figure>
-<p>效果如下</p>
-<video src="<iframe,src=//player.bilibili.com/player.html?aid=938055170&bvid=BV1zT4y1Y7j7&cid=570809489&page=1,scrolling=no,border=0,frameborder=no,framespacing=0,allowfullscreen=true>,</iframe>" preload="metadata" controls playsinline poster="">Sorry, your browser does not support the video tag.</video>
-<p>下面是不使用插件得到的效果(看来这个插件的主要作用是<code>美化</code>)</p>
-<p><iframe src="//player.bilibili.com/player.html?aid=938055170&bvid=BV1zT4y1Y7j7&cid=570809489&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe><br>使用网易云的外链:</p>
-<p><img src="/2022/04/25/%E7%BD%91%E7%AB%99%E5%BB%BA%E7%AB%8B%E5%85%B6%E5%85%AD/1650853762444.png" alt="1650853762444"></p>
-<p>有一点问题,最后只能在markdown中直接插入<code>videoCode</code>即:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;iframe frameborder=&quot;no&quot; border=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; width=330 height=86 src=&quot;//music.163.com/outchain/player?type=2&amp;id=34144942&amp;auto=1&amp;height=66&quot;&gt;&lt;/iframe&gt;</span><br></pre></td></tr></table></figure>
-<p>效果:</p>
-<p><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=34144942&auto=1&height=66"></iframe><br>看来只能用这个插件插入视频链接</p>
-<h3 id="本地视频插入"><a href="#本地视频插入" class="headerlink" title="本地视频插入"></a>本地视频插入</h3><p>找到了方法,使用之前插入图片时候使用的插件<code>hexo-asset-link</code>,但是不支持窗口内部嵌入,只能提供链接在新页面打开<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[1650852624894](文件夹名/视屏名.mp4)</span><br></pre></td></tr></table></figure><br>用这个方法也能够提供 <code>pdf</code> 等其他文件的链接.</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/24/%E7%BD%91%E7%AB%99%E5%BB%BA%E7%AB%8B%E5%85%B6%E4%BA%94/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Dictat">
-      <meta itemprop="description" content="一个兴趣使然的人">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dictat 小站">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/04/24/%E7%BD%91%E7%AB%99%E5%BB%BA%E7%AB%8B%E5%85%B6%E4%BA%94/" class="post-title-link" itemprop="url">网站建立其·五:hexo主题配置</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-04-24 11:37:27" itemprop="dateCreated datePublished" datetime="2022-04-24T11:37:27+08:00">2022-04-24</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-04-26 11:25:04" itemprop="dateModified" datetime="2022-04-26T11:25:04+08:00">2022-04-26</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/hexo%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B/" itemprop="url" rel="index"><span itemprop="name">hexo博客建立</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2022/04/24/%E7%BD%91%E7%AB%99%E5%BB%BA%E7%AB%8B%E5%85%B6%E4%BA%94/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/04/24/网站建立其五/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>通过配置hexo的主题,可以使得网站的界面更具有艺术性.下面介绍hexo主题配置的一些知识:</p>
-<h2 id="下载主题"><a href="#下载主题" class="headerlink" title="下载主题"></a>下载主题</h2><p>在主目录下使用git命令</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/probberechts/hexo-theme-cactus.git themes/cactus</span><br></pre></td></tr></table></figure>
-<h2 id="选择主题"><a href="#选择主题" class="headerlink" title="选择主题"></a>选择主题</h2><p>在主配置文件中<code>_config.yml</code>,将<code>theme: cactus</code>冒号后的部分改成你想要使用的主题(这里用的是<code>cactus</code> 意为仙人掌),主题可以从网上下载,放在<code>themes</code>文件夹里,里面有原有的主题<code>landscape</code>.    </p>
-<p>注:<code>cactus</code> 意为仙人掌</p>
-<h2 id="配置主题"><a href="#配置主题" class="headerlink" title="配置主题"></a>配置主题</h2><p>在<code>themes</code>文件夹对应的主题文件夹下,譬如<code>cactus</code>下也有配置文件<code>_config.yml</code>,我们将其称之为<code>主题配置</code>文件,这与<code>主配置</code>文件需要进行区分.</p>
-<h3 id="语言设定"><a href="#语言设定" class="headerlink" title="语言设定"></a>语言设定</h3><p>我们将语言设置为中文,找到主配置文件中的<code>language: zh-CN</code>.(即,改成zh-CN).</p>
-<p>在<code>\cactus\languages</code>中的对应的文件<code>zh-CN.yml</code>中,我们可以设置对应的配置,如:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">nav:</span><br><span class="line">  home: 首页</span><br><span class="line">  about: 关于</span><br><span class="line">  articles: 归档</span><br><span class="line">  projects: 项目</span><br><span class="line">  tag: 标签</span><br><span class="line">  category: 分类</span><br><span class="line">  search: 搜索</span><br></pre></td></tr></table></figure>
-<p>可以将对应的名称DIY成你想要的命名法,比如把<code>search: 搜索</code>改成<code>search: 找一下</code></p>
-<h2 id="导航标签管理"><a href="#导航标签管理" class="headerlink" title="导航标签管理"></a>导航标签管理</h2><p>在<code>主题配置</code>文件中有</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">nav:</span><br><span class="line">  home: /</span><br><span class="line">  about: /about/</span><br><span class="line">  articles: /archives/</span><br><span class="line">  projects: 放一个网站连接</span><br></pre></td></tr></table></figure>
-<p>提供导航(navigation)标签,我们可以自定义想要的标签.</p>
-<h3 id="新建页面"><a href="#新建页面" class="headerlink" title="新建页面"></a>新建页面</h3><h4 id="更改’关于’连接"><a href="#更改’关于’连接" class="headerlink" title="更改’关于’连接"></a>更改’关于’连接</h4><p>在下载的<code>cactus</code> 主题中,有<strong>关于</strong>一项</p>
-<p><img src="/2022/04/24/%E7%BD%91%E7%AB%99%E5%BB%BA%E7%AB%8B%E5%85%B6%E4%BA%94/1650770977163.png" alt="1650770977163"></p>
-<p>但是这个页面没有创立,我们要创立一个新的页面,</p>
-<p><img src="/2022/04/24/%E7%BD%91%E7%AB%99%E5%BB%BA%E7%AB%8B%E5%85%B6%E4%BA%94/1650771025794.png" alt="1650771025794"></p>
-<p>可以看出,需要创建的页面的名称是<code>about</code>.</p>
-<p>用下面的命令创建:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page about</span><br></pre></td></tr></table></figure>
-<p>会在<code>\source\about</code>生成一个markdown 文件,修改成你想要的样子即可.</p>
-<h4 id="新建’tags’链接"><a href="#新建’tags’链接" class="headerlink" title="新建’tags’链接"></a>新建’tags’链接</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/cflsup/article/details/123452683">参考文章:Hexo添加分类和标签</a></p>
-<p>新建一个页面:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page tags </span><br></pre></td></tr></table></figure>
-<p> 找到<code>index.md</code>文件 </p>
-<p>将:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 标签</span><br><span class="line">date: 2022-01-07 22:53:43</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 标签</span><br><span class="line">date: 2022-01-07 22:53:43</span><br><span class="line">type: &quot;tags&quot;</span><br><span class="line">layout: &quot;tags&quot;</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-<p>在启动hexo 效果如下:</p>
-<p><img src="/2022/04/24/%E7%BD%91%E7%AB%99%E5%BB%BA%E7%AB%8B%E5%85%B6%E4%BA%94/1650773499488.png" alt="1650773499488"></p>
-<p>但我们还需要把<code>英文:tags</code> 改成<code>中文:标签</code>,在<code>cactus\languages\zh-CN.yml</code></p>
-<p>中加上<code>tags: 标签</code>即可.</p>
-<p><img src="/2022/04/24/%E7%BD%91%E7%AB%99%E5%BB%BA%E7%AB%8B%E5%85%B6%E4%BA%94/1650773644718.png" alt="1650773644718"></p>
-<p>大功告成!</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1201,7 +1137,7 @@ This text is in Times and green</p>
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-count">17</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1212,7 +1148,7 @@ This text is in Times and green</p>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
