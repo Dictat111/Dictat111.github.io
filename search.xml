@@ -4,11 +4,49 @@
   
     
     <entry>
+      <title>在Markdown中使用html</title>
+      <link href="/2023/10/10/%E7%BD%91%E7%AB%99%E6%96%87%E7%AB%A0-%E5%9C%A8MarkDown%E4%B8%AD%E4%BD%BF%E7%94%A8html/"/>
+      <url>/2023/10/10/%E7%BD%91%E7%AB%99%E6%96%87%E7%AB%A0-%E5%9C%A8MarkDown%E4%B8%AD%E4%BD%BF%E7%94%A8html/</url>
+      
+        <content type="html"><![CDATA[<p>能够在markdown中使用html语言来完成一些文字排版.</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">style</span>=<span class="string">&quot;font-family:times;color:green&quot;</span>&gt;</span></span><br><span class="line">This text is in Times and green<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure><p>如上的一串代码实现了,下面的结果:</p><p style="font-family:times;color:green">This text is in Times and green</p><p>那么类似的我们能够排版一些古诗文,</p><p>代码为</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;p style=&quot;font-family:楷体&quot;&gt;</span><br><span class="line">赵客缦胡缨，吴钩霜雪明。&lt;br&gt;</span><br><span class="line">银鞍照白马，飒沓如流星。&lt;br&gt;</span><br><span class="line">十步杀一人，千里不留行。&lt;br&gt;</span><br><span class="line">事了拂衣去，深藏身与名。&lt;br&gt;</span><br><span class="line">&lt;/p&gt;</span><br></pre></td></tr></table></figure><p>显示效果如下:</p><p style="font-family:楷体">赵客缦胡缨，吴钩霜雪明。<br>银鞍照白马，飒沓如流星。<br>十步杀一人，千里不留行。<br>事了拂衣去，深藏身与名。<br></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> markdown;html </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>每日古诗文</title>
+      <link href="/2023/10/10/Hexo%E6%AF%8F%E6%97%A5%E5%8F%A4%E8%AF%97%E6%96%87/"/>
+      <url>/2023/10/10/Hexo%E6%AF%8F%E6%97%A5%E5%8F%A4%E8%AF%97%E6%96%87/</url>
+      
+        <content type="html"><![CDATA[<h2 id="清平乐-2023年10月7日"><a href="#清平乐-2023年10月7日" class="headerlink" title="清平乐 2023年10月7日"></a>清平乐 2023年10月7日</h2><blockquote><p>雨晴烟晚。绿水新池满。<br>双燕飞来垂柳院，小阁画帘高卷。<br>黄昏独倚朱阑。西南新月眉弯。<br>砌下落花风起，罗衣特地春寒。 </p></blockquote><p>冯延巳的婉约词那是写得相当不错的.</p><p>最后一句中的<code>罗衣特地春寒</code> 类似晏殊的清平乐中的最后一句<code>银屏昨夜微寒</code>.</p><p>不知道是晏学习了冯,还是这本来就是冯的诗词呢?</p><blockquote><p style="font-family:楷体">金风细细。叶叶梧桐坠。<br>绿酒初尝人易醉。一枕小窗浓睡。<br>紫薇朱槿花残。斜阳却照阑干。<br>双燕欲归时节，<b>银屏昨夜微寒</b>。<br></p></blockquote><h2 id="老子·七十七章-2023年10月8日"><a href="#老子·七十七章-2023年10月8日" class="headerlink" title="老子·七十七章 2023年10月8日"></a>老子·七十七章 2023年10月8日</h2><blockquote><p>天之道，其犹张弓欤？<br>高者抑之，下者举之；有余者损之，不足者补之。<br>天之道，损有余而补不足。<br><strong>人之道则不然，损不足以奉有余。</strong><br><strong>孰能有余以奉天下，唯有道者。</strong><br>是以圣人为而不恃，功成而不处，其不欲见贤邪。</p></blockquote><h2 id="菩萨蛮-2023年10月9日"><a href="#菩萨蛮-2023年10月9日" class="headerlink" title="菩萨蛮 2023年10月9日"></a>菩萨蛮 2023年10月9日</h2><blockquote><p>玉楼明月长相忆，柳丝袅娜春无力。<br>门外草萋萋，送君闻马嘶。<br>画罗金翡翠，香烛销成泪。<br>花落子规啼，绿窗残梦迷。</p></blockquote>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 汉语,文学 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>hexo命令的回顾</title>
       <link href="/2023/10/02/hexo%E5%91%BD%E4%BB%A4%E7%9A%84%E5%9B%9E%E9%A1%BE/"/>
       <url>/2023/10/02/hexo%E5%91%BD%E4%BB%A4%E7%9A%84%E5%9B%9E%E9%A1%BE/</url>
       
-        <content type="html"><![CDATA[<p>“故地重游,月圆更寂寞~ ~”<br>由于已经有一年多没有使用hexo了, 我对个这工具的大多数命令已经十分的生疏,有必要复习一下相关的知识了.</p><h2 id="生成静态文件和部署"><a href="#生成静态文件和部署" class="headerlink" title="生成静态文件和部署"></a>生成静态文件和部署</h2><p><code>hexo generate</code>生成<br><code>hexo deploy</code>部署,将会将最新的文件同步到github对应的网站.</p><h2 id="本地测试"><a href="#本地测试" class="headerlink" title="本地测试"></a>本地测试</h2><p><code>hexo server</code> 在本地生成一个服务器</p><h2 id="新建文章？"><a href="#新建文章？" class="headerlink" title="新建文章？"></a>新建文章？</h2><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new &lt;<span class="built_in">title</span>&gt;</span><br></pre></td></tr></table></figure><p>比如用<br><code>hexo new &quot;hexo命令的回顾&quot;</code></p><h3 id="关于标签的使用"><a href="#关于标签的使用" class="headerlink" title="关于标签的使用"></a>关于标签的使用</h3><p>在使用多个标签的时候,需要用使用方括号,格式如下:<br><code>tags: [数学,拓扑学,数学问题]</code></p><h2 id="插入图片？"><a href="#插入图片？" class="headerlink" title="插入图片？"></a>插入图片？</h2><p><img src="/2023/10/02/hexo%E5%91%BD%E4%BB%A4%E7%9A%84%E5%9B%9E%E9%A1%BE/logo.png" alt="logo"></p><p>由于之前的设定,我在<code>typora</code>之中插入图片的同时,会自动在当前目录下生成一个文件夹并且将图片复制到其中.</p><p><img src="/2023/10/02/hexo%E5%91%BD%E4%BB%A4%E7%9A%84%E5%9B%9E%E9%A1%BE/1696230712926.png" alt="1696230712926"></p><h2 id="如何更换主题"><a href="#如何更换主题" class="headerlink" title="如何更换主题"></a>如何更换主题</h2><p>在 <code>_config.yml</code> 文件中更改theme关键字后的主题名,比如我用的是仙人掌主题:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">theme: cactus</span><br></pre></td></tr></table></figure><h2 id="如何添加站内搜索"><a href="#如何添加站内搜索" class="headerlink" title="如何添加站内搜索"></a>如何添加站内搜索</h2><p>不同的主题或许配置不尽相同,今天改换用Next主题了.大概的配置是</p><p>安装插件:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-search --save  </span><br></pre></td></tr></table></figure></p><p>然后在主题配置文件下将<code>local_search</code>后面改为<code>true</code>.</p><h2 id="如何添加评论"><a href="#如何添加评论" class="headerlink" title="如何添加评论"></a>如何添加评论</h2><p>使用的是 disqus</p><p>参考:<a href="https://www.jianshu.com/p/d68de067ea74">https://www.jianshu.com/p/d68de067ea74</a></p>]]></content>
+        <content type="html"><![CDATA[<p>“故地重游,月圆更寂寞~ ~”<br>由于已经有一年多没有使用hexo了, 我对个这工具的大多数命令已经十分的生疏,有必要复习一下相关的知识了.</p><h2 id="生成静态文件和部署"><a href="#生成静态文件和部署" class="headerlink" title="生成静态文件和部署"></a>生成静态文件和部署</h2><p><code>hexo generate</code>生成<br><code>hexo deploy</code>部署,将会将最新的文件同步到github对应的网站.</p><h2 id="本地测试"><a href="#本地测试" class="headerlink" title="本地测试"></a>本地测试</h2><p><code>hexo server</code> 在本地生成一个服务器</p><h2 id="新建文章？"><a href="#新建文章？" class="headerlink" title="新建文章？"></a>新建文章？</h2><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new &lt;<span class="built_in">title</span>&gt;</span><br></pre></td></tr></table></figure><p>比如用<br><code>hexo new &quot;hexo命令的回顾&quot;</code></p><h3 id="关于标签的使用"><a href="#关于标签的使用" class="headerlink" title="关于标签的使用"></a>关于标签的使用</h3><p>在使用多个标签的时候,需要用使用方括号,格式如下:<br><code>tags: [数学,拓扑学,数学问题]</code></p><h2 id="插入图片？"><a href="#插入图片？" class="headerlink" title="插入图片？"></a>插入图片？</h2><p><img src="/2023/10/02/hexo%E5%91%BD%E4%BB%A4%E7%9A%84%E5%9B%9E%E9%A1%BE/logo.png" alt="logo"></p><p>由于之前的设定,我在<code>typora</code>之中插入图片的同时,会自动在当前目录下生成一个文件夹并且将图片复制到其中.</p><p><img src="/2023/10/02/hexo%E5%91%BD%E4%BB%A4%E7%9A%84%E5%9B%9E%E9%A1%BE/1696230712926.png" alt="1696230712926"></p><h2 id="如何更换主题"><a href="#如何更换主题" class="headerlink" title="如何更换主题"></a>如何更换主题</h2><p>在 <code>_config.yml</code> 文件中更改theme关键字后的主题名,比如我用的是仙人掌主题:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">theme: cactus</span><br></pre></td></tr></table></figure><h2 id="如何添加站内搜索"><a href="#如何添加站内搜索" class="headerlink" title="如何添加站内搜索"></a>如何添加站内搜索</h2><p>不同的主题或许配置不尽相同,今天改换用Next主题了.大概的配置是</p><p>安装插件:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-search --save  </span><br></pre></td></tr></table></figure></p><p>然后在主题配置文件下将<code>local_search</code>后面改为<code>true</code>.</p><h2 id="如何添加评论"><a href="#如何添加评论" class="headerlink" title="如何添加评论"></a>如何添加评论</h2><p>使用的是 disqus</p><p>参考:<a href="https://www.jianshu.com/p/d68de067ea74">https://www.jianshu.com/p/d68de067ea74</a></p><p>在主题的配置文件<code>_config.yml</code>中找</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">isqus:</span><br><span class="line">  enable: true</span><br><span class="line">  shortname: dictat</span><br><span class="line">  count: true</span><br><span class="line">  #post_meta_order: 0</span><br></pre></td></tr></table></figure>]]></content>
       
       
       

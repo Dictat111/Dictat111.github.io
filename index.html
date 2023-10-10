@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="一个兴趣使然的人">
@@ -180,6 +180,188 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/10/10/%E7%BD%91%E7%AB%99%E6%96%87%E7%AB%A0-%E5%9C%A8MarkDown%E4%B8%AD%E4%BD%BF%E7%94%A8html/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Dictat">
+      <meta itemprop="description" content="一个兴趣使然的人">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dictat 小站">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/10/10/%E7%BD%91%E7%AB%99%E6%96%87%E7%AB%A0-%E5%9C%A8MarkDown%E4%B8%AD%E4%BD%BF%E7%94%A8html/" class="post-title-link" itemprop="url">在Markdown中使用html</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-10-10 13:17:17 / 修改时间：13:28:54" itemprop="dateCreated datePublished" datetime="2023-10-10T13:17:17+08:00">2023-10-10</time>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2023/10/10/%E7%BD%91%E7%AB%99%E6%96%87%E7%AB%A0-%E5%9C%A8MarkDown%E4%B8%AD%E4%BD%BF%E7%94%A8html/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2023/10/10/网站文章-在MarkDown中使用html/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>能够在markdown中使用html语言来完成一些文字排版.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">style</span>=<span class="string">&quot;font-family:times;color:green&quot;</span>&gt;</span></span><br><span class="line">This text is in Times and green<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>如上的一串代码实现了,下面的结果:</p>
+<p style="font-family:times;color:green">
+This text is in Times and green</p>
+
+<p>那么类似的我们能够排版一些古诗文,</p>
+<p>代码为</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;p style=&quot;font-family:楷体&quot;&gt;</span><br><span class="line">赵客缦胡缨，吴钩霜雪明。&lt;br&gt;</span><br><span class="line">银鞍照白马，飒沓如流星。&lt;br&gt;</span><br><span class="line">十步杀一人，千里不留行。&lt;br&gt;</span><br><span class="line">事了拂衣去，深藏身与名。&lt;br&gt;</span><br><span class="line">&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+<p>显示效果如下:</p>
+<p style="font-family:楷体">
+赵客缦胡缨，吴钩霜雪明。<br>
+银鞍照白马，飒沓如流星。<br>
+十步杀一人，千里不留行。<br>
+事了拂衣去，深藏身与名。<br>
+</p>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/10/10/Hexo%E6%AF%8F%E6%97%A5%E5%8F%A4%E8%AF%97%E6%96%87/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Dictat">
+      <meta itemprop="description" content="一个兴趣使然的人">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dictat 小站">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/10/10/Hexo%E6%AF%8F%E6%97%A5%E5%8F%A4%E8%AF%97%E6%96%87/" class="post-title-link" itemprop="url">每日古诗文</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-10-10 12:43:53 / 修改时间：13:34:32" itemprop="dateCreated datePublished" datetime="2023-10-10T12:43:53+08:00">2023-10-10</time>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2023/10/10/Hexo%E6%AF%8F%E6%97%A5%E5%8F%A4%E8%AF%97%E6%96%87/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2023/10/10/Hexo每日古诗文/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="清平乐-2023年10月7日"><a href="#清平乐-2023年10月7日" class="headerlink" title="清平乐 2023年10月7日"></a>清平乐 2023年10月7日</h2><blockquote>
+<p>雨晴烟晚。绿水新池满。<br>双燕飞来垂柳院，小阁画帘高卷。<br>黄昏独倚朱阑。西南新月眉弯。<br>砌下落花风起，罗衣特地春寒。 </p>
+</blockquote>
+<p>冯延巳的婉约词那是写得相当不错的.</p>
+<p>最后一句中的<code>罗衣特地春寒</code> 类似晏殊的清平乐中的最后一句<code>银屏昨夜微寒</code>.</p>
+<p>不知道是晏学习了冯,还是这本来就是冯的诗词呢?</p>
+<blockquote>
+<p style="font-family:楷体">
+金风细细。叶叶梧桐坠。<br>
+绿酒初尝人易醉。一枕小窗浓睡。<br>
+紫薇朱槿花残。斜阳却照阑干。<br>
+双燕欲归时节，<b>银屏昨夜微寒</b>。<br>
+</p>
+
+
+
+</blockquote>
+<h2 id="老子·七十七章-2023年10月8日"><a href="#老子·七十七章-2023年10月8日" class="headerlink" title="老子·七十七章 2023年10月8日"></a>老子·七十七章 2023年10月8日</h2><blockquote>
+<p>天之道，其犹张弓欤？<br>高者抑之，下者举之；有余者损之，不足者补之。<br>天之道，损有余而补不足。<br><strong>人之道则不然，损不足以奉有余。</strong><br><strong>孰能有余以奉天下，唯有道者。</strong><br>是以圣人为而不恃，功成而不处，其不欲见贤邪。</p>
+</blockquote>
+<h2 id="菩萨蛮-2023年10月9日"><a href="#菩萨蛮-2023年10月9日" class="headerlink" title="菩萨蛮 2023年10月9日"></a>菩萨蛮 2023年10月9日</h2><blockquote>
+<p>玉楼明月长相忆，柳丝袅娜春无力。<br>门外草萋萋，送君闻马嘶。<br>画罗金翡翠，香烛销成泪。<br>花落子规啼，绿窗残梦迷。</p>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2023/10/02/hexo%E5%91%BD%E4%BB%A4%E7%9A%84%E5%9B%9E%E9%A1%BE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -211,10 +393,24 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-10-09 18:21:24" itemprop="dateModified" datetime="2023-10-09T18:21:24+08:00">2023-10-09</time>
+                <time title="修改时间：2023-10-09 19:30:58" itemprop="dateModified" datetime="2023-10-09T19:30:58+08:00">2023-10-09</time>
               </span>
 
           
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2023/10/02/hexo%E5%91%BD%E4%BB%A4%E7%9A%84%E5%9B%9E%E9%A1%BE/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2023/10/02/hexo命令的回顾/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
 
         </div>
       </header>
@@ -241,6 +437,8 @@
 <p>然后在主题配置文件下将<code>local_search</code>后面改为<code>true</code>.</p>
 <h2 id="如何添加评论"><a href="#如何添加评论" class="headerlink" title="如何添加评论"></a>如何添加评论</h2><p>使用的是 disqus</p>
 <p>参考:<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/d68de067ea74">https://www.jianshu.com/p/d68de067ea74</a></p>
+<p>在主题的配置文件<code>_config.yml</code>中找</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">isqus:</span><br><span class="line">  enable: true</span><br><span class="line">  shortname: dictat</span><br><span class="line">  count: true</span><br><span class="line">  #post_meta_order: 0</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -298,6 +496,20 @@
             </span>
 
           
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/14/上下极限和极限关系/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
 
         </div>
       </header>
@@ -390,6 +602,20 @@
             </span>
 
           
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2022/05/05/latex%E7%9A%84footnote%E7%9A%84%E5%BC%95%E7%94%A8%E9%97%AE%E9%A2%98/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/05/latex的footnote的引用问题/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
 
         </div>
       </header>
@@ -472,6 +698,20 @@
             </span>
 
           
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2022/05/02/latex%E6%8A%80%E5%B7%A7/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/02/latex技巧/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
 
         </div>
       </header>
@@ -539,6 +779,20 @@
             </span>
 
           
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2022/05/02/latex%E5%88%86%E7%AB%A0%E8%8A%82%E7%8B%AC%E7%AB%8B%E6%8F%92%E5%85%A5/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/02/latex分章节独立插入/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
 
         </div>
       </header>
@@ -601,6 +855,20 @@
             </span>
 
           
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2022/04/25/n%E7%BB%B4%E6%B5%81%E5%BD%A2%E7%9A%84%E8%BE%B9%E7%95%8C%E6%98%AFn-1%E7%BB%B4%E6%B5%81%E5%BD%A2/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/04/25/n维流形的边界是n-1维流形/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
 
         </div>
       </header>
@@ -678,6 +946,20 @@
             </span>
 
           
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2022/04/25/%E7%BD%91%E7%AB%99%E5%BB%BA%E7%AB%8B%E5%85%B6%E5%85%AD/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/04/25/网站建立其六/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
 
         </div>
       </header>
@@ -777,6 +1059,20 @@
             </span>
 
           
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2022/04/24/%E7%BD%91%E7%AB%99%E5%BB%BA%E7%AB%8B%E5%85%B6%E4%BA%94/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/04/24/网站建立其五/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
 
         </div>
       </header>
@@ -821,181 +1117,6 @@
 <p>中加上<code>tags: 标签</code>即可.</p>
 <p><img src="/2022/04/24/%E7%BD%91%E7%AB%99%E5%BB%BA%E7%AB%8B%E5%85%B6%E4%BA%94/1650773644718.png" alt="1650773644718"></p>
 <p>大功告成!</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/24/%E7%BD%91%E7%AB%99%E5%BB%BA%E7%AB%8B%E5%85%B6%E5%9B%9B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Dictat">
-      <meta itemprop="description" content="一个兴趣使然的人">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dictat 小站">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/04/24/%E7%BD%91%E7%AB%99%E5%BB%BA%E7%AB%8B%E5%85%B6%E5%9B%9B/" class="post-title-link" itemprop="url">网站建立其·四:hexo使用markdown语法粘贴图片</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-04-24 10:37:27" itemprop="dateCreated datePublished" datetime="2022-04-24T10:37:27+08:00">2022-04-24</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-04-26 11:25:01" itemprop="dateModified" datetime="2022-04-26T11:25:01+08:00">2022-04-26</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/hexo%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B/" itemprop="url" rel="index"><span itemprop="name">hexo博客建立</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>对于这个问题,我们简要的谈一下.</p>
-<p>要知道在hexo中使用图片的时候不能简单的使用markdown语法,即<code>![这里是名称](这里是图片链接)</code>的方式插入图片,不得不说,这的确是开发者有些懒惰了(hexo居然是一个没有毕业的台湾大学生开发的,那没事了).</p>
-<p>但是智慧(懒惰的)的我们可以在网上寻求答案,也许要踩不可数的坑.</p>
-<p>最后在<a target="_blank" rel="noopener" href="https://chrismroberts.com/2020/01/06/using-markdown-in-hexo-to-add-images/">这个链接: Adding Images to Hexo Posts with Markdown </a> 里找到了解决方法,只要在谷歌搜索<code>hexo markdown pic</code>,出现的里面的第一个就是了,叫我们去安装一个插件,用下面的代码.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i -s hexo-asset-link</span><br></pre></td></tr></table></figure>
-<p>然后修改<code>_config.yml</code>中的<code>post_asset_folder: true</code>(改掉false)</p>
-<p>在这里我们需要吸取的教训就是:</p>
-<ol>
-<li>即使是同一个名字的插件,也有可能是不同效果的(有些是个人修改版,需要甄别<strong>安装源</strong>)</li>
-<li>要尽量挑比较新的文章看.</li>
-</ol>
-<p>我用这篇文章的时候就没有安装成功:<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/280758822?utm_source=qq">hexo博客显示markdown路径的图片</a><br>就可能是安装源的问题.</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/24/%E7%BD%91%E7%AB%99%E5%BB%BA%E7%AB%8B%E5%85%B6%E4%B8%89/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Dictat">
-      <meta itemprop="description" content="一个兴趣使然的人">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dictat 小站">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/04/24/%E7%BD%91%E7%AB%99%E5%BB%BA%E7%AB%8B%E5%85%B6%E4%B8%89/" class="post-title-link" itemprop="url">网站建立其·三:绑定本地hexo到github站点</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-04-24 09:30:27" itemprop="dateCreated datePublished" datetime="2022-04-24T09:30:27+08:00">2022-04-24</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-04-26 11:24:57" itemprop="dateModified" datetime="2022-04-26T11:24:57+08:00">2022-04-26</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/hexo%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B/" itemprop="url" rel="index"><span itemprop="name">hexo博客建立</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>现在我们已经在本地搭建了hexo站点,并且可以在本地访问访问,接下来要做的就是把这个网站传到云端,这里我们借助github给我们提供的免费站点.</p>
-<p>一般来说,对于这个问题网上有详细的教程(搜索:hexo+github博客搭建):</p>
-<ol>
-<li>建立github网站项目,成功之后会生成一个初始的静态网站,这方面的知识完全可以参考 <a target="_blank" rel="noopener" href="https://docs.github.com/cn/pages/quickstart">官方教程:GitHub Pages 快速入门</a></li>
-</ol>
-<p>得到了类似这样的一个页面：    </p>
-<p><img src="/2022/04/24/%E7%BD%91%E7%AB%99%E5%BB%BA%E7%AB%8B%E5%85%B6%E4%B8%89/1.png" alt="1650637781304"></p>
-<ol>
-<li>需要安装 git 生成连接github网站秘钥,用于下面的部署操作.</li>
-</ol>
-<p>在这里我来说一个遇到的大坑,</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#Deployment</span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https://github.com/wapchief/wapchief.github.io.git</span><br><span class="line">  branch: master</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>在传输到云端上(称之为<strong>部署</strong>)之前,我们需要修改hexo项目文件夹下的主配置文件<code>_config.yml</code>,添加上面一段文字.</p>
-<p>才开始的时候我不知道<code>branch: master</code> 是什么意思,导致网站一直没有显示出来,</p>
-<p><img src="/2022/04/24/%E7%BD%91%E7%AB%99%E5%BB%BA%E7%AB%8B%E5%85%B6%E4%B8%89/1650766184876.png" alt="1650766184876"></p>
-<p>如图所示,图中有两个branch,我们部署的是master分支,而原来生成网页时候在<code>setting-pages</code>里用的的是main分支,需要改变一下.</p>
-<p>此外,由于github访问速度的原因,部署需要一些时间才能生效.</p>
 
       
     </div>
@@ -1080,7 +1201,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-count">15</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1091,11 +1212,16 @@
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="mailto:q983576811@gmail.com" title="E-Mail → mailto:q983576811@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
 
 
 
@@ -1124,7 +1250,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Dictat</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
 
         
@@ -1150,7 +1276,7 @@
 <script src="/js/motion.js"></script>
 
 
-<script src="/js/schemes/muse.js"></script>
+<script src="/js/schemes/pisces.js"></script>
 
 
 <script src="/js/next-boot.js"></script>
@@ -1238,6 +1364,17 @@
     
 
   
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://dictat.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
 
 </body>
 </html>
