@@ -121,6 +121,11 @@
     <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
 
   </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
         <li class="menu-item menu-item-archives">
 
     <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
@@ -180,6 +185,938 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/12/23/Python%E8%84%9A%E6%9C%AC-%E6%8A%8A%E6%96%87%E4%BB%B6%E7%A7%BB%E5%87%BAGallery/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Dictat">
+      <meta itemprop="description" content="一个兴趣使然的人">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dictat 小站">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/12/23/Python%E8%84%9A%E6%9C%AC-%E6%8A%8A%E6%96%87%E4%BB%B6%E7%A7%BB%E5%87%BAGallery/" class="post-title-link" itemprop="url">Python脚本-把文件移出Gallery-初试shutil包</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-12-23 21:49:00 / 修改时间：22:01:25" itemprop="dateCreated datePublished" datetime="2023-12-23T21:49:00+08:00">2023-12-23</time>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2023/12/23/Python%E8%84%9A%E6%9C%AC-%E6%8A%8A%E6%96%87%E4%BB%B6%E7%A7%BB%E5%87%BAGallery/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2023/12/23/Python脚本-把文件移出Gallery/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>用<code>Tachiyomi</code> 下载下来的漫画会以如下方式储存:漫画名下的文件夹下的<code>Gallrey</code>文件夹里.  </p>
+<p>这样会产生一个问题,如果用其他软件去访问会非常的麻烦.于是拜托<code>chatGPT</code>写了下面这样一个文件,会直接把<code>Gallrey</code>文件夹下的文件以动到上层目录里,并且删掉最后的Gallery文件夹,这样就能够更好的看漫画了.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> shutil</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">extract_images_to_subdirectories</span>(<span class="params">parent_directory</span>):</span><br><span class="line">    <span class="comment"># 获取父目录下的所有子文件夹</span></span><br><span class="line">    subdirectories = [d <span class="keyword">for</span> d <span class="keyword">in</span> os.listdir(parent_directory) <span class="keyword">if</span> os.path.isdir(os.path.join(parent_directory, d))]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 遍历每个子文件夹</span></span><br><span class="line">    <span class="keyword">for</span> subdirectory <span class="keyword">in</span> subdirectories:</span><br><span class="line">        gallery_path = os.path.join(parent_directory, subdirectory, <span class="string">&#x27;Gallery&#x27;</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 检查Gallery文件夹是否存在</span></span><br><span class="line">        <span class="keyword">if</span> os.path.exists(gallery_path) <span class="keyword">and</span> os.path.isdir(gallery_path):</span><br><span class="line">            <span class="comment"># 获取Gallery文件夹下的所有文件</span></span><br><span class="line">            gallery_files = os.listdir(gallery_path)</span><br><span class="line"></span><br><span class="line">            <span class="comment"># 遍历并复制文件到子文件夹</span></span><br><span class="line">            <span class="keyword">for</span> gallery_file <span class="keyword">in</span> gallery_files:</span><br><span class="line">                source_path = os.path.join(gallery_path, gallery_file)</span><br><span class="line">                destination_path = os.path.join(parent_directory, subdirectory, gallery_file)</span><br><span class="line"></span><br><span class="line">                <span class="comment"># 使用shutil复制文件</span></span><br><span class="line">                shutil.move(source_path, destination_path)</span><br><span class="line">            <span class="comment"># 删除Gallery文件夹</span></span><br><span class="line">            os.rmdir(gallery_path)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;图片已成功抽取到每个子文件夹&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 用法示例</span></span><br><span class="line">parent_directory = <span class="string">r&#x27;~~~&#x27;</span><span class="comment">#~~~用你的目录地址代替,这个目录地址里会有很多文件夹,每个文件夹里会有Galley文件夹</span></span><br><span class="line">extract_images_to_subdirectories(parent_directory)</span><br></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>我感觉有用的是<code>shutil</code>这个包,貌似是用来文件操作的.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/10/16/a%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-%E7%BD%91%E9%A1%B5%E8%A7%A3%E6%9E%90/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Dictat">
+      <meta itemprop="description" content="一个兴趣使然的人">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dictat 小站">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/10/16/a%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-%E7%BD%91%E9%A1%B5%E8%A7%A3%E6%9E%90/" class="post-title-link" itemprop="url">网页解析的学习</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-10-16 15:52:37 / 修改时间：22:32:27" itemprop="dateCreated datePublished" datetime="2023-10-16T15:52:37+08:00">2023-10-16</time>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2023/10/16/a%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-%E7%BD%91%E9%A1%B5%E8%A7%A3%E6%9E%90/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2023/10/16/a个人博客-网页解析/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Xpath"><a href="#Xpath" class="headerlink" title="Xpath"></a>Xpath</h1><h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><p>一定要以斜杠<code>/</code>开头</p>
+<h2 id="路径查询"><a href="#路径查询" class="headerlink" title="路径查询"></a>路径查询</h2><p><code>/body/ul/li</code>  body下的ul下的li</p>
+<p><code>//</code> 所有的子孙节点</p>
+<p><code>/</code>只查找子节点</p>
+<h2 id="谓词查询"><a href="#谓词查询" class="headerlink" title="谓词查询"></a>谓词查询</h2><p><code>//div[@id]</code> 查找所有有id 属性的li标签</p>
+<p><code>//div[@id = &quot;北京&quot;]</code> </p>
+<p><code>*</code> 代表所有</p>
+<h2 id="属性查询"><a href="#属性查询" class="headerlink" title="属性查询"></a>属性查询</h2><p>   查找到id为l1的class的属性值</p>
+<p><code>//ul/li[@id=&quot;l1&quot;]/@class</code></p>
+<h2 id="模糊查找"><a href="#模糊查找" class="headerlink" title="模糊查找"></a>模糊查找</h2><p><code>contains</code>  是否包含</p>
+<p><code>start-with</code> 以什么开头</p>
+<h2 id="逻辑查询"><a href="#逻辑查询" class="headerlink" title="逻辑查询"></a>逻辑查询</h2><p><code>div[@id = &quot;北京&quot; and @class = &quot;c1&quot;]</code></p>
+<p>且用的是<code>and</code></p>
+<p>或可能有点坑,有点像<code>pandas</code>的那味(拆开来写?),等不会写了再说.</p>
+<p><code>or</code> 还是 <code>|</code></p>
+<h2 id="切片"><a href="#切片" class="headerlink" title="切片"></a>切片</h2><p><code>li[position()&gt;1 and position()&lt;5]</code></p>
+<p><code>last()</code> 列表最后一个</p>
+<h2 id="Xpath-的好处"><a href="#Xpath-的好处" class="headerlink" title="Xpath 的好处"></a>Xpath 的好处</h2><ul>
+<li>优点：<ul>
+<li>效率高</li>
+<li>语法简洁</li>
+<li>可扩展性强</li>
+</ul>
+</li>
+<li>缺点：<ul>
+<li>学习曲线较陡</li>
+<li>表达能力有限</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</span><br><span class="line">tree =etree.HTML(html)</span><br></pre></td></tr></table></figure>
+<h1 id="Selenium"><a href="#Selenium" class="headerlink" title="Selenium"></a>Selenium</h1><p>time.sleep(2)</p>
+<h2 id="元素定位"><a href="#元素定位" class="headerlink" title="元素定位"></a>元素定位</h2><p><code>driver.find_element(By.XPATH,&quot;……&quot;)</code><br><code>driver.find_elements(By.XPATH,&quot;……&quot;)</code></p>
+<h2 id="对元素的控制"><a href="#对元素的控制" class="headerlink" title="对元素的控制"></a>对元素的控制</h2><ul>
+<li><code>click()</code>：点击元素。</li>
+<li><code>send_keys()</code>：向元素输入文本。</li>
+<li><code>select()</code>：选择下拉列表中的选项。</li>
+<li><code>check()</code>：选择复选框或单选按钮。</li>
+<li><code>uncheck()</code>：取消选择复选框或单选按钮。</li>
+<li><code>submit()</code>：提交表单。</li>
+<li><code>clear()</code>：清空表单。</li>
+</ul>
+<h2 id="pytest-pom-Selenium"><a href="#pytest-pom-Selenium" class="headerlink" title="pytest+pom+Selenium"></a>pytest+pom+Selenium</h2><h3 id="一些问题"><a href="#一些问题" class="headerlink" title="一些问题"></a>一些问题</h3><ol>
+<li><p>代码相似，无法重用，增加工作量</p>
+</li>
+<li><p>元素加载有延迟，会导致出错</p>
+</li>
+<li><p>浏览器重复驱动、关闭</p>
+</li>
+</ol>
+<p>通过封装框架的方式,自动解决常见的问题</p>
+<h3 id="创建测试用例"><a href="#创建测试用例" class="headerlink" title="创建测试用例"></a>创建测试用例</h3><ol>
+<li>创建<code>test_</code>开头文件</li>
+<li>创建<code>test_</code>开头的函数(或者是类)</li>
+<li>在用例中使用断言<code>assert</code></li>
+</ol>
+<h3 id="执行测试用例"><a href="#执行测试用例" class="headerlink" title="执行测试用例"></a>执行测试用例</h3><ol>
+<li><p>在命令行使用<code>pytest</code></p>
+</li>
+<li><p>右键执行某个用例</p>
+</li>
+<li><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pytest</span><br><span class="line"><span class="keyword">if</span> __name__ = <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">	pytest.main()<span class="comment">#程序入口</span></span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="读懂测试结果"><a href="#读懂测试结果" class="headerlink" title="读懂测试结果"></a>读懂测试结果</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>含义</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.</td>
+<td>通过</td>
+<td></td>
+</tr>
+<tr>
+<td>F</td>
+<td>失败</td>
+<td>没有达到目标</td>
+</tr>
+<tr>
+<td>E</td>
+<td>出错</td>
+<td>没有启动,无法判断(框架有问题)</td>
+</tr>
+<tr>
+<td>s</td>
+<td>跳过</td>
+<td>没有去执行</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/10/16/a%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-%E7%BD%91%E9%A1%B5%E8%A7%A3%E6%9E%90%E7%9A%84%E5%AD%A6%E4%B9%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Dictat">
+      <meta itemprop="description" content="一个兴趣使然的人">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dictat 小站">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/10/16/a%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-%E7%BD%91%E9%A1%B5%E8%A7%A3%E6%9E%90%E7%9A%84%E5%AD%A6%E4%B9%A0/" class="post-title-link" itemprop="url">网页解析的学习</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-10-16 15:52:37 / 修改时间：15:53:13" itemprop="dateCreated datePublished" datetime="2023-10-16T15:52:37+08:00">2023-10-16</time>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2023/10/16/a%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-%E7%BD%91%E9%A1%B5%E8%A7%A3%E6%9E%90%E7%9A%84%E5%AD%A6%E4%B9%A0/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2023/10/16/a个人博客-网页解析的学习/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/10/16/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-%E7%BD%91%E7%BB%9C%E4%BF%AE%E5%A4%8D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Dictat">
+      <meta itemprop="description" content="一个兴趣使然的人">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dictat 小站">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/10/16/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-%E7%BD%91%E7%BB%9C%E4%BF%AE%E5%A4%8D/" class="post-title-link" itemprop="url">网络修复</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-10-16 13:28:19 / 修改时间：20:38:46" itemprop="dateCreated datePublished" datetime="2023-10-16T13:28:19+08:00">2023-10-16</time>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2023/10/16/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-%E7%BD%91%E7%BB%9C%E4%BF%AE%E5%A4%8D/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2023/10/16/个人博客-网络修复/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="2023年10月16日"><a href="#2023年10月16日" class="headerlink" title="2023年10月16日"></a>2023年10月16日</h2><p>今天在用bard学习的时候,聊着聊着就断线了,然后发现服务器挂了,换了好多的端口都没有用,于是决定一下reboot一下服务器了.<br>依旧用的是debian11.</p>
+<p>然后重新安装了大佬的代码</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -N --no-check-certificate -q -O install.sh <span class="string">&quot;https://raw.githubusercontent.com/wulabing/Xray_onekey/nginx_forward/install.sh&quot;</span> &amp;&amp; <span class="built_in">chmod</span> +x install.sh &amp;&amp; bash install.sh</span><br></pre></td></tr></table></figure>
+<p>这次用的是ngnix前置</p>
+<p>跑了这一命令以后还是不行,很难受.</p>
+<p>于是重新下载了一个带内核的<code>v2rayN</code></p>
+<p>跑了一下,发现还是不行.<br>最后发现用复制链接出来,然后从剪切板导入方法得到的配置是错误的,于是手动修改了一下,发现最后可以了.</p>
+<p>继续滚回去学我的<code>xpath</code>了.</p>
+<h1 id="相关程序安装"><a href="#相关程序安装" class="headerlink" title="相关程序安装"></a>相关程序安装</h1><p>由于服务器reboot了上面的所有东西都没了,都要重新安装,发现debian11有python3但是没有pip3,所以需要安装一个.</p>
+<h2 id="安装-pip"><a href="#安装-pip" class="headerlink" title="安装 pip"></a>安装 pip</h2><blockquote>
+<p>电脑上没有sudo ,但是有apt,这两个是啥?</p>
+<blockquote>
+<ol>
+<li><strong>sudo</strong> 是 <strong>superuser do</strong> 的缩写，用于以超级用户（root）权限运行命令。sudo 可以让普通用户在没有 root 权限的情况下执行需要 root 权限的操作。 </li>
+<li><strong>apt</strong> 是 <strong>Advanced Packaging Tool</strong> 的缩写，是一个用于管理 Linux 软件包的命令行工具。apt 可以用于安装、卸载、更新、搜索 Linux 软件包。 </li>
+</ol>
+</blockquote>
+<p>开来或许并不需要使用sudo,因为我这个账号已经是root了.</p>
+</blockquote>
+<p>我这样安装了sudo</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt update </span><br><span class="line">apt install sudo </span><br></pre></td></tr></table></figure>
+<p>然后用下面的命令安装了pip3:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update </span><br><span class="line">sudo apt install python3-pip </span><br></pre></td></tr></table></figure>
+<h2 id="安装-ffmpeg"><a href="#安装-ffmpeg" class="headerlink" title="安装 ffmpeg"></a>安装 ffmpeg</h2><ol>
+<li>更新 apt 包索引：</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br></pre></td></tr></table></figure>
+<ol>
+<li>安装 <strong>ffmpeg</strong>：</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install ffmpeg</span><br></pre></td></tr></table></figure>
+<h2 id="安装MySql"><a href="#安装MySql" class="headerlink" title="安装MySql"></a>安装MySql</h2>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/10/15/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-django/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Dictat">
+      <meta itemprop="description" content="一个兴趣使然的人">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dictat 小站">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/10/15/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-django/" class="post-title-link" itemprop="url">个人博客-django</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-10-15 17:21:23" itemprop="dateCreated datePublished" datetime="2023-10-15T17:21:23+08:00">2023-10-15</time>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2023/10/15/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-django/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2023/10/15/个人博客-django/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/10/13/%E9%AB%98%E4%B8%AD%E6%95%B0%E5%AD%A6%E7%9A%84%E8%AE%A1%E7%AE%97%E6%8A%80%E5%B7%A7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Dictat">
+      <meta itemprop="description" content="一个兴趣使然的人">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dictat 小站">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/10/13/%E9%AB%98%E4%B8%AD%E6%95%B0%E5%AD%A6%E7%9A%84%E8%AE%A1%E7%AE%97%E6%8A%80%E5%B7%A7/" class="post-title-link" itemprop="url">高中数学的计算技巧</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-10-13 15:53:28" itemprop="dateCreated datePublished" datetime="2023-10-13T15:53:28+08:00">2023-10-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-10-16 13:56:43" itemprop="dateModified" datetime="2023-10-16T13:56:43+08:00">2023-10-16</time>
+              </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2023/10/13/%E9%AB%98%E4%B8%AD%E6%95%B0%E5%AD%A6%E7%9A%84%E8%AE%A1%E7%AE%97%E6%8A%80%E5%B7%A7/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2023/10/13/高中数学的计算技巧/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>有一道题目需要求函数的值域范围.<br>其中<br>$f = 2 x^{2} \cdot \left(1 - \log{\left(x \right)}\right)(x&gt;0)$<br>,则</p>
+<p>则$f’ = 4 x \left(1 - \log{\left(x \right)}\right) - 2 x = 2 x - 4 x \log(\left(x \right))$</p>
+<p>则$f’’ = -4 \log{\left(x \right)} - 2$</p>
+<p>则导函数先增后减,在$x = e^{-\frac{1}{2}}$,时$f’$有最大值为</p>
+<p>$4 e^{-\frac{1}{2}}$,但是要注意到$f’$实际上在递减的过程中并没有小于零，因为其极限为$0$，所以它只会无限的趋近零,</p>
+<p>这说明原函数只有先增后减的两个过程.</p>
+<p>那么$f’$在何时为零,即函数$f$ 的驻点在哪里?</p>
+<p>通过计算可知驻点在$x = e^{\frac{1}{2}}$,则函数在该点取到最大值.</p>
+<p>最大值为$e$.</p>
+<p>函数的图像大致如下图所示</p>
+<p><img src="/2023/10/13/%E9%AB%98%E4%B8%AD%E6%95%B0%E5%AD%A6%E7%9A%84%E8%AE%A1%E7%AE%97%E6%8A%80%E5%B7%A7/1697184677901.png" alt="1697184677901"></p>
+<p>但是如果将自变量$x^2$ 用 $t$ 来替换,则原式可以转化为</p>
+<p>$g = t \cdot \left(2 - \log{\left(t \right)}\right)(x&gt;0)$</p>
+<p>$g’ = 1 - \log{\left(t \right)}$</p>
+<p>可知新函数和原函数的值域是相同的,但是求它的最值显然容易得多,</p>
+<p>$g’$ 的驻点为$e$,则$g$的最大值为$e$.</p>
+<p>两函数的图像比较如下:</p>
+<p><img src="/2023/10/13/%E9%AB%98%E4%B8%AD%E6%95%B0%E5%AD%A6%E7%9A%84%E8%AE%A1%E7%AE%97%E6%8A%80%E5%B7%A7/1697186516025.png" alt="1697186516025"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/10/12/%E4%B8%AA%E4%BA%BAHexo%E5%8D%9A%E5%AE%A2-%E6%9C%89%E5%85%B3%E4%BA%8E%E6%95%99%E8%B5%84%E9%9D%A2%E8%AF%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Dictat">
+      <meta itemprop="description" content="一个兴趣使然的人">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dictat 小站">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/10/12/%E4%B8%AA%E4%BA%BAHexo%E5%8D%9A%E5%AE%A2-%E6%9C%89%E5%85%B3%E4%BA%8E%E6%95%99%E8%B5%84%E9%9D%A2%E8%AF%95/" class="post-title-link" itemprop="url">有关于教资面试</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-10-12 13:07:25" itemprop="dateCreated datePublished" datetime="2023-10-12T13:07:25+08:00">2023-10-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-10-14 21:23:49" itemprop="dateModified" datetime="2023-10-14T21:23:49+08:00">2023-10-14</time>
+              </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2023/10/12/%E4%B8%AA%E4%BA%BAHexo%E5%8D%9A%E5%AE%A2-%E6%9C%89%E5%85%B3%E4%BA%8E%E6%95%99%E8%B5%84%E9%9D%A2%E8%AF%95/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2023/10/12/个人Hexo博客-有关于教资面试/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="椭圆例题"><a href="#椭圆例题" class="headerlink" title="椭圆例题"></a>椭圆例题</h1><p><img src="/2023/10/12/%E4%B8%AA%E4%BA%BAHexo%E5%8D%9A%E5%AE%A2-%E6%9C%89%E5%85%B3%E4%BA%8E%E6%95%99%E8%B5%84%E9%9D%A2%E8%AF%95/1697088023201.png" alt="1697088023201"></p>
+<ul>
+<li>着重复习焦点在X轴的椭圆方程 </li>
+<li>条理清晰，重难点突出 </li>
+<li>配合试讲有一定的板书 </li>
+<li>请在10分钟内完成试讲内容。</li>
+</ul>
+<p>请同学们根据之前我们学过的求解曲线方程的方法,前后四人为一小组,认真思考分析题目,并在小组内进行讨论求解,选择一种合适的方法了求解这个问题,时间五分钟,现在开始.</p>
+<p>老师听见同学们讨论的声音逐渐的减小了,在刚才巡视的过程中,发现一小组讨论的很激烈,那么请你们说一说.</p>
+<p>一组代表说……</p>
+<p>解题方法:</p>
+<ul>
+<li><p>根据几何含义,确定$a$的值</p>
+</li>
+<li><p>根据椭圆的标准方程,运用待定系数法,来确定a的值</p>
+<ul>
+<li>缺点,计算量较大</li>
+</ul>
+</li>
+</ul>
+<h2 id="结尾套话"><a href="#结尾套话" class="headerlink" title="结尾套话"></a>结尾套话</h2><p>各位评委老师我今天的试讲到此结束,感谢各位评委老师的耐性聆听.</p>
+<h1 id="函数的单调性"><a href="#函数的单调性" class="headerlink" title="函数的单调性"></a>函数的单调性</h1><h2 id="导入部分"><a href="#导入部分" class="headerlink" title="导入部分"></a>导入部分</h2><p>复习导入:利用初中知识描述图像的变化特征</p>
+<h2 id="新授环节"><a href="#新授环节" class="headerlink" title="新授环节"></a>新授环节</h2><ol>
+<li>给出表1一3，引导学生从函数值得角度观察思考这种变化规律， 学生回答；</li>
+<li>继续引导学生利用符号化得数学语言表征图像的变化规律</li>
+<li>学生大致说明后，教师引导取值$x_1$与$x_2$进行更规范说明； </li>
+<li>教师归纳出单调性的定义并进行板书； </li>
+<li>借助二次函数来说明：单调性为局部性质,$x_1$与$x_2$， 让学生体会数学语言的精炼。</li>
+</ol>
+<h2 id="巩固练习环节"><a href="#巩固练习环节" class="headerlink" title="巩固练习环节"></a>巩固练习环节</h2><h2 id="课堂小结"><a href="#课堂小结" class="headerlink" title="课堂小结"></a>课堂小结</h2><h2 id="布置作业"><a href="#布置作业" class="headerlink" title="布置作业"></a>布置作业</h2><h1 id="基本不等式例题一"><a href="#基本不等式例题一" class="headerlink" title="基本不等式例题一"></a>基本不等式例题一</h1><p>回顾:基本不等式的表达式</p>
+<p>代数意义:</p>
+<p>几何意义:半径不小于半弦长</p>
+<p><img src="/2023/10/12/%E4%B8%AA%E4%BA%BAHexo%E5%8D%9A%E5%AE%A2-%E6%9C%89%E5%85%B3%E4%BA%8E%E6%95%99%E8%B5%84%E9%9D%A2%E8%AF%95/1697206719587.png" alt="1697206719587"></p>
+<h2 id="向量的几何表示"><a href="#向量的几何表示" class="headerlink" title="向量的几何表示"></a>向量的几何表示</h2><p><img src="/2023/10/12/%E4%B8%AA%E4%BA%BAHexo%E5%8D%9A%E5%AE%A2-%E6%9C%89%E5%85%B3%E4%BA%8E%E6%95%99%E8%B5%84%E9%9D%A2%E8%AF%95/1697289683849.png" alt="1697289683849"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/10/11/%E5%A4%9A%E9%82%BB%E5%9B%BD%E6%97%A5%E8%AF%AD%E5%AD%A6%E4%B9%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Dictat">
+      <meta itemprop="description" content="一个兴趣使然的人">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dictat 小站">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/10/11/%E5%A4%9A%E9%82%BB%E5%9B%BD%E6%97%A5%E8%AF%AD%E5%AD%A6%E4%B9%A0/" class="post-title-link" itemprop="url">多邻国日语学习</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-10-11 21:18:33" itemprop="dateCreated datePublished" datetime="2023-10-11T21:18:33+08:00">2023-10-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-10-26 14:55:34" itemprop="dateModified" datetime="2023-10-26T14:55:34+08:00">2023-10-26</time>
+              </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2023/10/11/%E5%A4%9A%E9%82%BB%E5%9B%BD%E6%97%A5%E8%AF%AD%E5%AD%A6%E4%B9%A0/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2023/10/11/多邻国日语学习/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="第一阶段"><a href="#第一阶段" class="headerlink" title="第一阶段"></a>第一阶段</h1><h2 id="第一部分"><a href="#第一部分" class="headerlink" title="第一部分"></a>第一部分</h2><h3 id="颜色"><a href="#颜色" class="headerlink" title="颜色"></a>颜色</h3><p>しろ  白</p>
+<p>あか  「赤」 红</p>
+<p>あお  「青」 蓝</p>
+<h3 id="有关于早上好"><a href="#有关于早上好" class="headerlink" title="有关于早上好"></a>有关于早上好</h3><p>日语中“早上好”有两种说法：</p>
+<ul>
+<li><strong>おはようございます。</strong> (ohayo gozaimasu) - 这是比较正式的说法，可以用在任何场合，包括对上级、长辈、陌生人等。</li>
+<li><strong>おはよう。</strong> (ohayo) - 这是比较随意的说法，可以用在熟人之间。</li>
+</ul>
+<h1 id="第二部分"><a href="#第二部分" class="headerlink" title="第二部分"></a>第二部分</h1><p>猫 Neko</p>
+<p>犬 Inu</p>
+<p>鳥 Tori</p>
+<p>甘い寿司 Amai sushi 甜的寿司</p>
+<p>てりやき Teri yaki 照烧</p>
+<p>脏的    [汚い」 （kitanai）</p>
+<p>天妇罗（日语：天ぷら，罗马音：tempura） </p>
+<p>便当: 弁当 (bento)  </p>
+<h3 id="时间、季节"><a href="#时间、季节" class="headerlink" title="时间、季节"></a>时间、季节</h3><ul>
+<li><p>白天 「昼」（ひる) ：常用，表示白天，包括早上、中午和下午。</p>
+</li>
+<li><p>晚上「夜」（よる） </p>
+</li>
+<li><p>阴天「曇り」（くもり） </p>
+</li>
+<li><p>晴天 「晴れ」（はれ） </p>
+</li>
+<li><p>冬天 「冬」（ふゆ） </p>
+</li>
+<li><p>夏天 「夏」（なつ） </p>
+</li>
+</ul>
+<h3 id="空间位置、地点"><a href="#空间位置、地点" class="headerlink" title="空间位置、地点"></a>空间位置、地点</h3><ul>
+<li>屋子：家（いえ）</li>
+<li>房间：部屋（へや）</li>
+<li>外面：外（そと）</li>
+<li><strong>学校</strong> (がっこう) - 学校</li>
+</ul>
+<h3 id="物件"><a href="#物件" class="headerlink" title="物件"></a>物件</h3><ul>
+<li><strong>切符</strong> (きっぷ) 是专指交通工具的票券，包括火车票、公交车票、地铁票等 </li>
+<li><strong>かばん</strong> (かばん) - 书包</li>
+<li><strong>えんぴつ</strong> (えんぴつ) - 铅笔</li>
+<li><strong>電話</strong> (でんわ) - 电话</li>
+</ul>
+<h3 id="器官、部位"><a href="#器官、部位" class="headerlink" title="器官、部位"></a>器官、部位</h3><ul>
+<li>眼睛<ul>
+<li>日语：目 (め)</li>
+<li>罗马音：me</li>
+<li>例句：私の目は茶色です。 (watashi no me wa chairo desu.) - 我的眼睛是棕色的。</li>
+</ul>
+</li>
+<li>耳朵<ul>
+<li>日语：耳 (みみ)</li>
+<li>罗马音：mimi</li>
+<li>例句：私の耳は聞こえません。 (watashi no mimi wa kikoemasen.) - 我听不见。</li>
+</ul>
+</li>
+<li>背<ul>
+<li>日语：背 (せ)</li>
+<li>罗马音：se</li>
+<li>例句：私の背中が痛いです。 (watashi no senaka ga itai desu.) - 我的背很疼。</li>
+</ul>
+</li>
+</ul>
+<h3 id="读、穿、喝"><a href="#读、穿、喝" class="headerlink" title="读、穿、喝"></a>读、穿、喝</h3><ul>
+<li>读：読む（よむ）</li>
+<li>穿：着る（きる）</li>
+<li>喝：飲む（のむ）</li>
+</ul>
+<h1 id="其他单词"><a href="#其他单词" class="headerlink" title="其他单词"></a>其他单词</h1><h2 id="N5"><a href="#N5" class="headerlink" title="N5"></a>N5</h2><ul>
+<li>报社：新聞社（しんぶんしゃ）</li>
+<li>人：人（ひと）</li>
+<li>授课：授業（じゅぎょう）</li>
+<li>果汁：ジュース（じゅーす）</li>
+<li>医院：病院（びょういん）</li>
+<li>讨厌：嫌い（きらい）</li>
+<li>生日：誕生日（たんじょうび）</li>
+<li>疼痛：痛み（いたみ）</li>
+<li>明信片：はがき（はがき）</li>
+<li>卡拉ok：カラオケ（からおけ）</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/10/11/%E8%A7%A3%E6%9E%90%E5%87%A0%E4%BD%95%E4%B8%AD%E9%97%AE%E9%A2%98%E7%9A%84%E8%BD%AC%E5%8C%96/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Dictat">
+      <meta itemprop="description" content="一个兴趣使然的人">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dictat 小站">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/10/11/%E8%A7%A3%E6%9E%90%E5%87%A0%E4%BD%95%E4%B8%AD%E9%97%AE%E9%A2%98%E7%9A%84%E8%BD%AC%E5%8C%96/" class="post-title-link" itemprop="url">解析几何中问题的转化</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-10-11 19:43:45 / 修改时间：20:04:08" itemprop="dateCreated datePublished" datetime="2023-10-11T19:43:45+08:00">2023-10-11</time>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2023/10/11/%E8%A7%A3%E6%9E%90%E5%87%A0%E4%BD%95%E4%B8%AD%E9%97%AE%E9%A2%98%E7%9A%84%E8%BD%AC%E5%8C%96/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2023/10/11/解析几何中问题的转化/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><img src="/2023/10/11/%E8%A7%A3%E6%9E%90%E5%87%A0%E4%BD%95%E4%B8%AD%E9%97%AE%E9%A2%98%E7%9A%84%E8%BD%AC%E5%8C%96/1697024725933.png" alt="1697024725933"></p>
+<p>这到题目似是要证明线段长度之间的关系,实际上为证明出存在一个直角三角形,然后自然的应用相似比来证明.</p>
+<h2 id="单个点引出两条直线的问题"><a href="#单个点引出两条直线的问题" class="headerlink" title="单个点引出两条直线的问题"></a>单个点引出两条直线的问题</h2><p><img src="/2023/10/11/%E8%A7%A3%E6%9E%90%E5%87%A0%E4%BD%95%E4%B8%AD%E9%97%AE%E9%A2%98%E7%9A%84%E8%BD%AC%E5%8C%96/1697025791478.png" alt="1697025791478"></p>
+<h2 id="两条直线有交点的问题"><a href="#两条直线有交点的问题" class="headerlink" title="两条直线有交点的问题"></a>两条直线有交点的问题</h2><p><img src="/2023/10/11/%E8%A7%A3%E6%9E%90%E5%87%A0%E4%BD%95%E4%B8%AD%E9%97%AE%E9%A2%98%E7%9A%84%E8%BD%AC%E5%8C%96/1697025845385.png" alt="1697025845385"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2023/10/10/%E7%94%A8python%E6%B1%82%E8%A7%A3%E8%A7%A3%E6%9E%90%E5%87%A0%E4%BD%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -203,10 +1140,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2023-10-10 22:20:21 / 修改时间：22:30:13" itemprop="dateCreated datePublished" datetime="2023-10-10T22:20:21+08:00">2023-10-10</time>
+              <time title="创建时间：2023-10-10 22:20:21" itemprop="dateCreated datePublished" datetime="2023-10-10T22:20:21+08:00">2023-10-10</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-10-16 13:53:57" itemprop="dateModified" datetime="2023-10-16T13:53:57+08:00">2023-10-16</time>
+              </span>
 
           
   
@@ -234,825 +1177,40 @@
 
       
           <p>写了几个程序来求解高中的解析几何,才开始用的是一个<code>sympy</code>的几何库来做的,但是只能做椭圆的问题,后来就直接用<code>solve</code>来暴力的求解了.<br>这些程序的主要目的是联立直线和圆锥曲线的方程,这是求解解析几何问题的基本方法,即所谓的设而不求:联立方程之后利用韦达定理来得到两个焦点坐标的关系.</p>
-<h3 id="求解直线和抛物线的交点"><a href="#求解直线和抛物线的交点" class="headerlink" title="求解直线和抛物线的交点:"></a>求解直线和抛物线的交点:</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">solveParabola</span>(<span class="params">p,point</span>):</span><br><span class="line">    x0 = point[<span class="number">0</span>]</span><br><span class="line">    y0 = point[<span class="number">1</span>]</span><br><span class="line">    ((x1,y1),(x2,y2)) = nonlinsolve([y**<span class="number">2</span>-<span class="number">2</span>*p*x, y-k*(x-x0)-y0 ], (x,y))</span><br><span class="line">    <span class="keyword">return</span> x1,y1,x2,y2</span><br></pre></td></tr></table></figure>
+<h2 id="三个求解函数"><a href="#三个求解函数" class="headerlink" title="三个求解函数"></a>三个求解函数</h2><h3 id="求解直线和抛物线的交点"><a href="#求解直线和抛物线的交点" class="headerlink" title="求解直线和抛物线的交点:"></a>求解直线和抛物线的交点:</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">solveParabola</span>(<span class="params">p,point</span>):</span><br><span class="line">    x0 = point[<span class="number">0</span>]</span><br><span class="line">    y0 = point[<span class="number">1</span>]</span><br><span class="line">    ((x1,y1),(x2,y2)) = nonlinsolve([y**<span class="number">2</span>-<span class="number">2</span>*p*x, y-k*(x-x0)-y0 ], (x,y))</span><br><span class="line">    <span class="keyword">return</span> x1,y1,x2,y2</span><br></pre></td></tr></table></figure>
 <h3 id="求解直线和椭圆的交点"><a href="#求解直线和椭圆的交点" class="headerlink" title="求解直线和椭圆的交点:"></a>求解直线和椭圆的交点:</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#请在安装了sympy以后在jupyter(IPython notebook)下运算该程序,这主要是为了更美观的显示数学公式</span></span><br><span class="line"><span class="keyword">from</span> sympy <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">solveEllipse</span>(<span class="params">a,b,point</span>):</span><br><span class="line">    <span class="keyword">from</span> sympy.abc <span class="keyword">import</span> x, y,k,m</span><br><span class="line">    <span class="keyword">from</span> sympy <span class="keyword">import</span> nonlinsolve</span><br><span class="line">    <span class="keyword">from</span> sympy <span class="keyword">import</span> simplify</span><br><span class="line">    x0 = point[<span class="number">0</span>]</span><br><span class="line">    y0 = point[<span class="number">1</span>]</span><br><span class="line">    ((x1,y1),(x2,y2)) = nonlinsolve([x**<span class="number">2</span>/a**<span class="number">2</span>+y**<span class="number">2</span>/b**<span class="number">2</span>-<span class="number">1</span>, y-k*(x-x0)-y0 ], (x,y))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;x1+x2 = &#x27;</span>)</span><br><span class="line">    display(simplify(x1+x2))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;x1*x2 = &#x27;</span>)</span><br><span class="line">    display(simplify(x1*x2))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;y1+y2 = &#x27;</span>)</span><br><span class="line">    display(simplify(y1+y2))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;y1*y2 = &#x27;</span>)</span><br><span class="line">    display(simplify(y1*y2))</span><br><span class="line">    <span class="keyword">return</span> x1,y1,x2,y2;</span><br><span class="line">x1,y1,x2,y2 = solveEllipse(<span class="number">4</span>,<span class="number">3</span>,(<span class="number">1</span>,<span class="number">0</span>));</span><br></pre></td></tr></table></figure>
 <h3 id="求解直线和双曲线的交点"><a href="#求解直线和双曲线的交点" class="headerlink" title="求解直线和双曲线的交点:"></a>求解直线和双曲线的交点:</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">solveHyperbola</span>(<span class="params">a,b,point</span>):</span><br><span class="line">    <span class="keyword">from</span> sympy.abc <span class="keyword">import</span> x, y,k,m</span><br><span class="line">    <span class="keyword">from</span> sympy <span class="keyword">import</span> nonlinsolve</span><br><span class="line">    <span class="keyword">from</span> sympy <span class="keyword">import</span> simplify</span><br><span class="line">    x0 = point[<span class="number">0</span>]</span><br><span class="line">    y0 = point[<span class="number">1</span>]</span><br><span class="line">    ((x1,y1),(x2,y2)) = nonlinsolve([x**<span class="number">2</span>/a**<span class="number">2</span>+y**<span class="number">2</span>/b**<span class="number">2</span>-<span class="number">1</span>, y-k*(x-x0)-y0 ], (x,y))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;x1+x2 = &#x27;</span>)</span><br><span class="line">    display(simplify(x1+x2))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;x1*x2 = &#x27;</span>)</span><br><span class="line">    display(simplify(x1*x2))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;y1+y2 = &#x27;</span>)</span><br><span class="line">    display(simplify(y1+y2))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;y1*y2 = &#x27;</span>)</span><br><span class="line">    display(simplify(y1*y2))</span><br><span class="line">    <span class="keyword">return</span> x1,y1,x2,y2;</span><br></pre></td></tr></table></figure>
 <p>由于双曲线和抛物线的开口有方向性,则在实际过程中,可能需要根据题目的主要内容来修改函数中的参数.</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/10/10/Hexo_%E8%8B%B1%E8%AF%AD%E5%8D%95%E8%AF%8D%E5%AD%A6%E4%B9%A0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Dictat">
-      <meta itemprop="description" content="一个兴趣使然的人">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dictat 小站">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/10/10/Hexo_%E8%8B%B1%E8%AF%AD%E5%8D%95%E8%AF%8D%E5%AD%A6%E4%B9%A0/" class="post-title-link" itemprop="url">英语单词学习</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2023-10-10 20:45:35 / 修改时间：22:19:40" itemprop="dateCreated datePublished" datetime="2023-10-10T20:45:35+08:00">2023-10-10</time>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2023/10/10/Hexo_%E8%8B%B1%E8%AF%AD%E5%8D%95%E8%AF%8D%E5%AD%A6%E4%B9%A0/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2023/10/10/Hexo_英语单词学习/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <blockquote>
-<p>Django is a high-level Python web framework that encourages rapid development and clean, <strong>pragmatic</strong> design. Built by experienced developers, it takes care of much of the <strong>hassle</strong> of web development, so you can focus on writing your app without needing to reinvent the wheel. It’s free and open source.</p>
-</blockquote>
-<p>pragmatic  adj. 务实的；实事求是的；注重实效的</p>
-<p>hassle n. 困难，麻烦；激战</p>
+<h2 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h2><p>已知双曲线$\Gamma$:${\frac{x^{2}}{a^{2}}}-{\frac{y^{2}}{b^{2}}}=1$，的焦距为$4$,过点$P(2,\frac{\sqrt{3}}{3})$</p>
 <blockquote>
-<p><strong>Reassuringly secure.</strong></p>
-<p>Django takes security seriously and helps developers avoid many common security mistakes.</p>
+<ol>
+<li>求双曲线$\Gamma$的方程.</li>
+<li>过双曲线 $\Gamma$ 的左焦点 $F$ 分别作斜率为 $k_1,k_2$的两直线 $l_1$与 $l_2$，直线 $l_1$交双曲线 $\Gamma$  于 $A,B$ 两点，直线 $l_2$交双曲线  $\Gamma$ 于 $C,D$ 两点，设 $M,N$ 分别为 $AB$ 与 $CD$ 的中点，若 $k_1⋅ k_2=-1$，试求 $ \bigtriangleup  OMN$ 与  $\bigtriangleup  FMN$ 的面积之比.</li>
+</ol>
 </blockquote>
-<p>reassure vt. 消除恐惧或疑虑；恢复信心</p>
-<p>Reassuringly secure 难道翻译成,令人安心?</p>
-<blockquote>
-<p><strong>Ridiculously fast</strong>.</p>
-<p>Django was designed to help developers take applications from concept to completion as quickly as possible.</p>
-</blockquote>
-<p>Ridiculously fast 这或许应该翻译成”快得离谱”</p>
-<blockquote>
-<p><strong>Incredibly versatile.</strong></p>
-<p>Companies, organizations and governments have used Django to build all sorts of things — from content management systems to social networks to scientific computing platforms.</p>
-</blockquote>
-<p>Incredibly versatile 才艺超群?</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/10/10/%E7%BD%91%E7%AB%99%E6%96%87%E7%AB%A0-%E5%9C%A8MarkDown%E4%B8%AD%E4%BD%BF%E7%94%A8html/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Dictat">
-      <meta itemprop="description" content="一个兴趣使然的人">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dictat 小站">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/10/10/%E7%BD%91%E7%AB%99%E6%96%87%E7%AB%A0-%E5%9C%A8MarkDown%E4%B8%AD%E4%BD%BF%E7%94%A8html/" class="post-title-link" itemprop="url">在Markdown中使用html</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2023-10-10 13:17:17 / 修改时间：13:28:54" itemprop="dateCreated datePublished" datetime="2023-10-10T13:17:17+08:00">2023-10-10</time>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2023/10/10/%E7%BD%91%E7%AB%99%E6%96%87%E7%AB%A0-%E5%9C%A8MarkDown%E4%B8%AD%E4%BD%BF%E7%94%A8html/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2023/10/10/网站文章-在MarkDown中使用html/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>能够在markdown中使用html语言来完成一些文字排版.</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">style</span>=<span class="string">&quot;font-family:times;color:green&quot;</span>&gt;</span></span><br><span class="line">This text is in Times and green<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>如上的一串代码实现了,下面的结果:</p>
-<p style="font-family:times;color:green">
-This text is in Times and green</p>
-
-<p>那么类似的我们能够排版一些古诗文,</p>
-<p>代码为</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;p style=&quot;font-family:楷体&quot;&gt;</span><br><span class="line">赵客缦胡缨，吴钩霜雪明。&lt;br&gt;</span><br><span class="line">银鞍照白马，飒沓如流星。&lt;br&gt;</span><br><span class="line">十步杀一人，千里不留行。&lt;br&gt;</span><br><span class="line">事了拂衣去，深藏身与名。&lt;br&gt;</span><br><span class="line">&lt;/p&gt;</span><br></pre></td></tr></table></figure>
-<p>显示效果如下:</p>
-<p style="font-family:楷体">
-赵客缦胡缨，吴钩霜雪明。<br>
-银鞍照白马，飒沓如流星。<br>
-十步杀一人，千里不留行。<br>
-事了拂衣去，深藏身与名。<br>
-</p>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/10/10/Hexo%E6%AF%8F%E6%97%A5%E5%8F%A4%E8%AF%97%E6%96%87/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Dictat">
-      <meta itemprop="description" content="一个兴趣使然的人">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dictat 小站">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/10/10/Hexo%E6%AF%8F%E6%97%A5%E5%8F%A4%E8%AF%97%E6%96%87/" class="post-title-link" itemprop="url">每日古诗文</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2023-10-10 12:43:53 / 修改时间：13:34:32" itemprop="dateCreated datePublished" datetime="2023-10-10T12:43:53+08:00">2023-10-10</time>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2023/10/10/Hexo%E6%AF%8F%E6%97%A5%E5%8F%A4%E8%AF%97%E6%96%87/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2023/10/10/Hexo每日古诗文/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="清平乐-2023年10月7日"><a href="#清平乐-2023年10月7日" class="headerlink" title="清平乐 2023年10月7日"></a>清平乐 2023年10月7日</h2><blockquote>
-<p>雨晴烟晚。绿水新池满。<br>双燕飞来垂柳院，小阁画帘高卷。<br>黄昏独倚朱阑。西南新月眉弯。<br>砌下落花风起，罗衣特地春寒。 </p>
-</blockquote>
-<p>冯延巳的婉约词那是写得相当不错的.</p>
-<p>最后一句中的<code>罗衣特地春寒</code> 类似晏殊的清平乐中的最后一句<code>银屏昨夜微寒</code>.</p>
-<p>不知道是晏学习了冯,还是这本来就是冯的诗词呢?</p>
-<blockquote>
-<p style="font-family:楷体">
-金风细细。叶叶梧桐坠。<br>
-绿酒初尝人易醉。一枕小窗浓睡。<br>
-紫薇朱槿花残。斜阳却照阑干。<br>
-双燕欲归时节，<b>银屏昨夜微寒</b>。<br>
-</p>
-
-
-
-</blockquote>
-<h2 id="老子·七十七章-2023年10月8日"><a href="#老子·七十七章-2023年10月8日" class="headerlink" title="老子·七十七章 2023年10月8日"></a>老子·七十七章 2023年10月8日</h2><blockquote>
-<p>天之道，其犹张弓欤？<br>高者抑之，下者举之；有余者损之，不足者补之。<br>天之道，损有余而补不足。<br><strong>人之道则不然，损不足以奉有余。</strong><br><strong>孰能有余以奉天下，唯有道者。</strong><br>是以圣人为而不恃，功成而不处，其不欲见贤邪。</p>
-</blockquote>
-<h2 id="菩萨蛮-2023年10月9日"><a href="#菩萨蛮-2023年10月9日" class="headerlink" title="菩萨蛮 2023年10月9日"></a>菩萨蛮 2023年10月9日</h2><blockquote>
-<p>玉楼明月长相忆，柳丝袅娜春无力。<br>门外草萋萋，送君闻马嘶。<br>画罗金翡翠，香烛销成泪。<br>花落子规啼，绿窗残梦迷。</p>
-</blockquote>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/10/02/hexo%E5%91%BD%E4%BB%A4%E7%9A%84%E5%9B%9E%E9%A1%BE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Dictat">
-      <meta itemprop="description" content="一个兴趣使然的人">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dictat 小站">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/10/02/hexo%E5%91%BD%E4%BB%A4%E7%9A%84%E5%9B%9E%E9%A1%BE/" class="post-title-link" itemprop="url">hexo命令的回顾</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-10-02 14:56:43" itemprop="dateCreated datePublished" datetime="2023-10-02T14:56:43+08:00">2023-10-02</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-10-09 19:30:58" itemprop="dateModified" datetime="2023-10-09T19:30:58+08:00">2023-10-09</time>
-              </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2023/10/02/hexo%E5%91%BD%E4%BB%A4%E7%9A%84%E5%9B%9E%E9%A1%BE/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2023/10/02/hexo命令的回顾/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>“故地重游,月圆更寂寞~ ~”<br>由于已经有一年多没有使用hexo了, 我对个这工具的大多数命令已经十分的生疏,有必要复习一下相关的知识了.</p>
-<h2 id="生成静态文件和部署"><a href="#生成静态文件和部署" class="headerlink" title="生成静态文件和部署"></a>生成静态文件和部署</h2><p><code>hexo generate</code>生成<br><code>hexo deploy</code>部署,将会将最新的文件同步到github对应的网站.</p>
-<h2 id="本地测试"><a href="#本地测试" class="headerlink" title="本地测试"></a>本地测试</h2><p><code>hexo server</code> 在本地生成一个服务器</p>
-<h2 id="新建文章？"><a href="#新建文章？" class="headerlink" title="新建文章？"></a>新建文章？</h2><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new &lt;<span class="built_in">title</span>&gt;</span><br></pre></td></tr></table></figure>
-<p>比如用<br><code>hexo new &quot;hexo命令的回顾&quot;</code></p>
-<h3 id="关于标签的使用"><a href="#关于标签的使用" class="headerlink" title="关于标签的使用"></a>关于标签的使用</h3><p>在使用多个标签的时候,需要用使用方括号,格式如下:<br><code>tags: [数学,拓扑学,数学问题]</code></p>
-<h2 id="插入图片？"><a href="#插入图片？" class="headerlink" title="插入图片？"></a>插入图片？</h2><p><img src="/2023/10/02/hexo%E5%91%BD%E4%BB%A4%E7%9A%84%E5%9B%9E%E9%A1%BE/logo.png" alt="logo"></p>
-<p>由于之前的设定,我在<code>typora</code>之中插入图片的同时,会自动在当前目录下生成一个文件夹并且将图片复制到其中.</p>
-<p><img src="/2023/10/02/hexo%E5%91%BD%E4%BB%A4%E7%9A%84%E5%9B%9E%E9%A1%BE/1696230712926.png" alt="1696230712926"></p>
-<h2 id="如何更换主题"><a href="#如何更换主题" class="headerlink" title="如何更换主题"></a>如何更换主题</h2><p>在 <code>_config.yml</code> 文件中更改theme关键字后的主题名,比如我用的是仙人掌主题:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">theme: cactus</span><br></pre></td></tr></table></figure>
-<h2 id="如何添加站内搜索"><a href="#如何添加站内搜索" class="headerlink" title="如何添加站内搜索"></a>如何添加站内搜索</h2><p>不同的主题或许配置不尽相同,今天改换用Next主题了.大概的配置是</p>
-<p>安装插件:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-search --save  </span><br></pre></td></tr></table></figure></p>
-<p>然后在主题配置文件下将<code>local_search</code>后面改为<code>true</code>.</p>
-<h2 id="如何添加评论"><a href="#如何添加评论" class="headerlink" title="如何添加评论"></a>如何添加评论</h2><p>使用的是 disqus</p>
-<p>参考:<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/d68de067ea74">https://www.jianshu.com/p/d68de067ea74</a></p>
-<p>在主题的配置文件<code>_config.yml</code>中找</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">isqus:</span><br><span class="line">  enable: true</span><br><span class="line">  shortname: dictat</span><br><span class="line">  count: true</span><br><span class="line">  #post_meta_order: 0</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Dictat">
-      <meta itemprop="description" content="一个兴趣使然的人">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dictat 小站">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/" class="post-title-link" itemprop="url">上下极限和极限关系</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-05-14 11:00:19 / 修改时间：11:04:09" itemprop="dateCreated datePublished" datetime="2022-05-14T11:00:19+08:00">2022-05-14</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/" itemprop="url" rel="index"><span itemprop="name">数学分析</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/14/上下极限和极限关系/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>本篇文章参考了 Ross 的Elementary Analysis 一书,旨在复习数列的上下极限相关的内容.</p>
-<h2 id="上下极限和极限的关系"><a href="#上下极限和极限的关系" class="headerlink" title="上下极限和极限的关系"></a>上下极限和极限的关系</h2><p>所谓数列的上极限和下极限的定义如下:<br><img src="/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/697904f8-f5c2-4b9f-a224-53d6e30b4bdb.png" alt="500"></p>
-<p>我们并没有限制数列${s_n}$ 是有限的,也就是说,如果数列是上方无界的,他的上极限就是$+\infty$:</p>
-<p><img src="/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/a679e331-8b87-4b12-80c2-8fb7325ff0de.png" alt=""></p>
-<p>$a_N = \sup { s_n:n&gt;N }$ 这个数列是递减的.可以看出 $\lim \sup s_n \le \sup{s_n : n \in \mathbb{N} }$.</p>
-<p>下极限小于等于上极限,证明如下:</p>
+<ol>
+<li>可以求出其方程为${\frac{x^{2}}{3}}-y^{2}=1$</li>
+<li>左焦点坐标为(-2,0)</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x1,y1,x2,y2 =solveHyperbola(sqrt(<span class="number">3</span>),<span class="number">1</span>,(-<span class="number">2</span>,<span class="number">0</span>));</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">k_1,k_2  =symbols(<span class="string">&#x27;k_1 k_2&#x27;</span>)</span><br><span class="line">m_x = simplify(((x1+x2)/<span class="number">2</span>).subs(k,k_1))</span><br><span class="line">m_y = simplify(((y1+y2)/<span class="number">2</span>).subs(k,k_1))</span><br></pre></td></tr></table></figure>
+<p>则得到了$M$的坐标,由于$k_1⋅ k_2=-1$,则也能得到N的坐标为<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">n_x = simplify(((x1+x2)/<span class="number">2</span>).subs(k,-<span class="number">1</span>/k_1))</span><br><span class="line">n_y = simplify(((y1+y2)/<span class="number">2</span>).subs(k,-<span class="number">1</span>/k_1))</span><br></pre></td></tr></table></figure></p>
+<p><img src="/2023/10/10/%E7%94%A8python%E6%B1%82%E8%A7%A3%E8%A7%A3%E6%9E%90%E5%87%A0%E4%BD%95/1697002468458.png" alt="1697002468458"></p>
+<p>当</p>
 <script type="math/tex; mode=display">
-\begin{align}
-& s_{n+1} \le \sup \{s_n : n > N \} ()\\
-& \inf \{s_n : n > N \} \le \sup \{s_n : n > N \}\\
-&\inf \{s_n : n > N+1 \} \le \lim\sup \{s_n : n > N \}\\
-&\lim\inf \{s_n : n > N+1 \} \le \lim\sup \{s_n : n > N \}
-\end{align}</script><p>上下极限和极限有下面关系(<strong>Theorem 10.7</strong>):</p>
-<p><img src="/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/1ced2a7a-bafc-4993-b77f-84d276f11922.png" alt=""></p>
-<p>即极限确定(一个实数,或是$-\infty$和$+\infty$),则上下极限和极限相同;反之,上下极限相同,则数列的极限确定.</p>
-<p>(1)的证明如下:<br>首先,极限为$\infty$:<br><img src="/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/82aa2934-167b-4f02-a9be-7f19ffcc6e77.png" alt=""><br>其次,极限为实数:<br><img src="/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/28cc250b-01c8-46d9-9aa3-d038d3c051bb.png" alt=""><br>又因为,下极限小于等于上极限,所以得证.</p>
-<p>(2)的证明如下:</p>
-<p><img src="/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/fb9a9705-df2a-4fcb-9cd0-f0507b1db253.png" alt=""></p>
-<h2 id="数列上下极限和子列极限的关系"><a href="#数列上下极限和子列极限的关系" class="headerlink" title="数列上下极限和子列极限的关系"></a>数列上下极限和子列极限的关系</h2><h3 id="单调子列逼近上下极限"><a href="#单调子列逼近上下极限" class="headerlink" title="单调子列逼近上下极限:"></a>单调子列逼近上下极限:</h3><p>首先有定理说明了,一定存在一个单调递增的子列,它的极限是上极限,类似可以说明下极限的情况.</p>
-<p><img src="/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/d96cbf4a-1746-4a89-8ca7-434fb17b02ab.png" alt=""></p>
-<p>首先如果数列无上界,则存在一个趋向正无穷的子列:<br><img src="/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/abf8721d-0f03-414b-8e59-ccb29adf2915.png" alt=""><br>这是因为:<br><img src="/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/a68cfc4f-12d8-4fb8-8e2d-9c82b1fe4d31.png" alt=""><br>可见这样构造的子列是<strong>单调递增</strong>的,且极限为$+\infty$,此时上极限也为$+\infty$(为什么?).同样的,如果无下界的话,就会有单调的子列极限为$-\infty$.</p>
-<p>我们还有说明的是,如果数列有上界,则也有单调的子列极限为上极限.(同样可以得到有下界时对于下极限的情况.)</p>
-<p>因为有上界,所以上极限是有限实数,设为$t$,</p>
-<p><img src="/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/f14671f1-1065-41aa-aa85-c66117cb0e36.png" alt=""></p>
-<h3 id="上下极限和子列极限的关系"><a href="#上下极限和子列极限的关系" class="headerlink" title="上下极限和子列极限的关系"></a>上下极限和子列极限的关系</h3><p>下面的定理说明了,<em>上下极限和子列极限的关系</em>,即子列极限构成的集合$S$非空;$S$的上确界等于上极限,下确界等于下极限;极限存在<strong>当且仅当</strong>$S$中的元素只有一个:<br><img src="/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/dc035c1c-6a30-4700-89e5-320b0038a56b.png" alt=""><br>证明如下: \<br>(i) 根据上诉的<strong>Theorem 11.7</strong>,知道至少有子列的极限是上下极限,所以$S$ 不为空.\<br>(ii)需要用到<strong>Theorem 10.7</strong><br><img src="/2022/05/14/%E4%B8%8A%E4%B8%8B%E6%9E%81%E9%99%90%E5%92%8C%E6%9E%81%E9%99%90%E5%85%B3%E7%B3%BB/c24d4db0-f8e6-414d-b8f4-41c70f3cefeb.png" alt=""><br>(iii) 由定理<strong>Theorem 10.7</strong>可以得到.</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/05/latex%E7%9A%84footnote%E7%9A%84%E5%BC%95%E7%94%A8%E9%97%AE%E9%A2%98/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Dictat">
-      <meta itemprop="description" content="一个兴趣使然的人">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dictat 小站">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/05/05/latex%E7%9A%84footnote%E7%9A%84%E5%BC%95%E7%94%A8%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">latex的footnote的引用问题</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-05-05 09:36:18 / 修改时间：09:48:29" itemprop="dateCreated datePublished" datetime="2022-05-05T09:36:18+08:00">2022-05-05</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/latex/" itemprop="url" rel="index"><span itemprop="name">latex</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2022/05/05/latex%E7%9A%84footnote%E7%9A%84%E5%BC%95%E7%94%A8%E9%97%AE%E9%A2%98/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/05/latex的footnote的引用问题/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="主要问题"><a href="#主要问题" class="headerlink" title="主要问题"></a>主要问题</h2><p>在使用latex的<code>\ref</code>引用<code>\footnote</code> 的命令的时候,会发现引用第一个脚注,显示的却是第一个脚注的问题.</p>
-<p>发现问题和这个链接中的问题类似:<a target="_blank" rel="noopener" href="https://wenda.latexstudio.net/q-2091.html">使用了自定义数字样式后 footnote 引用错误，请问怎么修复？</a></p>
-<p>根本原因是因为使用了自定义样式的脚注</p>
-<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>使用以下命令,自定义<code>autoref</code>的脚注命名,这里改成了楷书</p>
-<p><code>\renewcommand&#123;\footnoteautorefname&#125;&#123;\kaishu&#123;脚注&#125;&#125;</code></p>
-<p>使用以下命令,使脚注按章节计数</p>
-<p><code>\counterwithout&#123;footnote&#125;&#123;section&#125;</code></p>
-<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>使用<code>\ref</code>来引用<code>\footnote</code> 会出现太多的问题了,还得再仔细研究一下.</p>
-<p>最后,latex这个老古董什么时候能被淘汰啊…..</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/02/latex%E6%8A%80%E5%B7%A7/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Dictat">
-      <meta itemprop="description" content="一个兴趣使然的人">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dictat 小站">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/05/02/latex%E6%8A%80%E5%B7%A7/" class="post-title-link" itemprop="url">latex技巧</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-05-02 13:00:35" itemprop="dateCreated datePublished" datetime="2022-05-02T13:00:35+08:00">2022-05-02</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-05-05 09:55:46" itemprop="dateModified" datetime="2022-05-05T09:55:46+08:00">2022-05-05</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/latex/" itemprop="url" rel="index"><span itemprop="name">latex</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2022/05/02/latex%E6%8A%80%E5%B7%A7/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/02/latex技巧/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/02/latex%E5%88%86%E7%AB%A0%E8%8A%82%E7%8B%AC%E7%AB%8B%E6%8F%92%E5%85%A5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Dictat">
-      <meta itemprop="description" content="一个兴趣使然的人">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dictat 小站">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/05/02/latex%E5%88%86%E7%AB%A0%E8%8A%82%E7%8B%AC%E7%AB%8B%E6%8F%92%E5%85%A5/" class="post-title-link" itemprop="url">latex分章节独立插入</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-05-02 12:33:53 / 修改时间：12:44:00" itemprop="dateCreated datePublished" datetime="2022-05-02T12:33:53+08:00">2022-05-02</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/latex/" itemprop="url" rel="index"><span itemprop="name">latex</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2022/05/02/latex%E5%88%86%E7%AB%A0%E8%8A%82%E7%8B%AC%E7%AB%8B%E6%8F%92%E5%85%A5/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/02/latex分章节独立插入/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>在使用latex的过程中,我们可以先建立一个主文件,然后使用<code>\include&#123;&#125;</code> 还有<code>\input&#123;&#125;</code> 的方法来插入子文件.譬如插入子文件<code>1.tex</code>,则在正文区中使用<code>\input&#123;1.tex&#125;</code>.</p>
-<p>但是有一个问题是,这样使用的子文件<code>1.tex</code>内容只能是<code>latex正文的格式</code>而不能成为一个独立的可以编译的latex文件,这是十分不便利的(也就是说这个文件只能有<code>\begin&#123;document&#125;...\end&#123;document&#125;</code>之间的内容).</p>
-<h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><p>使用<code>standalone</code>宏包能够解决这个问题.</p>
-<p><a target="_blank" rel="noopener" href="https://tex.stackexchange.com/questions/11311/how-to-include-a-document-into-another-document">参考网页</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/25/n%E7%BB%B4%E6%B5%81%E5%BD%A2%E7%9A%84%E8%BE%B9%E7%95%8C%E6%98%AFn-1%E7%BB%B4%E6%B5%81%E5%BD%A2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Dictat">
-      <meta itemprop="description" content="一个兴趣使然的人">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dictat 小站">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/04/25/n%E7%BB%B4%E6%B5%81%E5%BD%A2%E7%9A%84%E8%BE%B9%E7%95%8C%E6%98%AFn-1%E7%BB%B4%E6%B5%81%E5%BD%A2/" class="post-title-link" itemprop="url">数学问题:n维流形的边界是n-1维流形?</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-04-25 14:25:27 / 修改时间：18:19:48" itemprop="dateCreated datePublished" datetime="2022-04-25T14:25:27+08:00">2022-04-25</time>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2022/04/25/n%E7%BB%B4%E6%B5%81%E5%BD%A2%E7%9A%84%E8%BE%B9%E7%95%8C%E6%98%AFn-1%E7%BB%B4%E6%B5%81%E5%BD%A2/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/04/25/n维流形的边界是n-1维流形/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>来源自<a target="_blank" rel="noopener" href="https://math.stackexchange.com/questions/554156/the-boundary-of-an-n-manifold-is-an-n-1-manifold">stackexchange:The boundary of an $n$-manifold is an ($n−1$)-manifold</a></p>
-<h2 id="Question"><a href="#Question" class="headerlink" title="Question:"></a>Question:</h2><blockquote>
-<p> Suppose $M$ is an $n$-dimensional manifold with boundary.<br>Show that the boundary of $M$ is an $(n−1)$-dimensional manifold (without boundary) when endowed with the subspace topology. </p>
-</blockquote>
+\frac{6k_{1}^{2}}{1-3k_{1}^{2}}=\frac{6}{1-3k_{1}^{2}}</script><p>时,$k_1 = \pm 1$, </p>
+<p>直线 $l_{MN}$的方程为 $x =  -3$,</p>
+<p>当其斜率存在事,其斜率为</p>
+<p><img src="/2023/10/10/%E7%94%A8python%E6%B1%82%E8%A7%A3%E8%A7%A3%E6%9E%90%E5%87%A0%E4%BD%95/1697002849839.png" alt="1697002849839"></p>
+<p>则其方程为:</p>
+<script type="math/tex; mode=display">y-\frac{2k_{1}}{1-3k_{1}^{2}}\!=\!-\frac{2k_{1}}{3(k_{1}^{2}\!-\!1)}\!\left(x-\frac{6k_{1}^{2}}{1-3k_{1}^{2}}\right)</script><p>令$y =0$等于零,则解得$x =  -3$.</p>
+<p>综上所述,则直线$l_{MN}$ 恒过定点$(-3,0)$,</p>
+<p>则</p>
+<p><script type="math/tex">\frac{S_{\triangle O M N}}{S_{\triangle P M N}}=\frac{\textstyle{\frac{1}{2}}|y_{N}-y_{M}||O E|}{\textstyle{\frac{1}{2}}|y_{M}-y_{N}||F E|}=\frac{|O E|}{|F E|}=3</script>.</p>
+<h3 id="难点"><a href="#难点" class="headerlink" title="难点"></a>难点</h3><ol>
+<li>利用斜率的关系,统一两条直线中斜率的变量.</li>
+<li>观察出直线过定点.</li>
+</ol>
 
       
     </div>
@@ -1071,7 +1229,7 @@ This text is in Times and green</p>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1137,7 +1295,7 @@ This text is in Times and green</p>
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-count">26</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1148,7 +1306,8 @@ This text is in Times and green</p>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">12</span>
+          
+        <span class="site-state-item-count">23</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

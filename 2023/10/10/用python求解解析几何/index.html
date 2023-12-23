@@ -20,19 +20,22 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="写了几个程序来求解高中的解析几何,才开始用的是一个sympy的几何库来做的,但是只能做椭圆的问题,后来就直接用solve来暴力的求解了.这些程序的主要目的是联立直线和圆锥曲线的方程,这是求解解析几何问题的基本方法,即所谓的设而不求:联立方程之后利用韦达定理来得到两个焦点坐标的关系. 求解直线和抛物线的交点:12345def solveParabola(p,point):    x0 &#x3D; point">
+  <meta name="description" content="写了几个程序来求解高中的解析几何,才开始用的是一个sympy的几何库来做的,但是只能做椭圆的问题,后来就直接用solve来暴力的求解了.这些程序的主要目的是联立直线和圆锥曲线的方程,这是求解解析几何问题的基本方法,即所谓的设而不求:联立方程之后利用韦达定理来得到两个焦点坐标的关系. 三个求解函数求解直线和抛物线的交点:12345def solveParabola(p,point):    x0 &#x3D;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="用python求解解析几何">
 <meta property="og:url" content="http://example.com/2023/10/10/%E7%94%A8python%E6%B1%82%E8%A7%A3%E8%A7%A3%E6%9E%90%E5%87%A0%E4%BD%95/index.html">
 <meta property="og:site_name" content="Dictat 小站">
-<meta property="og:description" content="写了几个程序来求解高中的解析几何,才开始用的是一个sympy的几何库来做的,但是只能做椭圆的问题,后来就直接用solve来暴力的求解了.这些程序的主要目的是联立直线和圆锥曲线的方程,这是求解解析几何问题的基本方法,即所谓的设而不求:联立方程之后利用韦达定理来得到两个焦点坐标的关系. 求解直线和抛物线的交点:12345def solveParabola(p,point):    x0 &#x3D; point">
+<meta property="og:description" content="写了几个程序来求解高中的解析几何,才开始用的是一个sympy的几何库来做的,但是只能做椭圆的问题,后来就直接用solve来暴力的求解了.这些程序的主要目的是联立直线和圆锥曲线的方程,这是求解解析几何问题的基本方法,即所谓的设而不求:联立方程之后利用韦达定理来得到两个焦点坐标的关系. 三个求解函数求解直线和抛物线的交点:12345def solveParabola(p,point):    x0 &#x3D;">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2023/10/10/%E7%94%A8python%E6%B1%82%E8%A7%A3%E8%A7%A3%E6%9E%90%E5%87%A0%E4%BD%95/1697002468458.png">
+<meta property="og:image" content="http://example.com/2023/10/10/%E7%94%A8python%E6%B1%82%E8%A7%A3%E8%A7%A3%E6%9E%90%E5%87%A0%E4%BD%95/1697002849839.png">
 <meta property="article:published_time" content="2023-10-10T14:20:21.000Z">
-<meta property="article:modified_time" content="2023-10-10T14:30:13.422Z">
+<meta property="article:modified_time" content="2023-10-16T05:53:57.133Z">
 <meta property="article:author" content="Dictat">
 <meta property="article:tag" content="高中数学">
 <meta property="article:tag" content="解析几何">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2023/10/10/%E7%94%A8python%E6%B1%82%E8%A7%A3%E8%A7%A3%E6%9E%90%E5%87%A0%E4%BD%95/1697002468458.png">
 
 <link rel="canonical" href="http://example.com/2023/10/10/%E7%94%A8python%E6%B1%82%E8%A7%A3%E8%A7%A3%E6%9E%90%E5%87%A0%E4%BD%95/">
 
@@ -125,6 +128,11 @@
     <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
 
   </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
         <li class="menu-item menu-item-archives">
 
     <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
@@ -207,10 +215,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2023-10-10 22:20:21 / 修改时间：22:30:13" itemprop="dateCreated datePublished" datetime="2023-10-10T22:20:21+08:00">2023-10-10</time>
+              <time title="创建时间：2023-10-10 22:20:21" itemprop="dateCreated datePublished" datetime="2023-10-10T22:20:21+08:00">2023-10-10</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-10-16 13:53:57" itemprop="dateModified" datetime="2023-10-16T13:53:57+08:00">2023-10-16</time>
+              </span>
 
           
   
@@ -238,10 +252,40 @@
 
       
         <p>写了几个程序来求解高中的解析几何,才开始用的是一个<code>sympy</code>的几何库来做的,但是只能做椭圆的问题,后来就直接用<code>solve</code>来暴力的求解了.<br>这些程序的主要目的是联立直线和圆锥曲线的方程,这是求解解析几何问题的基本方法,即所谓的设而不求:联立方程之后利用韦达定理来得到两个焦点坐标的关系.</p>
-<h3 id="求解直线和抛物线的交点"><a href="#求解直线和抛物线的交点" class="headerlink" title="求解直线和抛物线的交点:"></a>求解直线和抛物线的交点:</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">solveParabola</span>(<span class="params">p,point</span>):</span><br><span class="line">    x0 = point[<span class="number">0</span>]</span><br><span class="line">    y0 = point[<span class="number">1</span>]</span><br><span class="line">    ((x1,y1),(x2,y2)) = nonlinsolve([y**<span class="number">2</span>-<span class="number">2</span>*p*x, y-k*(x-x0)-y0 ], (x,y))</span><br><span class="line">    <span class="keyword">return</span> x1,y1,x2,y2</span><br></pre></td></tr></table></figure>
+<h2 id="三个求解函数"><a href="#三个求解函数" class="headerlink" title="三个求解函数"></a>三个求解函数</h2><h3 id="求解直线和抛物线的交点"><a href="#求解直线和抛物线的交点" class="headerlink" title="求解直线和抛物线的交点:"></a>求解直线和抛物线的交点:</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">solveParabola</span>(<span class="params">p,point</span>):</span><br><span class="line">    x0 = point[<span class="number">0</span>]</span><br><span class="line">    y0 = point[<span class="number">1</span>]</span><br><span class="line">    ((x1,y1),(x2,y2)) = nonlinsolve([y**<span class="number">2</span>-<span class="number">2</span>*p*x, y-k*(x-x0)-y0 ], (x,y))</span><br><span class="line">    <span class="keyword">return</span> x1,y1,x2,y2</span><br></pre></td></tr></table></figure>
 <h3 id="求解直线和椭圆的交点"><a href="#求解直线和椭圆的交点" class="headerlink" title="求解直线和椭圆的交点:"></a>求解直线和椭圆的交点:</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#请在安装了sympy以后在jupyter(IPython notebook)下运算该程序,这主要是为了更美观的显示数学公式</span></span><br><span class="line"><span class="keyword">from</span> sympy <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">solveEllipse</span>(<span class="params">a,b,point</span>):</span><br><span class="line">    <span class="keyword">from</span> sympy.abc <span class="keyword">import</span> x, y,k,m</span><br><span class="line">    <span class="keyword">from</span> sympy <span class="keyword">import</span> nonlinsolve</span><br><span class="line">    <span class="keyword">from</span> sympy <span class="keyword">import</span> simplify</span><br><span class="line">    x0 = point[<span class="number">0</span>]</span><br><span class="line">    y0 = point[<span class="number">1</span>]</span><br><span class="line">    ((x1,y1),(x2,y2)) = nonlinsolve([x**<span class="number">2</span>/a**<span class="number">2</span>+y**<span class="number">2</span>/b**<span class="number">2</span>-<span class="number">1</span>, y-k*(x-x0)-y0 ], (x,y))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;x1+x2 = &#x27;</span>)</span><br><span class="line">    display(simplify(x1+x2))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;x1*x2 = &#x27;</span>)</span><br><span class="line">    display(simplify(x1*x2))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;y1+y2 = &#x27;</span>)</span><br><span class="line">    display(simplify(y1+y2))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;y1*y2 = &#x27;</span>)</span><br><span class="line">    display(simplify(y1*y2))</span><br><span class="line">    <span class="keyword">return</span> x1,y1,x2,y2;</span><br><span class="line">x1,y1,x2,y2 = solveEllipse(<span class="number">4</span>,<span class="number">3</span>,(<span class="number">1</span>,<span class="number">0</span>));</span><br></pre></td></tr></table></figure>
 <h3 id="求解直线和双曲线的交点"><a href="#求解直线和双曲线的交点" class="headerlink" title="求解直线和双曲线的交点:"></a>求解直线和双曲线的交点:</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">solveHyperbola</span>(<span class="params">a,b,point</span>):</span><br><span class="line">    <span class="keyword">from</span> sympy.abc <span class="keyword">import</span> x, y,k,m</span><br><span class="line">    <span class="keyword">from</span> sympy <span class="keyword">import</span> nonlinsolve</span><br><span class="line">    <span class="keyword">from</span> sympy <span class="keyword">import</span> simplify</span><br><span class="line">    x0 = point[<span class="number">0</span>]</span><br><span class="line">    y0 = point[<span class="number">1</span>]</span><br><span class="line">    ((x1,y1),(x2,y2)) = nonlinsolve([x**<span class="number">2</span>/a**<span class="number">2</span>+y**<span class="number">2</span>/b**<span class="number">2</span>-<span class="number">1</span>, y-k*(x-x0)-y0 ], (x,y))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;x1+x2 = &#x27;</span>)</span><br><span class="line">    display(simplify(x1+x2))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;x1*x2 = &#x27;</span>)</span><br><span class="line">    display(simplify(x1*x2))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;y1+y2 = &#x27;</span>)</span><br><span class="line">    display(simplify(y1+y2))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;y1*y2 = &#x27;</span>)</span><br><span class="line">    display(simplify(y1*y2))</span><br><span class="line">    <span class="keyword">return</span> x1,y1,x2,y2;</span><br></pre></td></tr></table></figure>
 <p>由于双曲线和抛物线的开口有方向性,则在实际过程中,可能需要根据题目的主要内容来修改函数中的参数.</p>
+<h2 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h2><p>已知双曲线$\Gamma$:${\frac{x^{2}}{a^{2}}}-{\frac{y^{2}}{b^{2}}}=1$，的焦距为$4$,过点$P(2,\frac{\sqrt{3}}{3})$</p>
+<blockquote>
+<ol>
+<li>求双曲线$\Gamma$的方程.</li>
+<li>过双曲线 $\Gamma$ 的左焦点 $F$ 分别作斜率为 $k_1,k_2$的两直线 $l_1$与 $l_2$，直线 $l_1$交双曲线 $\Gamma$  于 $A,B$ 两点，直线 $l_2$交双曲线  $\Gamma$ 于 $C,D$ 两点，设 $M,N$ 分别为 $AB$ 与 $CD$ 的中点，若 $k_1⋅ k_2=-1$，试求 $ \bigtriangleup  OMN$ 与  $\bigtriangleup  FMN$ 的面积之比.</li>
+</ol>
+</blockquote>
+<ol>
+<li>可以求出其方程为${\frac{x^{2}}{3}}-y^{2}=1$</li>
+<li>左焦点坐标为(-2,0)</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x1,y1,x2,y2 =solveHyperbola(sqrt(<span class="number">3</span>),<span class="number">1</span>,(-<span class="number">2</span>,<span class="number">0</span>));</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">k_1,k_2  =symbols(<span class="string">&#x27;k_1 k_2&#x27;</span>)</span><br><span class="line">m_x = simplify(((x1+x2)/<span class="number">2</span>).subs(k,k_1))</span><br><span class="line">m_y = simplify(((y1+y2)/<span class="number">2</span>).subs(k,k_1))</span><br></pre></td></tr></table></figure>
+<p>则得到了$M$的坐标,由于$k_1⋅ k_2=-1$,则也能得到N的坐标为<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">n_x = simplify(((x1+x2)/<span class="number">2</span>).subs(k,-<span class="number">1</span>/k_1))</span><br><span class="line">n_y = simplify(((y1+y2)/<span class="number">2</span>).subs(k,-<span class="number">1</span>/k_1))</span><br></pre></td></tr></table></figure></p>
+<p><img src="/2023/10/10/%E7%94%A8python%E6%B1%82%E8%A7%A3%E8%A7%A3%E6%9E%90%E5%87%A0%E4%BD%95/1697002468458.png" alt="1697002468458"></p>
+<p>当</p>
+<script type="math/tex; mode=display">
+\frac{6k_{1}^{2}}{1-3k_{1}^{2}}=\frac{6}{1-3k_{1}^{2}}</script><p>时,$k_1 = \pm 1$, </p>
+<p>直线 $l_{MN}$的方程为 $x =  -3$,</p>
+<p>当其斜率存在事,其斜率为</p>
+<p><img src="/2023/10/10/%E7%94%A8python%E6%B1%82%E8%A7%A3%E8%A7%A3%E6%9E%90%E5%87%A0%E4%BD%95/1697002849839.png" alt="1697002849839"></p>
+<p>则其方程为:</p>
+<script type="math/tex; mode=display">y-\frac{2k_{1}}{1-3k_{1}^{2}}\!=\!-\frac{2k_{1}}{3(k_{1}^{2}\!-\!1)}\!\left(x-\frac{6k_{1}^{2}}{1-3k_{1}^{2}}\right)</script><p>令$y =0$等于零,则解得$x =  -3$.</p>
+<p>综上所述,则直线$l_{MN}$ 恒过定点$(-3,0)$,</p>
+<p>则</p>
+<p><script type="math/tex">\frac{S_{\triangle O M N}}{S_{\triangle P M N}}=\frac{\textstyle{\frac{1}{2}}|y_{N}-y_{M}||O E|}{\textstyle{\frac{1}{2}}|y_{M}-y_{N}||F E|}=\frac{|O E|}{|F E|}=3</script>.</p>
+<h3 id="难点"><a href="#难点" class="headerlink" title="难点"></a>难点</h3><ol>
+<li>利用斜率的关系,统一两条直线中斜率的变量.</li>
+<li>观察出直线过定点.</li>
+</ol>
 
     </div>
 
@@ -264,7 +308,10 @@
     <a href="/2023/10/10/Hexo_%E8%8B%B1%E8%AF%AD%E5%8D%95%E8%AF%8D%E5%AD%A6%E4%B9%A0/" rel="prev" title="英语单词学习">
       <i class="fa fa-chevron-left"></i> 英语单词学习
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2023/10/11/%E8%A7%A3%E6%9E%90%E5%87%A0%E4%BD%95%E4%B8%AD%E9%97%AE%E9%A2%98%E7%9A%84%E8%BD%AC%E5%8C%96/" rel="next" title="解析几何中问题的转化">
+      解析几何中问题的转化 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -330,7 +377,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B1%82%E8%A7%A3%E7%9B%B4%E7%BA%BF%E5%92%8C%E6%8A%9B%E7%89%A9%E7%BA%BF%E7%9A%84%E4%BA%A4%E7%82%B9"><span class="nav-number">1.</span> <span class="nav-text">求解直线和抛物线的交点:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B1%82%E8%A7%A3%E7%9B%B4%E7%BA%BF%E5%92%8C%E6%A4%AD%E5%9C%86%E7%9A%84%E4%BA%A4%E7%82%B9"><span class="nav-number">2.</span> <span class="nav-text">求解直线和椭圆的交点:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B1%82%E8%A7%A3%E7%9B%B4%E7%BA%BF%E5%92%8C%E5%8F%8C%E6%9B%B2%E7%BA%BF%E7%9A%84%E4%BA%A4%E7%82%B9"><span class="nav-number">3.</span> <span class="nav-text">求解直线和双曲线的交点:</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E4%B8%AA%E6%B1%82%E8%A7%A3%E5%87%BD%E6%95%B0"><span class="nav-number">1.</span> <span class="nav-text">三个求解函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B1%82%E8%A7%A3%E7%9B%B4%E7%BA%BF%E5%92%8C%E6%8A%9B%E7%89%A9%E7%BA%BF%E7%9A%84%E4%BA%A4%E7%82%B9"><span class="nav-number">1.1.</span> <span class="nav-text">求解直线和抛物线的交点:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B1%82%E8%A7%A3%E7%9B%B4%E7%BA%BF%E5%92%8C%E6%A4%AD%E5%9C%86%E7%9A%84%E4%BA%A4%E7%82%B9"><span class="nav-number">1.2.</span> <span class="nav-text">求解直线和椭圆的交点:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B1%82%E8%A7%A3%E7%9B%B4%E7%BA%BF%E5%92%8C%E5%8F%8C%E6%9B%B2%E7%BA%BF%E7%9A%84%E4%BA%A4%E7%82%B9"><span class="nav-number">1.3.</span> <span class="nav-text">求解直线和双曲线的交点:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E6%88%98"><span class="nav-number">2.</span> <span class="nav-text">实战</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9A%BE%E7%82%B9"><span class="nav-number">2.1.</span> <span class="nav-text">难点</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -344,7 +391,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-count">26</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -355,7 +402,8 @@
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">12</span>
+          
+        <span class="site-state-item-count">23</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -450,6 +498,61 @@
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 
