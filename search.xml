@@ -14,9 +14,9 @@
       
         <tags>
             
-            <tag> 网络 </tag>
-            
             <tag> 服务器 </tag>
+            
+            <tag> 网络 </tag>
             
         </tags>
       
@@ -121,10 +121,10 @@
     
     <entry>
       <title>网页解析的学习</title>
-      <link href="/2023/10/16/a%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-%E7%BD%91%E9%A1%B5%E8%A7%A3%E6%9E%90/"/>
-      <url>/2023/10/16/a%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-%E7%BD%91%E9%A1%B5%E8%A7%A3%E6%9E%90/</url>
+      <link href="/2023/10/16/a%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-%E7%BD%91%E9%A1%B5%E8%A7%A3%E6%9E%90%E7%9A%84%E5%AD%A6%E4%B9%A0/"/>
+      <url>/2023/10/16/a%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-%E7%BD%91%E9%A1%B5%E8%A7%A3%E6%9E%90%E7%9A%84%E5%AD%A6%E4%B9%A0/</url>
       
-        <content type="html"><![CDATA[<h1 id="Xpath"><a href="#Xpath" class="headerlink" title="Xpath"></a>Xpath</h1><h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><p>一定要以斜杠<code>/</code>开头</p><h2 id="路径查询"><a href="#路径查询" class="headerlink" title="路径查询"></a>路径查询</h2><p><code>/body/ul/li</code>  body下的ul下的li</p><p><code>//</code> 所有的子孙节点</p><p><code>/</code>只查找子节点</p><h2 id="谓词查询"><a href="#谓词查询" class="headerlink" title="谓词查询"></a>谓词查询</h2><p><code>//div[@id]</code> 查找所有有id 属性的li标签</p><p><code>//div[@id = &quot;北京&quot;]</code> </p><p><code>*</code> 代表所有</p><h2 id="属性查询"><a href="#属性查询" class="headerlink" title="属性查询"></a>属性查询</h2><p>   查找到id为l1的class的属性值</p><p><code>//ul/li[@id=&quot;l1&quot;]/@class</code></p><h2 id="模糊查找"><a href="#模糊查找" class="headerlink" title="模糊查找"></a>模糊查找</h2><p><code>contains</code>  是否包含</p><p><code>start-with</code> 以什么开头</p><h2 id="逻辑查询"><a href="#逻辑查询" class="headerlink" title="逻辑查询"></a>逻辑查询</h2><p><code>div[@id = &quot;北京&quot; and @class = &quot;c1&quot;]</code></p><p>且用的是<code>and</code></p><p>或可能有点坑,有点像<code>pandas</code>的那味(拆开来写?),等不会写了再说.</p><p><code>or</code> 还是 <code>|</code></p><h2 id="切片"><a href="#切片" class="headerlink" title="切片"></a>切片</h2><p><code>li[position()&gt;1 and position()&lt;5]</code></p><p><code>last()</code> 列表最后一个</p><h2 id="Xpath-的好处"><a href="#Xpath-的好处" class="headerlink" title="Xpath 的好处"></a>Xpath 的好处</h2><ul><li>优点：<ul><li>效率高</li><li>语法简洁</li><li>可扩展性强</li></ul></li><li>缺点：<ul><li>学习曲线较陡</li><li>表达能力有限</li></ul></li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</span><br><span class="line">tree =etree.HTML(html)</span><br></pre></td></tr></table></figure><h1 id="Selenium"><a href="#Selenium" class="headerlink" title="Selenium"></a>Selenium</h1><p>time.sleep(2)</p><h2 id="元素定位"><a href="#元素定位" class="headerlink" title="元素定位"></a>元素定位</h2><p><code>driver.find_element(By.XPATH,&quot;……&quot;)</code><br><code>driver.find_elements(By.XPATH,&quot;……&quot;)</code></p><h2 id="对元素的控制"><a href="#对元素的控制" class="headerlink" title="对元素的控制"></a>对元素的控制</h2><ul><li><code>click()</code>：点击元素。</li><li><code>send_keys()</code>：向元素输入文本。</li><li><code>select()</code>：选择下拉列表中的选项。</li><li><code>check()</code>：选择复选框或单选按钮。</li><li><code>uncheck()</code>：取消选择复选框或单选按钮。</li><li><code>submit()</code>：提交表单。</li><li><code>clear()</code>：清空表单。</li></ul><h2 id="pytest-pom-Selenium"><a href="#pytest-pom-Selenium" class="headerlink" title="pytest+pom+Selenium"></a>pytest+pom+Selenium</h2><h3 id="一些问题"><a href="#一些问题" class="headerlink" title="一些问题"></a>一些问题</h3><ol><li><p>代码相似，无法重用，增加工作量</p></li><li><p>元素加载有延迟，会导致出错</p></li><li><p>浏览器重复驱动、关闭</p></li></ol><p>通过封装框架的方式,自动解决常见的问题</p><h3 id="创建测试用例"><a href="#创建测试用例" class="headerlink" title="创建测试用例"></a>创建测试用例</h3><ol><li>创建<code>test_</code>开头文件</li><li>创建<code>test_</code>开头的函数(或者是类)</li><li>在用例中使用断言<code>assert</code></li></ol><h3 id="执行测试用例"><a href="#执行测试用例" class="headerlink" title="执行测试用例"></a>执行测试用例</h3><ol><li><p>在命令行使用<code>pytest</code></p></li><li><p>右键执行某个用例</p></li><li><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pytest</span><br><span class="line"><span class="keyword">if</span> __name__ = <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">pytest.main()<span class="comment">#程序入口</span></span><br><span class="line">    </span><br></pre></td></tr></table></figure></li></ol><h3 id="读懂测试结果"><a href="#读懂测试结果" class="headerlink" title="读懂测试结果"></a>读懂测试结果</h3><div class="table-container"><table><thead><tr><th>符号</th><th>含义</th><th></th></tr></thead><tbody><tr><td>.</td><td>通过</td><td></td></tr><tr><td>F</td><td>失败</td><td>没有达到目标</td></tr><tr><td>E</td><td>出错</td><td>没有启动,无法判断(框架有问题)</td></tr><tr><td>s</td><td>跳过</td><td>没有去执行</td></tr></tbody></table></div>]]></content>
+        <content type="html"><![CDATA[]]></content>
       
       
       
@@ -144,10 +144,10 @@
     
     <entry>
       <title>网页解析的学习</title>
-      <link href="/2023/10/16/a%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-%E7%BD%91%E9%A1%B5%E8%A7%A3%E6%9E%90%E7%9A%84%E5%AD%A6%E4%B9%A0/"/>
-      <url>/2023/10/16/a%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-%E7%BD%91%E9%A1%B5%E8%A7%A3%E6%9E%90%E7%9A%84%E5%AD%A6%E4%B9%A0/</url>
+      <link href="/2023/10/16/a%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-%E7%BD%91%E9%A1%B5%E8%A7%A3%E6%9E%90/"/>
+      <url>/2023/10/16/a%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-%E7%BD%91%E9%A1%B5%E8%A7%A3%E6%9E%90/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<h1 id="Xpath"><a href="#Xpath" class="headerlink" title="Xpath"></a>Xpath</h1><h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><p>一定要以斜杠<code>/</code>开头</p><h2 id="路径查询"><a href="#路径查询" class="headerlink" title="路径查询"></a>路径查询</h2><p><code>/body/ul/li</code>  body下的ul下的li</p><p><code>//</code> 所有的子孙节点</p><p><code>/</code>只查找子节点</p><h2 id="谓词查询"><a href="#谓词查询" class="headerlink" title="谓词查询"></a>谓词查询</h2><p><code>//div[@id]</code> 查找所有有id 属性的li标签</p><p><code>//div[@id = &quot;北京&quot;]</code> </p><p><code>*</code> 代表所有</p><h2 id="属性查询"><a href="#属性查询" class="headerlink" title="属性查询"></a>属性查询</h2><p>   查找到id为l1的class的属性值</p><p><code>//ul/li[@id=&quot;l1&quot;]/@class</code></p><h2 id="模糊查找"><a href="#模糊查找" class="headerlink" title="模糊查找"></a>模糊查找</h2><p><code>contains</code>  是否包含</p><p><code>start-with</code> 以什么开头</p><h2 id="逻辑查询"><a href="#逻辑查询" class="headerlink" title="逻辑查询"></a>逻辑查询</h2><p><code>div[@id = &quot;北京&quot; and @class = &quot;c1&quot;]</code></p><p>且用的是<code>and</code></p><p>或可能有点坑,有点像<code>pandas</code>的那味(拆开来写?),等不会写了再说.</p><p><code>or</code> 还是 <code>|</code></p><h2 id="切片"><a href="#切片" class="headerlink" title="切片"></a>切片</h2><p><code>li[position()&gt;1 and position()&lt;5]</code></p><p><code>last()</code> 列表最后一个</p><h2 id="Xpath-的好处"><a href="#Xpath-的好处" class="headerlink" title="Xpath 的好处"></a>Xpath 的好处</h2><ul><li>优点：<ul><li>效率高</li><li>语法简洁</li><li>可扩展性强</li></ul></li><li>缺点：<ul><li>学习曲线较陡</li><li>表达能力有限</li></ul></li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</span><br><span class="line">tree =etree.HTML(html)</span><br></pre></td></tr></table></figure><h1 id="Selenium"><a href="#Selenium" class="headerlink" title="Selenium"></a>Selenium</h1><p>time.sleep(2)</p><h2 id="元素定位"><a href="#元素定位" class="headerlink" title="元素定位"></a>元素定位</h2><p><code>driver.find_element(By.XPATH,&quot;……&quot;)</code><br><code>driver.find_elements(By.XPATH,&quot;……&quot;)</code></p><h2 id="对元素的控制"><a href="#对元素的控制" class="headerlink" title="对元素的控制"></a>对元素的控制</h2><ul><li><code>click()</code>：点击元素。</li><li><code>send_keys()</code>：向元素输入文本。</li><li><code>select()</code>：选择下拉列表中的选项。</li><li><code>check()</code>：选择复选框或单选按钮。</li><li><code>uncheck()</code>：取消选择复选框或单选按钮。</li><li><code>submit()</code>：提交表单。</li><li><code>clear()</code>：清空表单。</li></ul><h2 id="pytest-pom-Selenium"><a href="#pytest-pom-Selenium" class="headerlink" title="pytest+pom+Selenium"></a>pytest+pom+Selenium</h2><h3 id="一些问题"><a href="#一些问题" class="headerlink" title="一些问题"></a>一些问题</h3><ol><li><p>代码相似，无法重用，增加工作量</p></li><li><p>元素加载有延迟，会导致出错</p></li><li><p>浏览器重复驱动、关闭</p></li></ol><p>通过封装框架的方式,自动解决常见的问题</p><h3 id="创建测试用例"><a href="#创建测试用例" class="headerlink" title="创建测试用例"></a>创建测试用例</h3><ol><li>创建<code>test_</code>开头文件</li><li>创建<code>test_</code>开头的函数(或者是类)</li><li>在用例中使用断言<code>assert</code></li></ol><h3 id="执行测试用例"><a href="#执行测试用例" class="headerlink" title="执行测试用例"></a>执行测试用例</h3><ol><li><p>在命令行使用<code>pytest</code></p></li><li><p>右键执行某个用例</p></li><li><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pytest</span><br><span class="line"><span class="keyword">if</span> __name__ = <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">pytest.main()<span class="comment">#程序入口</span></span><br><span class="line">    </span><br></pre></td></tr></table></figure></li></ol><h3 id="读懂测试结果"><a href="#读懂测试结果" class="headerlink" title="读懂测试结果"></a>读懂测试结果</h3><div class="table-container"><table><thead><tr><th>符号</th><th>含义</th><th></th></tr></thead><tbody><tr><td>.</td><td>通过</td><td></td></tr><tr><td>F</td><td>失败</td><td>没有达到目标</td></tr><tr><td>E</td><td>出错</td><td>没有启动,无法判断(框架有问题)</td></tr><tr><td>s</td><td>跳过</td><td>没有去执行</td></tr></tbody></table></div>]]></content>
       
       
       
@@ -176,9 +176,9 @@
       
         <tags>
             
-            <tag> 网络 </tag>
-            
             <tag> 服务器 </tag>
+            
+            <tag> 网络 </tag>
             
             <tag> linux </tag>
             
