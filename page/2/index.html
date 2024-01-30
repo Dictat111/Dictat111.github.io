@@ -185,6 +185,253 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/10/16/a%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-%E7%BD%91%E9%A1%B5%E8%A7%A3%E6%9E%90/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Dictat">
+      <meta itemprop="description" content="一个兴趣使然的人">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dictat 小站">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/10/16/a%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-%E7%BD%91%E9%A1%B5%E8%A7%A3%E6%9E%90/" class="post-title-link" itemprop="url">网页解析的学习</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-10-16 15:52:37 / 修改时间：22:32:27" itemprop="dateCreated datePublished" datetime="2023-10-16T15:52:37+08:00">2023-10-16</time>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2023/10/16/a%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-%E7%BD%91%E9%A1%B5%E8%A7%A3%E6%9E%90/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2023/10/16/a个人博客-网页解析/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Xpath"><a href="#Xpath" class="headerlink" title="Xpath"></a>Xpath</h1><h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><p>一定要以斜杠<code>/</code>开头</p>
+<h2 id="路径查询"><a href="#路径查询" class="headerlink" title="路径查询"></a>路径查询</h2><p><code>/body/ul/li</code>  body下的ul下的li</p>
+<p><code>//</code> 所有的子孙节点</p>
+<p><code>/</code>只查找子节点</p>
+<h2 id="谓词查询"><a href="#谓词查询" class="headerlink" title="谓词查询"></a>谓词查询</h2><p><code>//div[@id]</code> 查找所有有id 属性的li标签</p>
+<p><code>//div[@id = &quot;北京&quot;]</code> </p>
+<p><code>*</code> 代表所有</p>
+<h2 id="属性查询"><a href="#属性查询" class="headerlink" title="属性查询"></a>属性查询</h2><p>   查找到id为l1的class的属性值</p>
+<p><code>//ul/li[@id=&quot;l1&quot;]/@class</code></p>
+<h2 id="模糊查找"><a href="#模糊查找" class="headerlink" title="模糊查找"></a>模糊查找</h2><p><code>contains</code>  是否包含</p>
+<p><code>start-with</code> 以什么开头</p>
+<h2 id="逻辑查询"><a href="#逻辑查询" class="headerlink" title="逻辑查询"></a>逻辑查询</h2><p><code>div[@id = &quot;北京&quot; and @class = &quot;c1&quot;]</code></p>
+<p>且用的是<code>and</code></p>
+<p>或可能有点坑,有点像<code>pandas</code>的那味(拆开来写?),等不会写了再说.</p>
+<p><code>or</code> 还是 <code>|</code></p>
+<h2 id="切片"><a href="#切片" class="headerlink" title="切片"></a>切片</h2><p><code>li[position()&gt;1 and position()&lt;5]</code></p>
+<p><code>last()</code> 列表最后一个</p>
+<h2 id="Xpath-的好处"><a href="#Xpath-的好处" class="headerlink" title="Xpath 的好处"></a>Xpath 的好处</h2><ul>
+<li>优点：<ul>
+<li>效率高</li>
+<li>语法简洁</li>
+<li>可扩展性强</li>
+</ul>
+</li>
+<li>缺点：<ul>
+<li>学习曲线较陡</li>
+<li>表达能力有限</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</span><br><span class="line">tree =etree.HTML(html)</span><br></pre></td></tr></table></figure>
+<h1 id="Selenium"><a href="#Selenium" class="headerlink" title="Selenium"></a>Selenium</h1><p>time.sleep(2)</p>
+<h2 id="元素定位"><a href="#元素定位" class="headerlink" title="元素定位"></a>元素定位</h2><p><code>driver.find_element(By.XPATH,&quot;……&quot;)</code><br><code>driver.find_elements(By.XPATH,&quot;……&quot;)</code></p>
+<h2 id="对元素的控制"><a href="#对元素的控制" class="headerlink" title="对元素的控制"></a>对元素的控制</h2><ul>
+<li><code>click()</code>：点击元素。</li>
+<li><code>send_keys()</code>：向元素输入文本。</li>
+<li><code>select()</code>：选择下拉列表中的选项。</li>
+<li><code>check()</code>：选择复选框或单选按钮。</li>
+<li><code>uncheck()</code>：取消选择复选框或单选按钮。</li>
+<li><code>submit()</code>：提交表单。</li>
+<li><code>clear()</code>：清空表单。</li>
+</ul>
+<h2 id="pytest-pom-Selenium"><a href="#pytest-pom-Selenium" class="headerlink" title="pytest+pom+Selenium"></a>pytest+pom+Selenium</h2><h3 id="一些问题"><a href="#一些问题" class="headerlink" title="一些问题"></a>一些问题</h3><ol>
+<li><p>代码相似，无法重用，增加工作量</p>
+</li>
+<li><p>元素加载有延迟，会导致出错</p>
+</li>
+<li><p>浏览器重复驱动、关闭</p>
+</li>
+</ol>
+<p>通过封装框架的方式,自动解决常见的问题</p>
+<h3 id="创建测试用例"><a href="#创建测试用例" class="headerlink" title="创建测试用例"></a>创建测试用例</h3><ol>
+<li>创建<code>test_</code>开头文件</li>
+<li>创建<code>test_</code>开头的函数(或者是类)</li>
+<li>在用例中使用断言<code>assert</code></li>
+</ol>
+<h3 id="执行测试用例"><a href="#执行测试用例" class="headerlink" title="执行测试用例"></a>执行测试用例</h3><ol>
+<li><p>在命令行使用<code>pytest</code></p>
+</li>
+<li><p>右键执行某个用例</p>
+</li>
+<li><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pytest</span><br><span class="line"><span class="keyword">if</span> __name__ = <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">	pytest.main()<span class="comment">#程序入口</span></span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="读懂测试结果"><a href="#读懂测试结果" class="headerlink" title="读懂测试结果"></a>读懂测试结果</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>含义</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.</td>
+<td>通过</td>
+<td></td>
+</tr>
+<tr>
+<td>F</td>
+<td>失败</td>
+<td>没有达到目标</td>
+</tr>
+<tr>
+<td>E</td>
+<td>出错</td>
+<td>没有启动,无法判断(框架有问题)</td>
+</tr>
+<tr>
+<td>s</td>
+<td>跳过</td>
+<td>没有去执行</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/10/16/a%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-%E7%BD%91%E9%A1%B5%E8%A7%A3%E6%9E%90%E7%9A%84%E5%AD%A6%E4%B9%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Dictat">
+      <meta itemprop="description" content="一个兴趣使然的人">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dictat 小站">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/10/16/a%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-%E7%BD%91%E9%A1%B5%E8%A7%A3%E6%9E%90%E7%9A%84%E5%AD%A6%E4%B9%A0/" class="post-title-link" itemprop="url">网页解析的学习</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-10-16 15:52:37" itemprop="dateCreated datePublished" datetime="2023-10-16T15:52:37+08:00">2023-10-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-01-25 16:58:23" itemprop="dateModified" datetime="2024-01-25T16:58:23+08:00">2024-01-25</time>
+              </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2023/10/16/a%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-%E7%BD%91%E9%A1%B5%E8%A7%A3%E6%9E%90%E7%9A%84%E5%AD%A6%E4%B9%A0/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2023/10/16/a个人博客-网页解析的学习/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2023/10/16/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-%E7%BD%91%E7%BB%9C%E4%BF%AE%E5%A4%8D/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1008,292 +1255,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/10/10/%E7%BD%91%E7%AB%99%E6%96%87%E7%AB%A0-%E5%9C%A8MarkDown%E4%B8%AD%E4%BD%BF%E7%94%A8html/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Dictat">
-      <meta itemprop="description" content="一个兴趣使然的人">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dictat 小站">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/10/10/%E7%BD%91%E7%AB%99%E6%96%87%E7%AB%A0-%E5%9C%A8MarkDown%E4%B8%AD%E4%BD%BF%E7%94%A8html/" class="post-title-link" itemprop="url">在Markdown中使用html</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-10-10 13:17:17" itemprop="dateCreated datePublished" datetime="2023-10-10T13:17:17+08:00">2023-10-10</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-10-12 13:05:19" itemprop="dateModified" datetime="2023-10-12T13:05:19+08:00">2023-10-12</time>
-              </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2023/10/10/%E7%BD%91%E7%AB%99%E6%96%87%E7%AB%A0-%E5%9C%A8MarkDown%E4%B8%AD%E4%BD%BF%E7%94%A8html/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2023/10/10/网站文章-在MarkDown中使用html/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>能够在markdown中使用html语言来完成一些文字排版.</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">style</span>=<span class="string">&quot;font-family:times;color:green&quot;</span>&gt;</span></span><br><span class="line">This text is in Times and green<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>如上的一串代码实现了,下面的结果:</p>
-<p style="font-family:times;color:green">
-This text is in Times and green</p>
-
-<p>那么类似的我们能够排版一些古诗文,</p>
-<p>代码为</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;p style=&quot;font-family:楷体&quot;&gt;</span><br><span class="line">赵客缦胡缨，吴钩霜雪明。&lt;br&gt;</span><br><span class="line">银鞍照白马，飒沓如流星。&lt;br&gt;</span><br><span class="line">十步杀一人，千里不留行。&lt;br&gt;</span><br><span class="line">事了拂衣去，深藏身与名。&lt;br&gt;</span><br><span class="line">&lt;/p&gt;</span><br></pre></td></tr></table></figure>
-<p>显示效果如下:</p>
-<p style="font-family:楷体">
-赵客缦胡缨，吴钩霜雪明。<br>
-银鞍照白马，飒沓如流星。<br>
-十步杀一人，千里不留行。<br>
-事了拂衣去，深藏身与名。<br>
-</p>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/10/10/Hexo%E6%AF%8F%E6%97%A5%E5%8F%A4%E8%AF%97%E6%96%87/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Dictat">
-      <meta itemprop="description" content="一个兴趣使然的人">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dictat 小站">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/10/10/Hexo%E6%AF%8F%E6%97%A5%E5%8F%A4%E8%AF%97%E6%96%87/" class="post-title-link" itemprop="url">每日古诗文</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-10-10 12:43:53" itemprop="dateCreated datePublished" datetime="2023-10-10T12:43:53+08:00">2023-10-10</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-10-19 21:10:47" itemprop="dateModified" datetime="2023-10-19T21:10:47+08:00">2023-10-19</time>
-              </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2023/10/10/Hexo%E6%AF%8F%E6%97%A5%E5%8F%A4%E8%AF%97%E6%96%87/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2023/10/10/Hexo每日古诗文/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="菩萨蛮2023年10月19日"><a href="#菩萨蛮2023年10月19日" class="headerlink" title="菩萨蛮2023年10月19日"></a>菩萨蛮2023年10月19日</h2><blockquote>
-<p style="font-family:楷体">
-催花未歇花奴鼓，酒醒已见残红舞。<br>
-    不忍覆馀觞，临风泪数行。<br>粉香看又别，空剩当时月。<br>月也异当时，凄清照鬓丝。 
-</p>
-
-
-
-</blockquote>
-<h2 id="鹧鸪天2023年10月16日"><a href="#鹧鸪天2023年10月16日" class="headerlink" title="鹧鸪天2023年10月16日"></a>鹧鸪天2023年10月16日</h2><blockquote>
-<p style="font-family:楷体">
-晚日寒鸦一片愁。柳塘新绿却温柔。<br>若教眼底无离恨，不信人间有白头。<br>
-肠已断，泪难收。相思重上小红楼。<br>情知已被山遮断，频倚阑干不自由。<br>
-</p>
-
-
-
-</blockquote>
-<h2 id="无题-2023年10月14日"><a href="#无题-2023年10月14日" class="headerlink" title="无题 2023年10月14日"></a>无题 2023年10月14日</h2><blockquote>
-<p style="font-family:楷体">
-飒飒东风细雨来，
-芙蓉塘外有轻雷。<br>
-金蟾啮锁烧香入，
-玉虎牵丝汲井回。<br>
-贾氏窥帘韩掾少，
-宓妃留枕魏王才。<br>
-<b>春心莫共花争发，
-    一寸相思一寸灰！</b><br>
-</p>
-
-</blockquote>
-<p>这是李商隐写的无题之一.</p>
-<h2 id="忆仙姿-2023年10月12日"><a href="#忆仙姿-2023年10月12日" class="headerlink" title="忆仙姿 2023年10月12日"></a>忆仙姿 2023年10月12日</h2><blockquote>
-<p style="font-family:楷体">
-曾宴桃源深洞，一曲清歌舞凤。<br>
-长记别伊时，和泪出门相送。<br>
-如梦，如梦，<br>
-残月落花烟重。
-</p>
-
-<p>长记别伊时又作长记欲别时,一曲清歌舞凤又作一曲舞鸾歌凤.</p>
-</blockquote>
-<p>词是李存勖写的,忆仙姿就是所谓如梦令的旧名.</p>
-<blockquote>
-<p>苏轼云： “（如梦令）本唐庄宗制，一名‘忆仙姿’，嫌其不雅，改云‘如梦’”</p>
-</blockquote>
-<p>李存勖是后唐庄宗的儿子,史称晋王.</p>
-<h2 id="秣陵怀古-2023年10月11日"><a href="#秣陵怀古-2023年10月11日" class="headerlink" title="秣陵怀古 2023年10月11日"></a>秣陵怀古 2023年10月11日</h2><blockquote>
-<p style="font-family:楷体">
-山色江声共寂寥，十三陵树晚萧萧。<br>
-中原事业如江左，芳草何须怨六朝。<br>
-</p>
-
-</blockquote>
-<p>秣陵是南京的一个别称,纳兰性德作为一个清朝人,写这首词是在表达什么呢?</p>
-<h2 id="菩萨蛮-2023年10月9日"><a href="#菩萨蛮-2023年10月9日" class="headerlink" title="菩萨蛮 2023年10月9日"></a>菩萨蛮 2023年10月9日</h2><blockquote>
-<p style="font-family:楷体">
-玉楼明月长相忆，柳丝袅娜春无力。<br>
-门外草萋萋，送君闻马嘶。<br>
-画罗金翡翠，香烛销成泪。<br>
-花落子规啼，绿窗残梦迷。<br>
-</p>
-
-</blockquote>
-<h2 id="老子·七十七章-2023年10月8日"><a href="#老子·七十七章-2023年10月8日" class="headerlink" title="老子·七十七章 2023年10月8日"></a>老子·七十七章 2023年10月8日</h2><blockquote>
-<p style="font-family:楷体">
-天之道，其犹张弓欤？<br>
-高者抑之，下者举之；有余者损之，不足者补之。<br>
-    <b>天之道，损有余而补不足。</b><br>
-    <b>人之道则不然，损不足以奉有余。</b><br>
-孰能有余以奉天下，唯有道者。<br>
-是以圣人为而不恃，功成而不处，其不欲见贤邪。<br>
-</p>
-
-</blockquote>
-<h2 id="清平乐-2023年10月7日"><a href="#清平乐-2023年10月7日" class="headerlink" title="清平乐 2023年10月7日"></a>清平乐 2023年10月7日</h2><blockquote>
-<p style="font-family:楷体">
-雨晴烟晚。绿水新池满。<br>
-双燕飞来垂柳院，小阁画帘高卷。<br>
-黄昏独倚朱阑。西南新月眉弯。<br>
-砌下落花风起，罗衣特地春寒。 <br>
-</p>
-
-</blockquote>
-<p>冯延巳的婉约词那是写得相当不错的.</p>
-<p>最后一句中的<code>罗衣特地春寒</code> 类似晏殊的清平乐中的最后一句<code>银屏昨夜微寒</code>.</p>
-<p>不知道是晏学习了冯,还是这本来就是冯的诗词呢?</p>
-<blockquote>
-<p style="font-family:楷体">
-金风细细。叶叶梧桐坠。<br>
-绿酒初尝人易醉。一枕小窗浓睡。<br>
-紫薇朱槿花残。斜阳却照阑干。<br>
-双燕欲归时节，<b>银屏昨夜微寒</b>。<br>
-</p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</blockquote>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1365,7 +1326,7 @@ This text is in Times and green</p>
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">33</span>
+          <span class="site-state-item-count">35</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1377,7 +1338,7 @@ This text is in Times and green</p>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-count">27</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
