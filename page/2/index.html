@@ -185,6 +185,84 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/12/24/Python%E8%84%9A%E6%9C%AC-%E6%8A%8A%E7%9B%AE%E5%BD%95%E4%B8%8B%E6%96%87%E4%BB%B6%E5%A4%B9%E9%87%8C%E7%9A%84%E6%96%87%E4%BB%B6%E7%A7%BB%E5%8A%A8%E5%88%B0%E5%90%8C%E4%B8%80%E4%B8%AA%E6%96%87%E4%BB%B6%E5%A4%B9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Dictat">
+      <meta itemprop="description" content="一个兴趣使然的人">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dictat 小站">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/12/24/Python%E8%84%9A%E6%9C%AC-%E6%8A%8A%E7%9B%AE%E5%BD%95%E4%B8%8B%E6%96%87%E4%BB%B6%E5%A4%B9%E9%87%8C%E7%9A%84%E6%96%87%E4%BB%B6%E7%A7%BB%E5%8A%A8%E5%88%B0%E5%90%8C%E4%B8%80%E4%B8%AA%E6%96%87%E4%BB%B6%E5%A4%B9/" class="post-title-link" itemprop="url">Python脚本-把目录下文件夹里的文件移动到同一个文件夹</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-12-24 10:35:56 / 修改时间：11:07:43" itemprop="dateCreated datePublished" datetime="2023-12-24T10:35:56+08:00">2023-12-24</time>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2023/12/24/Python%E8%84%9A%E6%9C%AC-%E6%8A%8A%E7%9B%AE%E5%BD%95%E4%B8%8B%E6%96%87%E4%BB%B6%E5%A4%B9%E9%87%8C%E7%9A%84%E6%96%87%E4%BB%B6%E7%A7%BB%E5%8A%A8%E5%88%B0%E5%90%8C%E4%B8%80%E4%B8%AA%E6%96%87%E4%BB%B6%E5%A4%B9/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2023/12/24/Python脚本-把目录下文件夹里的文件移动到同一个文件夹/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>假如你有一个目录,下面有很多个文件夹,如果你想要把带有某个关键字的文件夹里的每一张图片都汇总到同一个文件夹里,该怎么操作呢.<br>下面是用<code>chatGPT</code>写的程序,当然还需要自己的手动修改.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> shutil</span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_file_extension</span>(<span class="params">file_path</span>):</span><br><span class="line">    _, file_extension = os.path.splitext(file_path)</span><br><span class="line">    <span class="keyword">return</span> file_extension</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">copy_files_with_timestamp</span>(<span class="params">src_folder, dest_folder</span>):</span><br><span class="line">    <span class="comment"># 获取源文件夹下所有文件夹</span></span><br><span class="line">    folders = [f <span class="keyword">for</span> f <span class="keyword">in</span> os.listdir(src_folder) <span class="keyword">if</span> os.path.isdir(os.path.join(src_folder, f))]</span><br><span class="line">    count =<span class="number">0</span></span><br><span class="line">    <span class="comment"># 遍历每个文件夹</span></span><br><span class="line">    <span class="keyword">for</span> folder <span class="keyword">in</span> folders:</span><br><span class="line">        <span class="keyword">if</span> keyword <span class="keyword">in</span> folder:</span><br><span class="line">            <span class="built_in">print</span>(folder)</span><br><span class="line">        <span class="comment"># 构建文件夹的完整路径</span></span><br><span class="line">            folder_path = os.path.join(src_folder, folder)</span><br><span class="line"></span><br><span class="line">            <span class="comment"># 获取文件夹中的所有文件</span></span><br><span class="line">            files = [f <span class="keyword">for</span> f <span class="keyword">in</span> os.listdir(folder_path) <span class="keyword">if</span> os.path.isfile(os.path.join(folder_path, f))]</span><br><span class="line"></span><br><span class="line">            <span class="comment"># 遍历文件夹中的每个文件</span></span><br><span class="line">            <span class="keyword">for</span> file <span class="keyword">in</span> files:</span><br><span class="line">                <span class="comment"># 构建源文件路径</span></span><br><span class="line">                source_file_path = os.path.join(folder_path, file)</span><br><span class="line"></span><br><span class="line">                <span class="comment"># 构建目标文件路径，以时间戳重新命名</span></span><br><span class="line">                dest_file_path = os.path.join(dest_folder, <span class="string">f&quot;<span class="subst">&#123;count&#125;</span>_<span class="subst">&#123;get_file_extension(file)&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">                <span class="comment"># 复制文件到目标文件夹</span></span><br><span class="line">                shutil.copy2(source_file_path, dest_file_path)</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">f&quot;复制文件: <span class="subst">&#123;file&#125;</span> 到 <span class="subst">&#123;dest_file_path&#125;</span>&quot;</span>)</span><br><span class="line">                count = count+<span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 指定源文件夹、目标文件夹</span></span><br><span class="line">keyword = <span class="string">&quot;&quot;</span> <span class="comment">#指定的关键字</span></span><br><span class="line">source_folder = <span class="string">r&#x27;&#x27;</span> <span class="comment">#目录,下面有很多文件夹</span></span><br><span class="line">  </span><br><span class="line">destination_folder = <span class="string">r&#x27;&#x27;</span> <span class="comment">#目标文件夹</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 调用函数进行复制</span></span><br><span class="line">copy_files_with_timestamp(source_folder, destination_folder)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><code>f&quot;&#123;count&#125;_&#123;get_file_extension(file)&#125;&quot;</code> 是python 的 f-string格式化字符串 ,用了一个<code>count</code> 记数,加到文件名的前面,然后后面是一个方法,用来获取文件类型的后缀.</p>
+<p> <code>os.path.splitext</code>  是一个方法,能够将<code>4.jpg</code>切成<code>4</code>和<code>.jpg</code>两部分</p>
+<p>​    </p>
+<hr>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2023/12/23/Python%E8%84%9A%E6%9C%AC-%E6%8A%8A%E6%96%87%E4%BB%B6%E7%A7%BB%E5%87%BAGallery/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1125,119 +1203,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/10/10/%E7%94%A8python%E6%B1%82%E8%A7%A3%E8%A7%A3%E6%9E%90%E5%87%A0%E4%BD%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Dictat">
-      <meta itemprop="description" content="一个兴趣使然的人">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dictat 小站">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/10/10/%E7%94%A8python%E6%B1%82%E8%A7%A3%E8%A7%A3%E6%9E%90%E5%87%A0%E4%BD%95/" class="post-title-link" itemprop="url">用python求解解析几何</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-10-10 22:20:21" itemprop="dateCreated datePublished" datetime="2023-10-10T22:20:21+08:00">2023-10-10</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-10-16 13:53:57" itemprop="dateModified" datetime="2023-10-16T13:53:57+08:00">2023-10-16</time>
-              </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2023/10/10/%E7%94%A8python%E6%B1%82%E8%A7%A3%E8%A7%A3%E6%9E%90%E5%87%A0%E4%BD%95/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2023/10/10/用python求解解析几何/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>写了几个程序来求解高中的解析几何,才开始用的是一个<code>sympy</code>的几何库来做的,但是只能做椭圆的问题,后来就直接用<code>solve</code>来暴力的求解了.<br>这些程序的主要目的是联立直线和圆锥曲线的方程,这是求解解析几何问题的基本方法,即所谓的设而不求:联立方程之后利用韦达定理来得到两个焦点坐标的关系.</p>
-<h2 id="三个求解函数"><a href="#三个求解函数" class="headerlink" title="三个求解函数"></a>三个求解函数</h2><h3 id="求解直线和抛物线的交点"><a href="#求解直线和抛物线的交点" class="headerlink" title="求解直线和抛物线的交点:"></a>求解直线和抛物线的交点:</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">solveParabola</span>(<span class="params">p,point</span>):</span><br><span class="line">    x0 = point[<span class="number">0</span>]</span><br><span class="line">    y0 = point[<span class="number">1</span>]</span><br><span class="line">    ((x1,y1),(x2,y2)) = nonlinsolve([y**<span class="number">2</span>-<span class="number">2</span>*p*x, y-k*(x-x0)-y0 ], (x,y))</span><br><span class="line">    <span class="keyword">return</span> x1,y1,x2,y2</span><br></pre></td></tr></table></figure>
-<h3 id="求解直线和椭圆的交点"><a href="#求解直线和椭圆的交点" class="headerlink" title="求解直线和椭圆的交点:"></a>求解直线和椭圆的交点:</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#请在安装了sympy以后在jupyter(IPython notebook)下运算该程序,这主要是为了更美观的显示数学公式</span></span><br><span class="line"><span class="keyword">from</span> sympy <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">solveEllipse</span>(<span class="params">a,b,point</span>):</span><br><span class="line">    <span class="keyword">from</span> sympy.abc <span class="keyword">import</span> x, y,k,m</span><br><span class="line">    <span class="keyword">from</span> sympy <span class="keyword">import</span> nonlinsolve</span><br><span class="line">    <span class="keyword">from</span> sympy <span class="keyword">import</span> simplify</span><br><span class="line">    x0 = point[<span class="number">0</span>]</span><br><span class="line">    y0 = point[<span class="number">1</span>]</span><br><span class="line">    ((x1,y1),(x2,y2)) = nonlinsolve([x**<span class="number">2</span>/a**<span class="number">2</span>+y**<span class="number">2</span>/b**<span class="number">2</span>-<span class="number">1</span>, y-k*(x-x0)-y0 ], (x,y))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;x1+x2 = &#x27;</span>)</span><br><span class="line">    display(simplify(x1+x2))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;x1*x2 = &#x27;</span>)</span><br><span class="line">    display(simplify(x1*x2))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;y1+y2 = &#x27;</span>)</span><br><span class="line">    display(simplify(y1+y2))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;y1*y2 = &#x27;</span>)</span><br><span class="line">    display(simplify(y1*y2))</span><br><span class="line">    <span class="keyword">return</span> x1,y1,x2,y2;</span><br><span class="line">x1,y1,x2,y2 = solveEllipse(<span class="number">4</span>,<span class="number">3</span>,(<span class="number">1</span>,<span class="number">0</span>));</span><br></pre></td></tr></table></figure>
-<h3 id="求解直线和双曲线的交点"><a href="#求解直线和双曲线的交点" class="headerlink" title="求解直线和双曲线的交点:"></a>求解直线和双曲线的交点:</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">solveHyperbola</span>(<span class="params">a,b,point</span>):</span><br><span class="line">    <span class="keyword">from</span> sympy.abc <span class="keyword">import</span> x, y,k,m</span><br><span class="line">    <span class="keyword">from</span> sympy <span class="keyword">import</span> nonlinsolve</span><br><span class="line">    <span class="keyword">from</span> sympy <span class="keyword">import</span> simplify</span><br><span class="line">    x0 = point[<span class="number">0</span>]</span><br><span class="line">    y0 = point[<span class="number">1</span>]</span><br><span class="line">    ((x1,y1),(x2,y2)) = nonlinsolve([x**<span class="number">2</span>/a**<span class="number">2</span>+y**<span class="number">2</span>/b**<span class="number">2</span>-<span class="number">1</span>, y-k*(x-x0)-y0 ], (x,y))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;x1+x2 = &#x27;</span>)</span><br><span class="line">    display(simplify(x1+x2))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;x1*x2 = &#x27;</span>)</span><br><span class="line">    display(simplify(x1*x2))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;y1+y2 = &#x27;</span>)</span><br><span class="line">    display(simplify(y1+y2))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;y1*y2 = &#x27;</span>)</span><br><span class="line">    display(simplify(y1*y2))</span><br><span class="line">    <span class="keyword">return</span> x1,y1,x2,y2;</span><br></pre></td></tr></table></figure>
-<p>由于双曲线和抛物线的开口有方向性,则在实际过程中,可能需要根据题目的主要内容来修改函数中的参数.</p>
-<h2 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h2><p>已知双曲线$\Gamma$:${\frac{x^{2}}{a^{2}}}-{\frac{y^{2}}{b^{2}}}=1$，的焦距为$4$,过点$P(2,\frac{\sqrt{3}}{3})$</p>
-<blockquote>
-<ol>
-<li>求双曲线$\Gamma$的方程.</li>
-<li>过双曲线 $\Gamma$ 的左焦点 $F$ 分别作斜率为 $k_1,k_2$的两直线 $l_1$与 $l_2$，直线 $l_1$交双曲线 $\Gamma$  于 $A,B$ 两点，直线 $l_2$交双曲线  $\Gamma$ 于 $C,D$ 两点，设 $M,N$ 分别为 $AB$ 与 $CD$ 的中点，若 $k_1⋅ k_2=-1$，试求 $ \bigtriangleup  OMN$ 与  $\bigtriangleup  FMN$ 的面积之比.</li>
-</ol>
-</blockquote>
-<ol>
-<li>可以求出其方程为${\frac{x^{2}}{3}}-y^{2}=1$</li>
-<li>左焦点坐标为(-2,0)</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x1,y1,x2,y2 =solveHyperbola(sqrt(<span class="number">3</span>),<span class="number">1</span>,(-<span class="number">2</span>,<span class="number">0</span>));</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">k_1,k_2  =symbols(<span class="string">&#x27;k_1 k_2&#x27;</span>)</span><br><span class="line">m_x = simplify(((x1+x2)/<span class="number">2</span>).subs(k,k_1))</span><br><span class="line">m_y = simplify(((y1+y2)/<span class="number">2</span>).subs(k,k_1))</span><br></pre></td></tr></table></figure>
-<p>则得到了$M$的坐标,由于$k_1⋅ k_2=-1$,则也能得到N的坐标为<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">n_x = simplify(((x1+x2)/<span class="number">2</span>).subs(k,-<span class="number">1</span>/k_1))</span><br><span class="line">n_y = simplify(((y1+y2)/<span class="number">2</span>).subs(k,-<span class="number">1</span>/k_1))</span><br></pre></td></tr></table></figure></p>
-<p><img src="/2023/10/10/%E7%94%A8python%E6%B1%82%E8%A7%A3%E8%A7%A3%E6%9E%90%E5%87%A0%E4%BD%95/1697002468458.png" alt="1697002468458"></p>
-<p>当</p>
-<script type="math/tex; mode=display">
-\frac{6k_{1}^{2}}{1-3k_{1}^{2}}=\frac{6}{1-3k_{1}^{2}}</script><p>时,$k_1 = \pm 1$, </p>
-<p>直线 $l_{MN}$的方程为 $x =  -3$,</p>
-<p>当其斜率存在事,其斜率为</p>
-<p><img src="/2023/10/10/%E7%94%A8python%E6%B1%82%E8%A7%A3%E8%A7%A3%E6%9E%90%E5%87%A0%E4%BD%95/1697002849839.png" alt="1697002849839"></p>
-<p>则其方程为:</p>
-<script type="math/tex; mode=display">y-\frac{2k_{1}}{1-3k_{1}^{2}}\!=\!-\frac{2k_{1}}{3(k_{1}^{2}\!-\!1)}\!\left(x-\frac{6k_{1}^{2}}{1-3k_{1}^{2}}\right)</script><p>令$y =0$等于零,则解得$x =  -3$.</p>
-<p>综上所述,则直线$l_{MN}$ 恒过定点$(-3,0)$,</p>
-<p>则</p>
-<p><script type="math/tex">\frac{S_{\triangle O M N}}{S_{\triangle P M N}}=\frac{\textstyle{\frac{1}{2}}|y_{N}-y_{M}||O E|}{\textstyle{\frac{1}{2}}|y_{M}-y_{N}||F E|}=\frac{|O E|}{|F E|}=3</script>.</p>
-<h3 id="难点"><a href="#难点" class="headerlink" title="难点"></a>难点</h3><ol>
-<li>利用斜率的关系,统一两条直线中斜率的变量.</li>
-<li>观察出直线过定点.</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1309,7 +1274,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">36</span>
+          <span class="site-state-item-count">37</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1321,7 +1286,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-count">28</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
