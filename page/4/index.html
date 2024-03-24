@@ -532,7 +532,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-04-26 11:25:01" itemprop="dateModified" datetime="2022-04-26T11:25:01+08:00">2022-04-26</time>
+                <time title="修改时间：2024-03-24 19:08:34" itemprop="dateModified" datetime="2024-03-24T19:08:34+08:00">2024-03-24</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -570,7 +570,7 @@
 
       
           <p>对于这个问题,我们简要的谈一下.</p>
-<p>要知道在hexo中使用图片的时候不能简单的使用markdown语法,即<code>![这里是名称](这里是图片链接)</code>的方式插入图片,不得不说,这的确是开发者有些懒惰了(hexo居然是一个没有毕业的台湾大学生开发的,那没事了).</p>
+<p>要知道在 <code>hexo</code>中使用图片的时候不能简单的使用markdown语法,即 <code>![这里是名称](这里是图片链接)</code> 的方式插入图片,不得不说,这的确是开发者有些懒惰了(hexo居然是一个没有毕业的台湾大学生开发的,那没事了).</p>
 <p>但是智慧(懒惰的)的我们可以在网上寻求答案,也许要踩不可数的坑.</p>
 <p>最后在<a target="_blank" rel="noopener" href="https://chrismroberts.com/2020/01/06/using-markdown-in-hexo-to-add-images/">这个链接: Adding Images to Hexo Posts with Markdown </a> 里找到了解决方法,只要在谷歌搜索<code>hexo markdown pic</code>,出现的里面的第一个就是了,叫我们去安装一个插件,用下面的代码.</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i -s hexo-asset-link</span><br></pre></td></tr></table></figure>
@@ -581,6 +581,11 @@
 <li>要尽量挑比较新的文章看.</li>
 </ol>
 <p>我用这篇文章的时候就没有安装成功:<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/280758822?utm_source=qq">hexo博客显示markdown路径的图片</a><br>就可能是安装源的问题.</p>
+<p><strong>2024年3月24日</strong></p>
+<p>发现用上述语法插入图片的时候,路径的符号里不能用 <code>\</code>只能用  <code>/</code> .</p>
+<p><code>Typora</code> 要进行如下的设定:</p>
+<p><img src="/2022/04/24/%E7%BD%91%E7%AB%99%E5%BB%BA%E7%AB%8B%E5%85%B6%E5%9B%9B/1711278225574.png" alt="1711278225574"></p>
+<p>我是在把我之前写的 markdown 搬到 hexo 的时候发现的这个问题,可能之前 Typora 的设定红框里用的是 <code>\</code>.</p>
 
       
     </div>

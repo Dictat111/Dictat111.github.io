@@ -188,6 +188,114 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/03/24/latex%E5%AE%8F%E5%8C%85%E7%9F%A5%E8%AF%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Dictat">
+      <meta itemprop="description" content="一个兴趣使然的人">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dictat 小站">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/03/24/latex%E5%AE%8F%E5%8C%85%E7%9F%A5%E8%AF%86/" class="post-title-link" itemprop="url">LaTeX 宏包知识</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2024-03-24 18:55:27 / 修改时间：19:00:55" itemprop="dateCreated datePublished" datetime="2024-03-24T18:55:27+08:00">2024-03-24</time>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2024/03/24/latex%E5%AE%8F%E5%8C%85%E7%9F%A5%E8%AF%86/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2024/03/24/latex宏包知识/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="颜色-xcolor-xcolor-material"><a href="#颜色-xcolor-xcolor-material" class="headerlink" title="颜色:xcolor,xcolor-material"></a>颜色:xcolor,xcolor-material</h2><p>需要用到 \xcolor 宏包.</p>
+<p>\colorlet{PrimaryColor}{MaterialBlue900}</p>
+<p><img src="/2024/03/24/latex%E5%AE%8F%E5%8C%85%E7%9F%A5%E8%AF%86/1649396971837.png" alt="2"></p>
+<h2 id="代码输入-listings"><a href="#代码输入-listings" class="headerlink" title="代码输入:listings"></a>代码输入:listings</h2><figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\lstdefinelanguage</span>&#123;javascript&#125;&#123;</span><br><span class="line">  morekeywords=&#123;const, let, class, Promise, try, catch, Error, async, await, super, constructor&#125;,</span><br><span class="line">  sensitive=true,</span><br><span class="line">  morecomment=[l]&#123;//&#125;,</span><br><span class="line">  morecomment=[s]&#123;/*&#125;&#123;*/&#125;,</span><br><span class="line">  morestring=[b]&#x27;,</span><br><span class="line">  morestring=[b]&quot;,</span><br><span class="line">  morestring=[b]`,</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">\lstalias</span>&#123;js&#125;&#123;javascript&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="超链接-hyperref"><a href="#超链接-hyperref" class="headerlink" title="超链接:hyperref"></a>超链接:hyperref</h2><h2 id="书签-bookmark"><a href="#书签-bookmark" class="headerlink" title="书签:bookmark"></a>书签:bookmark</h2><h6 id="bookmark-和-hyperref-哪个先使用的问题"><a href="#bookmark-和-hyperref-哪个先使用的问题" class="headerlink" title="bookmark 和 hyperref 哪个先使用的问题"></a>bookmark 和 hyperref 哪个先使用的问题</h6><p><code>bookmark</code> loads <code>hyperref</code> since it uses some of the code contained within it. As such, it is sufficient to only load <code>bookmark</code>. Since loading of <code>hyperref</code> is included in <code>bookmark</code>, load order doesn’t matter.</p>
+<h2 id="插入彩色盒子-tcolorbox"><a href="#插入彩色盒子-tcolorbox" class="headerlink" title="插入彩色盒子:tcolorbox"></a>插入彩色盒子:tcolorbox</h2><p>listing:tcblisting</p>
+<p>\newtcblisting</p>
+<h2 id="页眉页脚-fancyhdr"><a href="#页眉页脚-fancyhdr" class="headerlink" title="页眉页脚:fancyhdr"></a>页眉页脚:fancyhdr</h2><h3 id="高亮-minted"><a href="#高亮-minted" class="headerlink" title="高亮:minted"></a>高亮:minted</h3><p><a target="_blank" rel="noopener" href="https://www.overleaf.com/learn/latex/Code_Highlighting_with_minted">overleaf 上面的教程</a></p>
+<h2 id="Contents"><a href="#Contents" class="headerlink" title="Contents"></a>Contents</h2><figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\begin</span>&#123;minted&#125;&#123;python&#125;<span class="string"></span></span><br><span class="line"><span class="string">*******</span></span><br><span class="line"><span class="string"></span><span class="keyword">\end</span>&#123;minted&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p> <strong>Note</strong>: For <code>minted</code> to work with your <em>local</em> LaTeX distribution, an additional program called <a target="_blank" rel="noopener" href="https://pygments.org/">Pygments</a> must be installed. <a target="_blank" rel="noopener" href="https://www.overleaf.com/">Overleaf</a> can save you the trouble of installing it and having to run special commands to compile your document—on Overleaf, documents that use <code>minted</code> will work “out of the box”. </p>
+</blockquote>
+<p>在本地使用<code>minted</code>的话必须安装Pygment.</p>
+<p>我的电脑已经安装了 <code>Pygment</code> 了,但是导入 minted 库以后还是会报错</p>
+<h5 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h5><p> 安装完毕后，需要在<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=编译器&amp;spm=1001.2101.3001.7020">编译器</a>上添加参数 <code>-shell-escape</code> </p>
+<p><img src="https://img-blog.csdnimg.cn/20210122105525708.png" alt="1"></p>
+<p> 在 VSCode 上需要在 <code>setting.json</code> 上设置，首先 <code>Ctrl + ,</code> 打开 Settings，然后搜索 latex，找到 Edit in settings.json，打开之后给编辑器加上参数，如下 :</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;xelatex&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;command&quot;</span><span class="punctuation">:</span> <span class="string">&quot;xelatex&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;args&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="string">&quot;-shell-escape&quot;</span><span class="punctuation">,</span> </span><br><span class="line">    ...</span><br><span class="line">      <span class="punctuation">]</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span> </span><br></pre></td></tr></table></figure>
+<p>解决办法</p>
+<h6 id="问题-找不到-setting-json-怎么办"><a href="#问题-找不到-setting-json-怎么办" class="headerlink" title="问题:找不到 setting.json 怎么办?"></a>问题:找不到 <code>setting.json</code> 怎么办?</h6><p>按<code>Ctrl + ,&#39;</code>打开设置,搜索Code Actions On Save ,然后在下面可以找到</p>
+<h6 id="问题-按Ctrl-没有反应"><a href="#问题-按Ctrl-没有反应" class="headerlink" title="问题:按Ctrl + ,没有反应?"></a>问题:按<code>Ctrl + ,</code>没有反应?</h6><p>原因是因为和搜狗输入法有冲突,改成下面这个样子(ps.要在<strong>输入法管理器</strong>里改,快捷键里不可以修改,也就是说这个功能是默认必须得开启的,国产软件,恶心的实在太多了…)</p>
+<p><img src="/2024/03/24/latex%E5%AE%8F%E5%8C%85%E7%9F%A5%E8%AF%86/1649412120529.png" alt="1649412120529"></p>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>\renewenvironment</p>
+<p>\newenvironment</p>
+<h2 id="latex-问题"><a href="#latex-问题" class="headerlink" title="latex 问题"></a>latex 问题</h2><h3 id="环境导入-sty-文件自定义"><a href="#环境导入-sty-文件自定义" class="headerlink" title="环境导入 .sty 文件自定义"></a>环境导入 .sty 文件自定义</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">texhash C:\Users\98357\texmf</span><br></pre></td></tr></table></figure>
+<h3 id="只输出指定页面"><a href="#只输出指定页面" class="headerlink" title="只输出指定页面"></a>只输出指定页面</h3><figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\documentclass</span>&#123;article&#125; <span class="comment">% Not really important</span></span><br><span class="line"><span class="keyword">\usepackage</span>&#123;pdfpages&#125;</span><br><span class="line"><span class="keyword">\begin</span>&#123;document&#125;</span><br><span class="line"><span class="keyword">\includepdf</span>[pages=&#123;12-15,23,45-49&#125;]&#123;main.pdf&#125;</span><br><span class="line"><span class="keyword">\end</span>&#123;document&#125;</span><br></pre></td></tr></table></figure>
+<p>但这似乎只是一种对于pdf的处理</p>
+<h3 id="关于注脚-footnote"><a href="#关于注脚-footnote" class="headerlink" title="关于注脚 footnote"></a>关于注脚 footnote</h3><h4 id="落在盒子外"><a href="#落在盒子外" class="headerlink" title="落在盒子外"></a>落在盒子外</h4><p>使用<code>\footnotemark</code> 和在盒子外使用 <code>\footnotetext&#123;***&#125;</code></p>
+<p>但是这只能对一个注释使用,多个会出现引用错误.</p>
+<h3 id="关于缩进"><a href="#关于缩进" class="headerlink" title="关于缩进"></a>关于缩进</h3><p> <strong>段落</strong>取消缩进</p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\setlength</span><span class="keyword">\parindent</span>&#123;0pt&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="关于枚举"><a href="#关于枚举" class="headerlink" title="关于枚举"></a>关于枚举</h3><h4 id="无序-itemize"><a href="#无序-itemize" class="headerlink" title="无序 itemize"></a>无序 itemize</h4><h4 id="有序-enumerate"><a href="#有序-enumerate" class="headerlink" title="有序 enumerate"></a>有序 enumerate</h4><h3 id="有关字体大小"><a href="#有关字体大小" class="headerlink" title="有关字体大小"></a>有关字体大小</h3><h4 id="全局使用"><a href="#全局使用" class="headerlink" title="全局使用"></a>全局使用</h4><p>一般是<code>10pt, 11pt, 12pt</code>,使用<code>extarticle</code>或者 <code>extreport</code>  能够使用 <code>8pt, 9pt, 10pt, 11pt, 12pt, 14pt, 17pt, 20pt</code>.</p>
+<h3 id="有关于字体的设定"><a href="#有关于字体的设定" class="headerlink" title="有关于字体的设定"></a>有关于字体的设定</h3><figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\usepackage</span>&#123;fontspec&#125;</span><br><span class="line"><span class="keyword">\setmainfont</span>&#123;Times New Roman&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="LaTeX的一些命令"><a href="#LaTeX的一些命令" class="headerlink" title="\LaTeX的一些命令"></a>\LaTeX的一些命令</h2><h2 id="vsode-小技巧"><a href="#vsode-小技巧" class="headerlink" title="vsode 小技巧"></a>vsode 小技巧</h2><p>使用<strong>正则表达式</strong>(点亮红色方块),在每行行首添加 \item (如果在行尾,则使用$).</p>
+<p>不得不感叹正则表达式的强大能力</p>
+<p><img src="/2024/03/24/latex%E5%AE%8F%E5%8C%85%E7%9F%A5%E8%AF%86/1649476224402.png" alt="1649476224402"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2024/03/24/vscode-%E7%9A%84%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -281,114 +389,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/03/24/latex%E5%AE%8F%E5%8C%85%E7%9F%A5%E8%AF%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Dictat">
-      <meta itemprop="description" content="一个兴趣使然的人">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dictat 小站">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/03/24/latex%E5%AE%8F%E5%8C%85%E7%9F%A5%E8%AF%86/" class="post-title-link" itemprop="url">LaTeX 宏包知识</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2024-03-24 10:35:58 / 修改时间：18:48:13" itemprop="dateCreated datePublished" datetime="2024-03-24T10:35:58+08:00">2024-03-24</time>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2024/03/24/latex%E5%AE%8F%E5%8C%85%E7%9F%A5%E8%AF%86/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2024/03/24/latex宏包知识/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="颜色-xcolor-xcolor-material"><a href="#颜色-xcolor-xcolor-material" class="headerlink" title="颜色:xcolor,xcolor-material"></a>颜色:xcolor,xcolor-material</h2><p>需要用到 \xcolor 宏包.</p>
-<p>\colorlet{PrimaryColor}{MaterialBlue900}</p>
-<p><img src="latex宏包知识\1649396971837.png" alt="1649396971837"></p>
-<h2 id="代码输入-listings"><a href="#代码输入-listings" class="headerlink" title="代码输入:listings"></a>代码输入:listings</h2><figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\lstdefinelanguage</span>&#123;javascript&#125;&#123;</span><br><span class="line">  morekeywords=&#123;const, let, class, Promise, try, catch, Error, async, await, super, constructor&#125;,</span><br><span class="line">  sensitive=true,</span><br><span class="line">  morecomment=[l]&#123;//&#125;,</span><br><span class="line">  morecomment=[s]&#123;/*&#125;&#123;*/&#125;,</span><br><span class="line">  morestring=[b]&#x27;,</span><br><span class="line">  morestring=[b]&quot;,</span><br><span class="line">  morestring=[b]`,</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">\lstalias</span>&#123;js&#125;&#123;javascript&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h2 id="超链接-hyperref"><a href="#超链接-hyperref" class="headerlink" title="超链接:hyperref"></a>超链接:hyperref</h2><h2 id="书签-bookmark"><a href="#书签-bookmark" class="headerlink" title="书签:bookmark"></a>书签:bookmark</h2><h6 id="bookmark-和-hyperref-哪个先使用的问题"><a href="#bookmark-和-hyperref-哪个先使用的问题" class="headerlink" title="bookmark 和 hyperref 哪个先使用的问题"></a>bookmark 和 hyperref 哪个先使用的问题</h6><p><code>bookmark</code> loads <code>hyperref</code> since it uses some of the code contained within it. As such, it is sufficient to only load <code>bookmark</code>. Since loading of <code>hyperref</code> is included in <code>bookmark</code>, load order doesn’t matter.</p>
-<h2 id="插入彩色盒子-tcolorbox"><a href="#插入彩色盒子-tcolorbox" class="headerlink" title="插入彩色盒子:tcolorbox"></a>插入彩色盒子:tcolorbox</h2><p>listing:tcblisting</p>
-<p>\newtcblisting</p>
-<h2 id="页眉页脚-fancyhdr"><a href="#页眉页脚-fancyhdr" class="headerlink" title="页眉页脚:fancyhdr"></a>页眉页脚:fancyhdr</h2><h3 id="高亮-minted"><a href="#高亮-minted" class="headerlink" title="高亮:minted"></a>高亮:minted</h3><p><a target="_blank" rel="noopener" href="https://www.overleaf.com/learn/latex/Code_Highlighting_with_minted">overleaf 上面的教程</a></p>
-<h2 id="Contents"><a href="#Contents" class="headerlink" title="Contents"></a>Contents</h2><figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\begin</span>&#123;minted&#125;&#123;python&#125;<span class="string"></span></span><br><span class="line"><span class="string">*******</span></span><br><span class="line"><span class="string"></span><span class="keyword">\end</span>&#123;minted&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p> <strong>Note</strong>: For <code>minted</code> to work with your <em>local</em> LaTeX distribution, an additional program called <a target="_blank" rel="noopener" href="https://pygments.org/">Pygments</a> must be installed. <a target="_blank" rel="noopener" href="https://www.overleaf.com/">Overleaf</a> can save you the trouble of installing it and having to run special commands to compile your document—on Overleaf, documents that use <code>minted</code> will work “out of the box”. </p>
-</blockquote>
-<p>在本地使用<code>minted</code>的话必须安装Pygment.</p>
-<p>我的电脑已经安装了 <code>Pygment</code> 了,但是导入 minted 库以后还是会报错</p>
-<h5 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h5><p> 安装完毕后，需要在<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=编译器&amp;spm=1001.2101.3001.7020">编译器</a>上添加参数 <code>-shell-escape</code> </p>
-<p><img src="https://img-blog.csdnimg.cn/20210122105525708.png" alt="1"></p>
-<p> 在 VSCode 上需要在 <code>setting.json</code> 上设置，首先 <code>Ctrl + ,</code> 打开 Settings，然后搜索 latex，找到 Edit in settings.json，打开之后给编辑器加上参数，如下 :</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;xelatex&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;command&quot;</span><span class="punctuation">:</span> <span class="string">&quot;xelatex&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;args&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="string">&quot;-shell-escape&quot;</span><span class="punctuation">,</span> </span><br><span class="line">    ...</span><br><span class="line">      <span class="punctuation">]</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span> </span><br></pre></td></tr></table></figure>
-<p>解决办法</p>
-<h6 id="问题-找不到-setting-json-怎么办"><a href="#问题-找不到-setting-json-怎么办" class="headerlink" title="问题:找不到 setting.json 怎么办?"></a>问题:找不到 <code>setting.json</code> 怎么办?</h6><p>按<code>Ctrl + ,&#39;</code>打开设置,搜索Code Actions On Save ,然后在下面可以找到</p>
-<h6 id="问题-按Ctrl-没有反应"><a href="#问题-按Ctrl-没有反应" class="headerlink" title="问题:按Ctrl + ,没有反应?"></a>问题:按<code>Ctrl + ,</code>没有反应?</h6><p>原因是因为和搜狗输入法有冲突,改成下面这个样子(ps.要在<strong>输入法管理器</strong>里改,快捷键里不可以修改,也就是说这个功能是默认必须得开启的,国产软件,恶心的实在太多了…)</p>
-<p><img src="latex宏包知识\1649412120529.png" alt="1649412120529"></p>
-<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>\renewenvironment</p>
-<p>\newenvironment</p>
-<h2 id="latex-问题"><a href="#latex-问题" class="headerlink" title="latex 问题"></a>latex 问题</h2><h3 id="环境导入-sty-文件自定义"><a href="#环境导入-sty-文件自定义" class="headerlink" title="环境导入 .sty 文件自定义"></a>环境导入 .sty 文件自定义</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">texhash C:\Users\98357\texmf</span><br></pre></td></tr></table></figure>
-<h3 id="只输出指定页面"><a href="#只输出指定页面" class="headerlink" title="只输出指定页面"></a>只输出指定页面</h3><figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\documentclass</span>&#123;article&#125; <span class="comment">% Not really important</span></span><br><span class="line"><span class="keyword">\usepackage</span>&#123;pdfpages&#125;</span><br><span class="line"><span class="keyword">\begin</span>&#123;document&#125;</span><br><span class="line"><span class="keyword">\includepdf</span>[pages=&#123;12-15,23,45-49&#125;]&#123;main.pdf&#125;</span><br><span class="line"><span class="keyword">\end</span>&#123;document&#125;</span><br></pre></td></tr></table></figure>
-<p>但这似乎只是一种对于pdf的处理</p>
-<h3 id="关于注脚-footnote"><a href="#关于注脚-footnote" class="headerlink" title="关于注脚 footnote"></a>关于注脚 footnote</h3><h4 id="落在盒子外"><a href="#落在盒子外" class="headerlink" title="落在盒子外"></a>落在盒子外</h4><p>使用<code>\footnotemark</code> 和在盒子外使用 <code>\footnotetext&#123;***&#125;</code></p>
-<p>但是这只能对一个注释使用,多个会出现引用错误.</p>
-<h3 id="关于缩进"><a href="#关于缩进" class="headerlink" title="关于缩进"></a>关于缩进</h3><p> <strong>段落</strong>取消缩进</p>
-<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\setlength</span><span class="keyword">\parindent</span>&#123;0pt&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="关于枚举"><a href="#关于枚举" class="headerlink" title="关于枚举"></a>关于枚举</h3><h4 id="无序-itemize"><a href="#无序-itemize" class="headerlink" title="无序 itemize"></a>无序 itemize</h4><h4 id="有序-enumerate"><a href="#有序-enumerate" class="headerlink" title="有序 enumerate"></a>有序 enumerate</h4><h3 id="有关字体大小"><a href="#有关字体大小" class="headerlink" title="有关字体大小"></a>有关字体大小</h3><h4 id="全局使用"><a href="#全局使用" class="headerlink" title="全局使用"></a>全局使用</h4><p>一般是<code>10pt, 11pt, 12pt</code>,使用<code>extarticle</code>或者 <code>extreport</code>  能够使用 <code>8pt, 9pt, 10pt, 11pt, 12pt, 14pt, 17pt, 20pt</code>.</p>
-<h3 id="有关于字体的设定"><a href="#有关于字体的设定" class="headerlink" title="有关于字体的设定"></a>有关于字体的设定</h3><figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\usepackage</span>&#123;fontspec&#125;</span><br><span class="line"><span class="keyword">\setmainfont</span>&#123;Times New Roman&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="LaTeX的一些命令"><a href="#LaTeX的一些命令" class="headerlink" title="\LaTeX的一些命令"></a>\LaTeX的一些命令</h2><h2 id="vsode-小技巧"><a href="#vsode-小技巧" class="headerlink" title="vsode 小技巧"></a>vsode 小技巧</h2><p>使用<strong>正则表达式</strong>(点亮红色方块),在每行行首添加 \item (如果在行尾,则使用$).</p>
-<p>不得不感叹正则表达式的强大能力</p>
-<p><img src="latex宏包知识\1649476224402.png" alt="1649476224402"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2024/01/31/2024%E5%B9%B41%E6%9C%8831%E6%97%A5-%E6%9C%AC%E5%9C%B0%E9%9F%B3%E4%B9%90%E6%B5%8B%E8%AF%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -444,12 +444,12 @@
       
           <p>本次测试使用了 <code>hexo-tag-aplayer</code> 插件的本地引用功能<br>用代码<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;% aplayer &quot;忍者&quot; &quot;周杰伦&quot; &quot;周杰伦 - 忍者.mp3&quot; %&#125;</span><br><span class="line">&#123;% aplayer &quot;駅&quot; &quot;中森明菜&quot; &quot;駅 - 中森明菜.mp3&quot; &quot;autoplay&quot;%&#125;</span><br></pre></td></tr></table></figure><br>实现了下面的效果,文件放在了和 <code>md</code> 同名的文件夹下面,这是因为我开起了<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/asset-folders.html#%E6%96%87%E7%AB%A0%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6%E5%A4%B9">文章资源文件夹</a>功能.</p>
 
-        <div id="aplayer-xHZJbLRL" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-kmVdiiPR" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-xHZJbLRL"),
+            element: document.getElementById("aplayer-kmVdiiPR"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -465,12 +465,12 @@
           window.aplayers.push(ap);
         </script>
 
-        <div id="aplayer-hBXTPcWM" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-wyntmIdq" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-hBXTPcWM"),
+            element: document.getElementById("aplayer-wyntmIdq"),
             narrow: false,
             autoplay: true,
             showlrc: false,
@@ -565,11 +565,11 @@
       
           <p>本质上就是使用 <code>hexo-tag-aplayer</code>这个插件,多参考了几个人的文章,实现了下面的效果.</p>
 
-    <div id="aplayer-IwZEuKjd" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-WRMYOXdE" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="798130521" data-server="netease" data-type="playlist" data-mode="circulation" data-autoplay="false" data-mutex="false" data-listmaxheight="400px" data-preload="none" data-theme="#ad7a86"
     ></div>
 <p>据说能够使用butterfly来实现下吸播放,但是没有试.<br>下面是单曲,用的 <code>song</code> 关键字<br>
-    <div id="aplayer-oPDhiUWX" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-pdgUurIC" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="443700749" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="false" data-listmaxheight="400px" data-preload="none" data-theme="#ad7a86"
     ></div></p>
 <p><a target="_blank" rel="noopener" href="https://www.guodongblog.com/posts/91597d56b19f/">参考-Hexo-Butterfly音乐播放器的添加</a></p>
