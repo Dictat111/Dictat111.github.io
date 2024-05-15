@@ -214,6 +214,421 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/01/25/2024-01-25-%E5%8F%88%E4%B8%80%E6%AC%A1%E7%BD%91%E7%BB%9C%E4%BF%AE%E5%A4%8D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Dictat">
+      <meta itemprop="description" content="一个兴趣使然的人">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dictat 小站">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/01/25/2024-01-25-%E5%8F%88%E4%B8%80%E6%AC%A1%E7%BD%91%E7%BB%9C%E4%BF%AE%E5%A4%8D/" class="post-title-link" itemprop="url">代理那些事-又一次网络修复</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2024-01-25 16:57:55 / 修改时间：17:13:19" itemprop="dateCreated datePublished" datetime="2024-01-25T16:57:55+08:00">2024-01-25</time>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2024/01/25/2024-01-25-%E5%8F%88%E4%B8%80%E6%AC%A1%E7%BD%91%E7%BB%9C%E4%BF%AE%E5%A4%8D/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2024/01/25/2024-01-25-又一次网络修复/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>兄弟们,用 <code>hexo</code> 又出问题了, 用 <code>hexo clean &amp; hexo g &amp; hexo d</code> 一键三连的时候,最后一步部署的时候出问题了,最后排查出来发现是该死的学校学院网不能够访问 <code>GitHub</code> 了.<sup><a href="#fn_1" id="reffn_1">1</a></sup></p>
+<p>我希望能给 <code>cmd</code> 上代理,但是发现怎么用都不 <code>ping</code> 不通,就算是改成全局模式也不行,最后发现这和互联网的网络原理有关系,啥ping不是走网络层的啥,反正就是有可能代理是有用的,但是对ping没有用,但是因为这个表象的错误,做了很多的无用功.</p>
+<p>最后我给 <code>git</code> 开了一个 <code>socks</code>  的代理</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.proxy socks5://<span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>:端口号</span><br></pre></td></tr></table></figure>
+<p>然后就能用了,但是这个设定是全局的,希望不要出什么叉子,</p>
+<p><em>还有值得一提的是</em></p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.proxy &#x27;socks5://<span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>:<span class="number">1080</span>&#x27; </span><br></pre></td></tr></table></figure>
+<p>这里,单引号是错误的,不能加!</p>
+<p><a target="_blank" rel="noopener" href="https://gist.github.com/bluethon/45766d0a4541ab633e32a49b6c4e4bdd">参考网页</a></p>
+<p>似乎有方法只给github上代理,</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 以代理端口 <span class="number">7890</span> 为例</span><br><span class="line">git config --global http.https://github.com.proxy socks5h://<span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>:<span class="number">7890</span></span><br><span class="line"></span><br><span class="line"># 取消代理</span><br><span class="line">git config --global --unset http.https://github.com.proxy</span><br></pre></td></tr></table></figure>
+<blockquote id="fn_1">
+<sup>1</sup>. 发明的那个人如果来我学校演讲,我一定去扔臭鸡蛋<a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#8617;</a>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/01/23/2024-01-23-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%9B%98%E5%88%9D%E8%AF%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Dictat">
+      <meta itemprop="description" content="一个兴趣使然的人">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dictat 小站">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/01/23/2024-01-23-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%9B%98%E5%88%9D%E8%AF%95/" class="post-title-link" itemprop="url">搭建个人网盘初试</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-01-23 15:11:33" itemprop="dateCreated datePublished" datetime="2024-01-23T15:11:33+08:00">2024-01-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-03-09 14:27:13" itemprop="dateModified" datetime="2024-03-09T14:27:13+08:00">2024-03-09</time>
+              </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2024/01/23/2024-01-23-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%9B%98%E5%88%9D%E8%AF%95/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2024/01/23/2024-01-23-搭建个人网盘初试/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>写的代码需要备份同步,想到我还有一个服务器,似乎可以用来搭建个人的网盘,于是便尝试了一下</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://raw.githubusercontent.com/filebrowser/get/master/get.sh | bash</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>用这段代码就能安装 <code>filebrowser</code> .然后运行</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">filebrowser -a 0.0.0.0 -p 8007 -r /root/mydatabase</span><br></pre></td></tr></table></figure>
+<p>指定主目录是 <code>/root/mydatabase</code></p>
+<p>端口是 <code>8007</code></p>
+<p><code>ip</code> 就是服务器的 <code>ip</code></p>
+<p>然后就能在网页上运算了.</p>
+<p>用 <code>screen -S mydatabase</code> 开了一个新的窗口悄悄运行了.</p>
+<hr>
+<p>2024年3月9日</p>
+<p>昨天给阿陈开了一个分的网盘,能够更加方便的共享资源了,嘿嘿.我发现这东西是能在网页上交互式的创建用户账号的,用起来十分的丝滑,而且还能开放用户注册,但是我现在不知道怎么给用户分配容量,这个是一个需要解决的问题.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/01/08/2024-01-08-%E6%9C%89%E5%85%B3%E4%BA%8Elrc%E6%96%87%E4%BB%B6%E7%9A%84%E5%A4%84%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Dictat">
+      <meta itemprop="description" content="一个兴趣使然的人">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dictat 小站">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/01/08/2024-01-08-%E6%9C%89%E5%85%B3%E4%BA%8Elrc%E6%96%87%E4%BB%B6%E7%9A%84%E5%A4%84%E7%90%86/" class="post-title-link" itemprop="url">2024-01-08-有关于lrc文件的处理</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2024-01-08 22:28:06 / 修改时间：22:33:58" itemprop="dateCreated datePublished" datetime="2024-01-08T22:28:06+08:00">2024-01-08</time>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2024/01/08/2024-01-08-%E6%9C%89%E5%85%B3%E4%BA%8Elrc%E6%96%87%E4%BB%B6%E7%9A%84%E5%A4%84%E7%90%86/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2024/01/08/2024-01-08-有关于lrc文件的处理/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>现在下载下来的<code>.vtt</code>格式的歌词已经能够被转化为<code>lrc</code>文件了,但是还有一个问题是,youtube显示字幕的方式是同一时间显示两行,而我可怜的mp3塞不下这两行字幕,在早些时候我就已经考虑过了这样一个问题了,于是遗留下来了下面一段看不懂的代码<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span> (<span class="string">r&quot;D:\Download\油管听力下载\out.lrc&quot;</span>,<span class="string">&quot;r&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    data = f.read()</span><br><span class="line">a  = data.split(<span class="string">&#x27;\n\n&#x27;</span>)</span><br><span class="line">a = a[<span class="number">1</span>]</span><br><span class="line">b = a.split(<span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line"><span class="keyword">while</span>(<span class="string">&quot;&quot;</span> <span class="keyword">in</span> b) :</span><br><span class="line">    b.remove(<span class="string">&quot;&quot;</span>)</span><br><span class="line">time = []</span><br><span class="line">subt = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(b)):</span><br><span class="line">    fenjie  = re.split(<span class="string">&#x27;(\[[^&gt;]+\])&#x27;</span>,b[i])[-<span class="number">2</span>:]</span><br><span class="line">    time.append(fenjie[<span class="number">0</span>])</span><br><span class="line">    subt.append(fenjie[<span class="number">1</span>])</span><br><span class="line">time_filter =<span class="built_in">list</span>(<span class="built_in">dict</span>.fromkeys(time))</span><br><span class="line"></span><br><span class="line">total_sub = <span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">for</span> time_seg <span class="keyword">in</span> time_filter:</span><br><span class="line">    sub_merge = time_seg</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(time)):</span><br><span class="line">        <span class="keyword">if</span> time[j] == time_seg:</span><br><span class="line">            sub_merge = sub_merge+<span class="string">&#x27; &#x27;</span>+subt[j]</span><br><span class="line">    total_sub = total_sub+sub_merge+<span class="string">&#x27;\n&#x27;</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span> (<span class="string">r&quot;D:\Download\油管听力下载\out_new.lrc&quot;</span>,<span class="string">&quot;w&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f.write(total_sub) </span><br></pre></td></tr></table></figure><br>但是值得一提的是这段代码确实是有用的,它的目的是为实现把那些同一个时间点的字幕合并为同一条.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/01/08/2024-01-08-%E5%86%99%E4%BA%86%E4%B8%80%E4%B8%AA%E7%94%A8python%E4%B8%8B%E8%BD%BD%E8%A7%86%E9%A2%91%E7%9A%84%E7%B1%BB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Dictat">
+      <meta itemprop="description" content="一个兴趣使然的人">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dictat 小站">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/01/08/2024-01-08-%E5%86%99%E4%BA%86%E4%B8%80%E4%B8%AA%E7%94%A8python%E4%B8%8B%E8%BD%BD%E8%A7%86%E9%A2%91%E7%9A%84%E7%B1%BB/" class="post-title-link" itemprop="url">写了一个用python下载视频的类</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-01-08 21:31:08" itemprop="dateCreated datePublished" datetime="2024-01-08T21:31:08+08:00">2024-01-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-03-30 14:14:52" itemprop="dateModified" datetime="2024-03-30T14:14:52+08:00">2024-03-30</time>
+              </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2024/01/08/2024-01-08-%E5%86%99%E4%BA%86%E4%B8%80%E4%B8%AA%E7%94%A8python%E4%B8%8B%E8%BD%BD%E8%A7%86%E9%A2%91%E7%9A%84%E7%B1%BB/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2024/01/08/2024-01-08-写了一个用python下载视频的类/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>用yt-dlp下载视频的活,已经是老生常谈了,但是对于繁琐的视频下载要求,如果在命令行里来操作的话,多少会显得有些繁琐,因此需要一种更加完善的方法.</p>
+<p>于是在昨天我写了一个类,能够设定一些下载条件,然后进行下载,</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> yt_dlp</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">VideoDL</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, *video_url</span>):</span><br><span class="line">        self.option = &#123;&#125;</span><br><span class="line">        <span class="keyword">if</span> video_url == ():</span><br><span class="line">            self.video_url = <span class="literal">None</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.video_url = video_url[<span class="number">0</span>]</span><br><span class="line">        <span class="comment"># 设定下载的音频会变为mp3,下载的字幕会变为lrc格式</span></span><br><span class="line">        self.option[<span class="string">&#x27;postprocessors&#x27;</span>] = [</span><br><span class="line">            <span class="comment"># 音频转化为mp3:</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="string">&#x27;key&#x27;</span>: <span class="string">&#x27;FFmpegExtractAudio&#x27;</span>,  <span class="comment"># 使用正确的键</span></span><br><span class="line">                <span class="string">&#x27;preferredcodec&#x27;</span>: <span class="string">&#x27;mp3&#x27;</span>,  <span class="comment"># 选择音频格式，可以是 &#x27;best&#x27;, &#x27;aac&#x27;, &#x27;mp3&#x27;, 等等</span></span><br><span class="line">                <span class="string">&#x27;preferredquality&#x27;</span>: <span class="string">&#x27;192&#x27;</span>,</span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="comment"># 字幕转化为lrc:</span></span><br><span class="line">            &#123;<span class="string">&#x27;key&#x27;</span>: <span class="string">&#x27;FFmpegSubtitlesConvertor&#x27;</span>,</span><br><span class="line">             <span class="string">&#x27;format&#x27;</span>: <span class="string">&#x27;lrc&#x27;</span>&#125;,</span><br><span class="line">        ]</span><br><span class="line">        <span class="comment"># 设定音频的命名格式</span></span><br><span class="line">        self.option[<span class="string">&#x27;outtmpl&#x27;</span>] = <span class="string">&quot;%(title)s.%(ext)s&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">set_format</span>(<span class="params">self, <span class="built_in">format</span></span>):</span><br><span class="line">        self.option[<span class="string">&#x27;format&#x27;</span>] = <span class="built_in">format</span></span><br><span class="line">        <span class="keyword">return</span> self</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">set_url</span>(<span class="params">self, url</span>):</span><br><span class="line">        self.video_url = url</span><br><span class="line">        <span class="keyword">return</span> self</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 判断是否要跳过视频</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">set_skip_download</span>(<span class="params">self, is_jump</span>):</span><br><span class="line">        self.option[<span class="string">&#x27;skip_download&#x27;</span>] = is_jump</span><br><span class="line">        <span class="keyword">return</span> self</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 判断是否要跳过视频设置是否要下载字幕并且设定语言(第一个值是用flag)</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">set_write_subtitles</span>(<span class="params">self, write_subtitles, *lang</span>):</span><br><span class="line">        self.option[<span class="string">&#x27;writesubtitles&#x27;</span>] = write_subtitles</span><br><span class="line">        self.option[<span class="string">&#x27;subtitleslangs&#x27;</span>] = <span class="built_in">list</span>(lang)</span><br><span class="line">        <span class="keyword">return</span> self</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">start_downloader</span>(<span class="params">self</span>):</span><br><span class="line">        ydl = yt_dlp.YoutubeDL(self.option)</span><br><span class="line">        ydl.extract_info(self.video_url, download=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">get_info</span>(<span class="params">self</span>):</span><br><span class="line">        ydl = yt_dlp.YoutubeDL(self.option)</span><br><span class="line">        info_dict = ydl.extract_info(self.video_url, download=<span class="literal">False</span>)</span><br><span class="line">        <span class="built_in">print</span>(info_dict)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">get_subtitles_info</span>(<span class="params">self</span>):</span><br><span class="line">        ydl = yt_dlp.YoutubeDL(self.option)</span><br><span class="line">        info_dict = ydl.extract_info(self.video_url, download=<span class="literal">False</span>)</span><br><span class="line">        subtitles = info_dict.get(<span class="string">&#x27;subtitles&#x27;</span>, &#123;&#125;)</span><br><span class="line">        <span class="comment"># 打印字幕信息</span></span><br><span class="line">        <span class="keyword">for</span> lang, subs <span class="keyword">in</span> subtitles.items():</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&quot;Language: <span class="subst">&#123;lang&#125;</span>, Subtitles available: <span class="subst">&#123;<span class="built_in">len</span>(subs)&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 现在发现只有在下载音视频的时候,才会把字母转化为lrc,而其他情况下却不会</span></span><br></pre></td></tr></table></figure>
+<p>操作方式如下,<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> VideoDL <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">dl = VideoDL()</span><br><span class="line">url = <span class="string">&quot;https://www.youtube.com/watch?v=wr6fQ4KpbRM&amp;ab_channel=TED-Ed&quot;</span></span><br><span class="line">dl.set_format(<span class="string">&#x27;bestaudio/best&#x27;</span>).set_write_subtitles(<span class="literal">True</span>,<span class="string">&quot;zh-CN&quot;</span>).set_url(url)</span><br><span class="line">dl.start_downloader()</span><br></pre></td></tr></table></figure><br>上面的这个例子创建了一个类的对象,然后进行了下载,只下载了这个YouTube视频的音频,并且下载了字幕.</p>
+<p>如果你不知道这个视频有的字幕有哪些语言的话,可以调用<code>get_subtitles_info</code>这个方法来进行查找.</p>
+<p>代码链接:<br><a href="/2024/01/08/2024-01-08-%E5%86%99%E4%BA%86%E4%B8%80%E4%B8%AA%E7%94%A8python%E4%B8%8B%E8%BD%BD%E8%A7%86%E9%A2%91%E7%9A%84%E7%B1%BB/VideoDL.py">VideoDL.py</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/12/26/2023-12-26-%E7%94%A8Python%E5%86%99%E4%BA%86%E4%B8%80%E4%B8%AA%E8%87%AA%E5%B7%B1%E7%9A%84%E5%85%AB%E5%85%83%E6%95%B0%E7%B1%BB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Dictat">
+      <meta itemprop="description" content="一个兴趣使然的人">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dictat 小站">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/12/26/2023-12-26-%E7%94%A8Python%E5%86%99%E4%BA%86%E4%B8%80%E4%B8%AA%E8%87%AA%E5%B7%B1%E7%9A%84%E5%85%AB%E5%85%83%E6%95%B0%E7%B1%BB/" class="post-title-link" itemprop="url">用Python写了一个自己的八元数类</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-12-26 22:44:47" itemprop="dateCreated datePublished" datetime="2023-12-26T22:44:47+08:00">2023-12-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-01-22 21:05:01" itemprop="dateModified" datetime="2024-01-22T21:05:01+08:00">2024-01-22</time>
+              </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2023/12/26/2023-12-26-%E7%94%A8Python%E5%86%99%E4%BA%86%E4%B8%80%E4%B8%AA%E8%87%AA%E5%B7%B1%E7%9A%84%E5%85%AB%E5%85%83%E6%95%B0%E7%B1%BB/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2023/12/26/2023-12-26-用Python写了一个自己的八元数类/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>由于网上的 Pyoctonion 这个包调用的是Numpy的包,所以没进行我想要的符号计算,于是自己写了一个类,名为 Myoctonion.</p>
+<p>本来是希望能够用Myoctonion来直接继承 Pyoctonion 这个类,但是盘根错节实在是太多了,Pyoctonion又调用了四元数的那个包,也只能使用浮点数,最后干脆直接自己写一个了.</p>
+<p>我的目的只是为了能实现乘法运算,因为八元数可以用四元数来定义,Pyoctonion用的定义就是这样的.于是复制源码,然后把里面的四元数的模块用Sympy里的代替了,这样就完美的实现了符号运算.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sympy</span><br><span class="line"><span class="keyword">import</span> sympy <span class="keyword">as</span> sym</span><br><span class="line"><span class="keyword">from</span> Myquaternion <span class="keyword">import</span> Quaternion</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Myoctonion</span>():</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, x_0, x_1, x_2, x_3, x_4, x_5, x_6, x_7</span>):</span><br><span class="line">        self.x_0 = x_0</span><br><span class="line">        self.x_1 = x_1</span><br><span class="line">        self.x_2 = x_2</span><br><span class="line">        self.x_3 = x_3</span><br><span class="line">        self.x_4 = x_4</span><br><span class="line">        self.x_5 = x_5</span><br><span class="line">        self.x_6 = x_6</span><br><span class="line">        self.x_7 = x_7</span><br><span class="line">        self.data = [x_0, x_1, x_2, x_3, x_4, x_5, x_6, x_7]</span><br><span class="line"></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">conjugate</span>(<span class="params">self</span>):</span><br><span class="line">        conj = Myoctonion(</span><br><span class="line">            self.x_0,</span><br><span class="line">            -(self.x_1),</span><br><span class="line">            -(self.x_2),</span><br><span class="line">            -(self.x_3),</span><br><span class="line">            -(self.x_4),</span><br><span class="line">            -(self.x_5),</span><br><span class="line">            -(self.x_6),</span><br><span class="line">            -(self.x_7),</span><br><span class="line">        )</span><br><span class="line">        <span class="keyword">return</span> conj</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__mul__</span>(<span class="params">x, y</span>):</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">isinstance</span>(y, Myoctonion) <span class="keyword">and</span> <span class="built_in">isinstance</span>(x, Myoctonion):</span><br><span class="line">            a = Quaternion(x.x_0, x.x_1, x.x_2, x.x_3)</span><br><span class="line">            b = Quaternion(x.x_4, x.x_5, x.x_6, x.x_7)</span><br><span class="line">            c = Quaternion(y.x_0, y.x_1, y.x_2, y.x_3)</span><br><span class="line">            d = Quaternion(y.x_4, y.x_5, y.x_6, y.x_7)</span><br><span class="line">            a_1 = a * c - (d._eval_conjugate()) * b</span><br><span class="line">            b_1 = (d * a) + (b * (c._eval_conjugate()))</span><br><span class="line"></span><br><span class="line">            mul = Myoctonion(</span><br><span class="line">                a_1.a, a_1.b, a_1.c, a_1.d, b_1.a, b_1.b, b_1.c, b_1.d</span><br><span class="line">            )</span><br><span class="line">            <span class="keyword">return</span> mul</span><br><span class="line">        <span class="keyword">elif</span> <span class="built_in">isinstance</span>(x, Myoctonion) <span class="keyword">and</span> <span class="keyword">not</span> <span class="built_in">isinstance</span>(y, Myoctonion):</span><br><span class="line">            mul = [</span><br><span class="line">                x.x_0 * y,</span><br><span class="line">                x.x_1 * y,</span><br><span class="line">                x.x_2 * y,</span><br><span class="line">                x.x_3 * y,</span><br><span class="line">                x.x_4 * y,</span><br><span class="line">                x.x_5 * y,</span><br><span class="line">                x.x_6 * y,</span><br><span class="line">                x.x_7 * y,</span><br><span class="line">            ]</span><br><span class="line">            multi = Myoctonion(</span><br><span class="line">                mul[<span class="number">0</span>], mul[<span class="number">1</span>], mul[<span class="number">2</span>], mul[<span class="number">3</span>], mul[<span class="number">4</span>], mul[<span class="number">5</span>], mul[<span class="number">6</span>], mul[<span class="number">7</span>]</span><br><span class="line">            )</span><br><span class="line">            <span class="keyword">return</span> multi</span><br><span class="line">        <span class="keyword">raise</span> NotImplementedError</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__getitem__</span>(<span class="params">self, key</span>):</span><br><span class="line">        <span class="comment"># 处理获取元素的操作</span></span><br><span class="line">        <span class="keyword">return</span> self.data[key]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__repr__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> sym.latex( [</span><br><span class="line">            self.x_0,</span><br><span class="line">            self.x_1,</span><br><span class="line">            self.x_2,</span><br><span class="line">            self.x_3,</span><br><span class="line">            self.x_4,</span><br><span class="line">            self.x_5,</span><br><span class="line">            self.x_6,</span><br><span class="line">            self.x_7])</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">cal_norm</span>(<span class="params">self</span>):  <span class="comment"># define norm</span></span><br><span class="line">        b_1 = sym.sqrt(</span><br><span class="line">            self.x_0 ** <span class="number">2</span></span><br><span class="line">            + self.x_1 ** <span class="number">2</span></span><br><span class="line">            + self.x_2 ** <span class="number">2</span></span><br><span class="line">            + self.x_3 ** <span class="number">2</span></span><br><span class="line">            + self.x_4 ** <span class="number">2</span></span><br><span class="line">            + self.x_5 ** <span class="number">2</span></span><br><span class="line">            + self.x_6 ** <span class="number">2</span></span><br><span class="line">            + self.x_7 ** <span class="number">2</span></span><br><span class="line">        )</span><br><span class="line">        <span class="keyword">return</span> b_1</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">show</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>([</span><br><span class="line">            self.x_0,</span><br><span class="line">            self.x_1,</span><br><span class="line">            self.x_2,</span><br><span class="line">            self.x_3,</span><br><span class="line">            self.x_4,</span><br><span class="line">            self.x_5,</span><br><span class="line">            self.x_6,</span><br><span class="line">            self.x_7])</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2023/12/24/Python%E8%84%9A%E6%9C%AC-%E6%8A%8A%E7%9B%AE%E5%BD%95%E4%B8%8B%E6%96%87%E4%BB%B6%E5%A4%B9%E9%87%8C%E7%9A%84%E6%96%87%E4%BB%B6%E7%A7%BB%E5%8A%A8%E5%88%B0%E5%90%8C%E4%B8%80%E4%B8%AA%E6%96%87%E4%BB%B6%E5%A4%B9/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -713,560 +1128,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/10/13/%E9%AB%98%E4%B8%AD%E6%95%B0%E5%AD%A6%E7%9A%84%E8%AE%A1%E7%AE%97%E6%8A%80%E5%B7%A7/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Dictat">
-      <meta itemprop="description" content="一个兴趣使然的人">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dictat 小站">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/10/13/%E9%AB%98%E4%B8%AD%E6%95%B0%E5%AD%A6%E7%9A%84%E8%AE%A1%E7%AE%97%E6%8A%80%E5%B7%A7/" class="post-title-link" itemprop="url">高中数学的计算技巧</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-10-13 15:53:28" itemprop="dateCreated datePublished" datetime="2023-10-13T15:53:28+08:00">2023-10-13</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-10-16 13:56:43" itemprop="dateModified" datetime="2023-10-16T13:56:43+08:00">2023-10-16</time>
-              </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2023/10/13/%E9%AB%98%E4%B8%AD%E6%95%B0%E5%AD%A6%E7%9A%84%E8%AE%A1%E7%AE%97%E6%8A%80%E5%B7%A7/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2023/10/13/高中数学的计算技巧/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>有一道题目需要求函数的值域范围.<br>其中<br>$f = 2 x^{2} \cdot \left(1 - \log{\left(x \right)}\right)(x&gt;0)$<br>,则</p>
-<p>则$f’ = 4 x \left(1 - \log{\left(x \right)}\right) - 2 x = 2 x - 4 x \log(\left(x \right))$</p>
-<p>则$f’’ = -4 \log{\left(x \right)} - 2$</p>
-<p>则导函数先增后减,在$x = e^{-\frac{1}{2}}$,时$f’$有最大值为</p>
-<p>$4 e^{-\frac{1}{2}}$,但是要注意到$f’$实际上在递减的过程中并没有小于零，因为其极限为$0$，所以它只会无限的趋近零,</p>
-<p>这说明原函数只有先增后减的两个过程.</p>
-<p>那么$f’$在何时为零,即函数$f$ 的驻点在哪里?</p>
-<p>通过计算可知驻点在$x = e^{\frac{1}{2}}$,则函数在该点取到最大值.</p>
-<p>最大值为$e$.</p>
-<p>函数的图像大致如下图所示</p>
-<p><img src="/2023/10/13/%E9%AB%98%E4%B8%AD%E6%95%B0%E5%AD%A6%E7%9A%84%E8%AE%A1%E7%AE%97%E6%8A%80%E5%B7%A7/1697184677901.png" alt="1697184677901"></p>
-<p>但是如果将自变量$x^2$ 用 $t$ 来替换,则原式可以转化为</p>
-<p>$g = t \cdot \left(2 - \log{\left(t \right)}\right)(x&gt;0)$</p>
-<p>$g’ = 1 - \log{\left(t \right)}$</p>
-<p>可知新函数和原函数的值域是相同的,但是求它的最值显然容易得多,</p>
-<p>$g’$ 的驻点为$e$,则$g$的最大值为$e$.</p>
-<p>两函数的图像比较如下:</p>
-<p><img src="/2023/10/13/%E9%AB%98%E4%B8%AD%E6%95%B0%E5%AD%A6%E7%9A%84%E8%AE%A1%E7%AE%97%E6%8A%80%E5%B7%A7/1697186516025.png" alt="1697186516025"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/10/12/%E4%B8%AA%E4%BA%BAHexo%E5%8D%9A%E5%AE%A2-%E6%9C%89%E5%85%B3%E4%BA%8E%E6%95%99%E8%B5%84%E9%9D%A2%E8%AF%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Dictat">
-      <meta itemprop="description" content="一个兴趣使然的人">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dictat 小站">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/10/12/%E4%B8%AA%E4%BA%BAHexo%E5%8D%9A%E5%AE%A2-%E6%9C%89%E5%85%B3%E4%BA%8E%E6%95%99%E8%B5%84%E9%9D%A2%E8%AF%95/" class="post-title-link" itemprop="url">有关于教资面试</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-10-12 13:07:25" itemprop="dateCreated datePublished" datetime="2023-10-12T13:07:25+08:00">2023-10-12</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-10-14 21:23:49" itemprop="dateModified" datetime="2023-10-14T21:23:49+08:00">2023-10-14</time>
-              </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2023/10/12/%E4%B8%AA%E4%BA%BAHexo%E5%8D%9A%E5%AE%A2-%E6%9C%89%E5%85%B3%E4%BA%8E%E6%95%99%E8%B5%84%E9%9D%A2%E8%AF%95/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2023/10/12/个人Hexo博客-有关于教资面试/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="椭圆例题"><a href="#椭圆例题" class="headerlink" title="椭圆例题"></a>椭圆例题</h1><p><img src="/2023/10/12/%E4%B8%AA%E4%BA%BAHexo%E5%8D%9A%E5%AE%A2-%E6%9C%89%E5%85%B3%E4%BA%8E%E6%95%99%E8%B5%84%E9%9D%A2%E8%AF%95/1697088023201.png" alt="1697088023201"></p>
-<ul>
-<li>着重复习焦点在X轴的椭圆方程 </li>
-<li>条理清晰，重难点突出 </li>
-<li>配合试讲有一定的板书 </li>
-<li>请在10分钟内完成试讲内容。</li>
-</ul>
-<p>请同学们根据之前我们学过的求解曲线方程的方法,前后四人为一小组,认真思考分析题目,并在小组内进行讨论求解,选择一种合适的方法了求解这个问题,时间五分钟,现在开始.</p>
-<p>老师听见同学们讨论的声音逐渐的减小了,在刚才巡视的过程中,发现一小组讨论的很激烈,那么请你们说一说.</p>
-<p>一组代表说……</p>
-<p>解题方法:</p>
-<ul>
-<li><p>根据几何含义,确定$a$的值</p>
-</li>
-<li><p>根据椭圆的标准方程,运用待定系数法,来确定a的值</p>
-<ul>
-<li>缺点,计算量较大</li>
-</ul>
-</li>
-</ul>
-<h2 id="结尾套话"><a href="#结尾套话" class="headerlink" title="结尾套话"></a>结尾套话</h2><p>各位评委老师我今天的试讲到此结束,感谢各位评委老师的耐性聆听.</p>
-<h1 id="函数的单调性"><a href="#函数的单调性" class="headerlink" title="函数的单调性"></a>函数的单调性</h1><h2 id="导入部分"><a href="#导入部分" class="headerlink" title="导入部分"></a>导入部分</h2><p>复习导入:利用初中知识描述图像的变化特征</p>
-<h2 id="新授环节"><a href="#新授环节" class="headerlink" title="新授环节"></a>新授环节</h2><ol>
-<li>给出表1一3，引导学生从函数值得角度观察思考这种变化规律， 学生回答；</li>
-<li>继续引导学生利用符号化得数学语言表征图像的变化规律</li>
-<li>学生大致说明后，教师引导取值$x_1$与$x_2$进行更规范说明； </li>
-<li>教师归纳出单调性的定义并进行板书； </li>
-<li>借助二次函数来说明：单调性为局部性质,$x_1$与$x_2$， 让学生体会数学语言的精炼。</li>
-</ol>
-<h2 id="巩固练习环节"><a href="#巩固练习环节" class="headerlink" title="巩固练习环节"></a>巩固练习环节</h2><h2 id="课堂小结"><a href="#课堂小结" class="headerlink" title="课堂小结"></a>课堂小结</h2><h2 id="布置作业"><a href="#布置作业" class="headerlink" title="布置作业"></a>布置作业</h2><h1 id="基本不等式例题一"><a href="#基本不等式例题一" class="headerlink" title="基本不等式例题一"></a>基本不等式例题一</h1><p>回顾:基本不等式的表达式</p>
-<p>代数意义:</p>
-<p>几何意义:半径不小于半弦长</p>
-<p><img src="/2023/10/12/%E4%B8%AA%E4%BA%BAHexo%E5%8D%9A%E5%AE%A2-%E6%9C%89%E5%85%B3%E4%BA%8E%E6%95%99%E8%B5%84%E9%9D%A2%E8%AF%95/1697206719587.png" alt="1697206719587"></p>
-<h2 id="向量的几何表示"><a href="#向量的几何表示" class="headerlink" title="向量的几何表示"></a>向量的几何表示</h2><p><img src="/2023/10/12/%E4%B8%AA%E4%BA%BAHexo%E5%8D%9A%E5%AE%A2-%E6%9C%89%E5%85%B3%E4%BA%8E%E6%95%99%E8%B5%84%E9%9D%A2%E8%AF%95/1697289683849.png" alt="1697289683849"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/10/11/%E5%A4%9A%E9%82%BB%E5%9B%BD%E6%97%A5%E8%AF%AD%E5%AD%A6%E4%B9%A0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Dictat">
-      <meta itemprop="description" content="一个兴趣使然的人">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dictat 小站">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/10/11/%E5%A4%9A%E9%82%BB%E5%9B%BD%E6%97%A5%E8%AF%AD%E5%AD%A6%E4%B9%A0/" class="post-title-link" itemprop="url">多邻国日语学习</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-10-11 21:18:33" itemprop="dateCreated datePublished" datetime="2023-10-11T21:18:33+08:00">2023-10-11</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-10-26 14:55:34" itemprop="dateModified" datetime="2023-10-26T14:55:34+08:00">2023-10-26</time>
-              </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2023/10/11/%E5%A4%9A%E9%82%BB%E5%9B%BD%E6%97%A5%E8%AF%AD%E5%AD%A6%E4%B9%A0/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2023/10/11/多邻国日语学习/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="第一阶段"><a href="#第一阶段" class="headerlink" title="第一阶段"></a>第一阶段</h1><h2 id="第一部分"><a href="#第一部分" class="headerlink" title="第一部分"></a>第一部分</h2><h3 id="颜色"><a href="#颜色" class="headerlink" title="颜色"></a>颜色</h3><p>しろ  白</p>
-<p>あか  「赤」 红</p>
-<p>あお  「青」 蓝</p>
-<h3 id="有关于早上好"><a href="#有关于早上好" class="headerlink" title="有关于早上好"></a>有关于早上好</h3><p>日语中“早上好”有两种说法：</p>
-<ul>
-<li><strong>おはようございます。</strong> (ohayo gozaimasu) - 这是比较正式的说法，可以用在任何场合，包括对上级、长辈、陌生人等。</li>
-<li><strong>おはよう。</strong> (ohayo) - 这是比较随意的说法，可以用在熟人之间。</li>
-</ul>
-<h1 id="第二部分"><a href="#第二部分" class="headerlink" title="第二部分"></a>第二部分</h1><p>猫 Neko</p>
-<p>犬 Inu</p>
-<p>鳥 Tori</p>
-<p>甘い寿司 Amai sushi 甜的寿司</p>
-<p>てりやき Teri yaki 照烧</p>
-<p>脏的    [汚い」 （kitanai）</p>
-<p>天妇罗（日语：天ぷら，罗马音：tempura） </p>
-<p>便当: 弁当 (bento)  </p>
-<h3 id="时间、季节"><a href="#时间、季节" class="headerlink" title="时间、季节"></a>时间、季节</h3><ul>
-<li><p>白天 「昼」（ひる) ：常用，表示白天，包括早上、中午和下午。</p>
-</li>
-<li><p>晚上「夜」（よる） </p>
-</li>
-<li><p>阴天「曇り」（くもり） </p>
-</li>
-<li><p>晴天 「晴れ」（はれ） </p>
-</li>
-<li><p>冬天 「冬」（ふゆ） </p>
-</li>
-<li><p>夏天 「夏」（なつ） </p>
-</li>
-</ul>
-<h3 id="空间位置、地点"><a href="#空间位置、地点" class="headerlink" title="空间位置、地点"></a>空间位置、地点</h3><ul>
-<li>屋子：家（いえ）</li>
-<li>房间：部屋（へや）</li>
-<li>外面：外（そと）</li>
-<li><strong>学校</strong> (がっこう) - 学校</li>
-</ul>
-<h3 id="物件"><a href="#物件" class="headerlink" title="物件"></a>物件</h3><ul>
-<li><strong>切符</strong> (きっぷ) 是专指交通工具的票券，包括火车票、公交车票、地铁票等 </li>
-<li><strong>かばん</strong> (かばん) - 书包</li>
-<li><strong>えんぴつ</strong> (えんぴつ) - 铅笔</li>
-<li><strong>電話</strong> (でんわ) - 电话</li>
-</ul>
-<h3 id="器官、部位"><a href="#器官、部位" class="headerlink" title="器官、部位"></a>器官、部位</h3><ul>
-<li>眼睛<ul>
-<li>日语：目 (め)</li>
-<li>罗马音：me</li>
-<li>例句：私の目は茶色です。 (watashi no me wa chairo desu.) - 我的眼睛是棕色的。</li>
-</ul>
-</li>
-<li>耳朵<ul>
-<li>日语：耳 (みみ)</li>
-<li>罗马音：mimi</li>
-<li>例句：私の耳は聞こえません。 (watashi no mimi wa kikoemasen.) - 我听不见。</li>
-</ul>
-</li>
-<li>背<ul>
-<li>日语：背 (せ)</li>
-<li>罗马音：se</li>
-<li>例句：私の背中が痛いです。 (watashi no senaka ga itai desu.) - 我的背很疼。</li>
-</ul>
-</li>
-</ul>
-<h3 id="读、穿、喝"><a href="#读、穿、喝" class="headerlink" title="读、穿、喝"></a>读、穿、喝</h3><ul>
-<li>读：読む（よむ）</li>
-<li>穿：着る（きる）</li>
-<li>喝：飲む（のむ）</li>
-</ul>
-<h1 id="其他单词"><a href="#其他单词" class="headerlink" title="其他单词"></a>其他单词</h1><h2 id="N5"><a href="#N5" class="headerlink" title="N5"></a>N5</h2><ul>
-<li>报社：新聞社（しんぶんしゃ）</li>
-<li>人：人（ひと）</li>
-<li>授课：授業（じゅぎょう）</li>
-<li>果汁：ジュース（じゅーす）</li>
-<li>医院：病院（びょういん）</li>
-<li>讨厌：嫌い（きらい）</li>
-<li>生日：誕生日（たんじょうび）</li>
-<li>疼痛：痛み（いたみ）</li>
-<li>明信片：はがき（はがき）</li>
-<li>卡拉ok：カラオケ（からおけ）</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/10/11/%E8%A7%A3%E6%9E%90%E5%87%A0%E4%BD%95%E4%B8%AD%E9%97%AE%E9%A2%98%E7%9A%84%E8%BD%AC%E5%8C%96/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Dictat">
-      <meta itemprop="description" content="一个兴趣使然的人">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dictat 小站">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/10/11/%E8%A7%A3%E6%9E%90%E5%87%A0%E4%BD%95%E4%B8%AD%E9%97%AE%E9%A2%98%E7%9A%84%E8%BD%AC%E5%8C%96/" class="post-title-link" itemprop="url">解析几何中问题的转化</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2023-10-11 19:43:45 / 修改时间：20:04:08" itemprop="dateCreated datePublished" datetime="2023-10-11T19:43:45+08:00">2023-10-11</time>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2023/10/11/%E8%A7%A3%E6%9E%90%E5%87%A0%E4%BD%95%E4%B8%AD%E9%97%AE%E9%A2%98%E7%9A%84%E8%BD%AC%E5%8C%96/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2023/10/11/解析几何中问题的转化/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><img src="/2023/10/11/%E8%A7%A3%E6%9E%90%E5%87%A0%E4%BD%95%E4%B8%AD%E9%97%AE%E9%A2%98%E7%9A%84%E8%BD%AC%E5%8C%96/1697024725933.png" alt="1697024725933"></p>
-<p>这到题目似是要证明线段长度之间的关系,实际上为证明出存在一个直角三角形,然后自然的应用相似比来证明.</p>
-<h2 id="单个点引出两条直线的问题"><a href="#单个点引出两条直线的问题" class="headerlink" title="单个点引出两条直线的问题"></a>单个点引出两条直线的问题</h2><p><img src="/2023/10/11/%E8%A7%A3%E6%9E%90%E5%87%A0%E4%BD%95%E4%B8%AD%E9%97%AE%E9%A2%98%E7%9A%84%E8%BD%AC%E5%8C%96/1697025791478.png" alt="1697025791478"></p>
-<h2 id="两条直线有交点的问题"><a href="#两条直线有交点的问题" class="headerlink" title="两条直线有交点的问题"></a>两条直线有交点的问题</h2><p><img src="/2023/10/11/%E8%A7%A3%E6%9E%90%E5%87%A0%E4%BD%95%E4%B8%AD%E9%97%AE%E9%A2%98%E7%9A%84%E8%BD%AC%E5%8C%96/1697025845385.png" alt="1697025845385"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/10/10/%E7%94%A8python%E6%B1%82%E8%A7%A3%E8%A7%A3%E6%9E%90%E5%87%A0%E4%BD%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Dictat">
-      <meta itemprop="description" content="一个兴趣使然的人">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dictat 小站">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/10/10/%E7%94%A8python%E6%B1%82%E8%A7%A3%E8%A7%A3%E6%9E%90%E5%87%A0%E4%BD%95/" class="post-title-link" itemprop="url">用python求解解析几何</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-10-10 22:20:21" itemprop="dateCreated datePublished" datetime="2023-10-10T22:20:21+08:00">2023-10-10</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-10-16 13:53:57" itemprop="dateModified" datetime="2023-10-16T13:53:57+08:00">2023-10-16</time>
-              </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2023/10/10/%E7%94%A8python%E6%B1%82%E8%A7%A3%E8%A7%A3%E6%9E%90%E5%87%A0%E4%BD%95/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2023/10/10/用python求解解析几何/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>写了几个程序来求解高中的解析几何,才开始用的是一个<code>sympy</code>的几何库来做的,但是只能做椭圆的问题,后来就直接用<code>solve</code>来暴力的求解了.<br>这些程序的主要目的是联立直线和圆锥曲线的方程,这是求解解析几何问题的基本方法,即所谓的设而不求:联立方程之后利用韦达定理来得到两个焦点坐标的关系.</p>
-<h2 id="三个求解函数"><a href="#三个求解函数" class="headerlink" title="三个求解函数"></a>三个求解函数</h2><h3 id="求解直线和抛物线的交点"><a href="#求解直线和抛物线的交点" class="headerlink" title="求解直线和抛物线的交点:"></a>求解直线和抛物线的交点:</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">solveParabola</span>(<span class="params">p,point</span>):</span><br><span class="line">    x0 = point[<span class="number">0</span>]</span><br><span class="line">    y0 = point[<span class="number">1</span>]</span><br><span class="line">    ((x1,y1),(x2,y2)) = nonlinsolve([y**<span class="number">2</span>-<span class="number">2</span>*p*x, y-k*(x-x0)-y0 ], (x,y))</span><br><span class="line">    <span class="keyword">return</span> x1,y1,x2,y2</span><br></pre></td></tr></table></figure>
-<h3 id="求解直线和椭圆的交点"><a href="#求解直线和椭圆的交点" class="headerlink" title="求解直线和椭圆的交点:"></a>求解直线和椭圆的交点:</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#请在安装了sympy以后在jupyter(IPython notebook)下运算该程序,这主要是为了更美观的显示数学公式</span></span><br><span class="line"><span class="keyword">from</span> sympy <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">solveEllipse</span>(<span class="params">a,b,point</span>):</span><br><span class="line">    <span class="keyword">from</span> sympy.abc <span class="keyword">import</span> x, y,k,m</span><br><span class="line">    <span class="keyword">from</span> sympy <span class="keyword">import</span> nonlinsolve</span><br><span class="line">    <span class="keyword">from</span> sympy <span class="keyword">import</span> simplify</span><br><span class="line">    x0 = point[<span class="number">0</span>]</span><br><span class="line">    y0 = point[<span class="number">1</span>]</span><br><span class="line">    ((x1,y1),(x2,y2)) = nonlinsolve([x**<span class="number">2</span>/a**<span class="number">2</span>+y**<span class="number">2</span>/b**<span class="number">2</span>-<span class="number">1</span>, y-k*(x-x0)-y0 ], (x,y))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;x1+x2 = &#x27;</span>)</span><br><span class="line">    display(simplify(x1+x2))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;x1*x2 = &#x27;</span>)</span><br><span class="line">    display(simplify(x1*x2))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;y1+y2 = &#x27;</span>)</span><br><span class="line">    display(simplify(y1+y2))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;y1*y2 = &#x27;</span>)</span><br><span class="line">    display(simplify(y1*y2))</span><br><span class="line">    <span class="keyword">return</span> x1,y1,x2,y2;</span><br><span class="line">x1,y1,x2,y2 = solveEllipse(<span class="number">4</span>,<span class="number">3</span>,(<span class="number">1</span>,<span class="number">0</span>));</span><br></pre></td></tr></table></figure>
-<h3 id="求解直线和双曲线的交点"><a href="#求解直线和双曲线的交点" class="headerlink" title="求解直线和双曲线的交点:"></a>求解直线和双曲线的交点:</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">solveHyperbola</span>(<span class="params">a,b,point</span>):</span><br><span class="line">    <span class="keyword">from</span> sympy.abc <span class="keyword">import</span> x, y,k,m</span><br><span class="line">    <span class="keyword">from</span> sympy <span class="keyword">import</span> nonlinsolve</span><br><span class="line">    <span class="keyword">from</span> sympy <span class="keyword">import</span> simplify</span><br><span class="line">    x0 = point[<span class="number">0</span>]</span><br><span class="line">    y0 = point[<span class="number">1</span>]</span><br><span class="line">    ((x1,y1),(x2,y2)) = nonlinsolve([x**<span class="number">2</span>/a**<span class="number">2</span>+y**<span class="number">2</span>/b**<span class="number">2</span>-<span class="number">1</span>, y-k*(x-x0)-y0 ], (x,y))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;x1+x2 = &#x27;</span>)</span><br><span class="line">    display(simplify(x1+x2))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;x1*x2 = &#x27;</span>)</span><br><span class="line">    display(simplify(x1*x2))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;y1+y2 = &#x27;</span>)</span><br><span class="line">    display(simplify(y1+y2))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;y1*y2 = &#x27;</span>)</span><br><span class="line">    display(simplify(y1*y2))</span><br><span class="line">    <span class="keyword">return</span> x1,y1,x2,y2;</span><br></pre></td></tr></table></figure>
-<p>由于双曲线和抛物线的开口有方向性,则在实际过程中,可能需要根据题目的主要内容来修改函数中的参数.</p>
-<h2 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h2><p>已知双曲线$\Gamma$:${\frac{x^{2}}{a^{2}}}-{\frac{y^{2}}{b^{2}}}=1$，的焦距为$4$,过点$P(2,\frac{\sqrt{3}}{3})$</p>
-<blockquote>
-<ol>
-<li>求双曲线$\Gamma$的方程.</li>
-<li>过双曲线 $\Gamma$ 的左焦点 $F$ 分别作斜率为 $k_1,k_2$的两直线 $l_1$与 $l_2$，直线 $l_1$交双曲线 $\Gamma$  于 $A,B$ 两点，直线 $l_2$交双曲线  $\Gamma$ 于 $C,D$ 两点，设 $M,N$ 分别为 $AB$ 与 $CD$ 的中点，若 $k_1⋅ k_2=-1$，试求 $ \bigtriangleup  OMN$ 与  $\bigtriangleup  FMN$ 的面积之比.</li>
-</ol>
-</blockquote>
-<ol>
-<li>可以求出其方程为${\frac{x^{2}}{3}}-y^{2}=1$</li>
-<li>左焦点坐标为(-2,0)</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x1,y1,x2,y2 =solveHyperbola(sqrt(<span class="number">3</span>),<span class="number">1</span>,(-<span class="number">2</span>,<span class="number">0</span>));</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">k_1,k_2  =symbols(<span class="string">&#x27;k_1 k_2&#x27;</span>)</span><br><span class="line">m_x = simplify(((x1+x2)/<span class="number">2</span>).subs(k,k_1))</span><br><span class="line">m_y = simplify(((y1+y2)/<span class="number">2</span>).subs(k,k_1))</span><br></pre></td></tr></table></figure>
-<p>则得到了$M$的坐标,由于$k_1⋅ k_2=-1$,则也能得到N的坐标为<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">n_x = simplify(((x1+x2)/<span class="number">2</span>).subs(k,-<span class="number">1</span>/k_1))</span><br><span class="line">n_y = simplify(((y1+y2)/<span class="number">2</span>).subs(k,-<span class="number">1</span>/k_1))</span><br></pre></td></tr></table></figure></p>
-<p><img src="/2023/10/10/%E7%94%A8python%E6%B1%82%E8%A7%A3%E8%A7%A3%E6%9E%90%E5%87%A0%E4%BD%95/1697002468458.png" alt="1697002468458"></p>
-<p>当</p>
-<script type="math/tex; mode=display">
-\frac{6k_{1}^{2}}{1-3k_{1}^{2}}=\frac{6}{1-3k_{1}^{2}}</script><p>时,$k_1 = \pm 1$, </p>
-<p>直线 $l_{MN}$的方程为 $x =  -3$,</p>
-<p>当其斜率存在事,其斜率为</p>
-<p><img src="/2023/10/10/%E7%94%A8python%E6%B1%82%E8%A7%A3%E8%A7%A3%E6%9E%90%E5%87%A0%E4%BD%95/1697002849839.png" alt="1697002849839"></p>
-<p>则其方程为:</p>
-<script type="math/tex; mode=display">y-\frac{2k_{1}}{1-3k_{1}^{2}}\!=\!-\frac{2k_{1}}{3(k_{1}^{2}\!-\!1)}\!\left(x-\frac{6k_{1}^{2}}{1-3k_{1}^{2}}\right)</script><p>令$y =0$等于零,则解得$x =  -3$.</p>
-<p>综上所述,则直线$l_{MN}$ 恒过定点$(-3,0)$,</p>
-<p>则</p>
-<p><script type="math/tex">\frac{S_{\triangle O M N}}{S_{\triangle P M N}}=\frac{\textstyle{\frac{1}{2}}|y_{N}-y_{M}||O E|}{\textstyle{\frac{1}{2}}|y_{M}-y_{N}||F E|}=\frac{|O E|}{|F E|}=3</script>.</p>
-<h3 id="难点"><a href="#难点" class="headerlink" title="难点"></a>难点</h3><ol>
-<li>利用斜率的关系,统一两条直线中斜率的变量.</li>
-<li>观察出直线过定点.</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1338,7 +1199,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">45</span>
+          <span class="site-state-item-count">50</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1350,7 +1211,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-count">40</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1465,61 +1326,6 @@ document.querySelectorAll('.pdfobject-container').forEach(element => {
   
 
   
-      
-
-<script>
-  if (typeof MathJax === 'undefined') {
-    window.MathJax = {
-      loader: {
-          load: ['[tex]/mhchem'],
-        source: {
-          '[tex]/amsCd': '[tex]/amscd',
-          '[tex]/AMScd': '[tex]/amscd'
-        }
-      },
-      tex: {
-        inlineMath: {'[+]': [['$', '$']]},
-          packages: {'[+]': ['mhchem']},
-        tags: 'ams'
-      },
-      options: {
-        renderActions: {
-          findScript: [10, doc => {
-            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
-              const display = !!node.type.match(/; *mode=display/);
-              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
-              const text = document.createTextNode('');
-              node.parentNode.replaceChild(text, node);
-              math.start = {node: text, delim: '', n: 0};
-              math.end = {node: text, delim: '', n: 0};
-              doc.math.push(math);
-            });
-          }, '', false],
-          insertedScript: [200, () => {
-            document.querySelectorAll('mjx-container').forEach(node => {
-              let target = node.parentNode;
-              if (target.nodeName.toLowerCase() === 'li') {
-                target.parentNode.classList.add('has-jax');
-              }
-            });
-          }, '', false]
-        }
-      }
-    };
-    (function () {
-      var script = document.createElement('script');
-      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
-      script.defer = true;
-      document.head.appendChild(script);
-    })();
-  } else {
-    MathJax.startup.document.state(0);
-    MathJax.texReset();
-    MathJax.typeset();
-  }
-</script>
-
-    
 
   
 
